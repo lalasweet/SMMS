@@ -77,6 +77,7 @@
   }
 
   *{ box-sizing: border-box; }
+  .mt-14{ margin-top: 14px; }
   html{ text-size-adjust: 100%; }
   body{
     margin: 0;
@@ -1070,9 +1071,9 @@
               <label for="outer-reason">이유</label>
               <textarea id="outer-reason" maxlength="500" placeholder="지정학적 근거를 들어 이유를 적어 보세요."></textarea>
             </div>
-            <button type="button" class="btn next" id="outer-submit" style="margin-top:14px;">제출 코드 만들기</button>
+            <button type="button" class="btn next mt-14" id="outer-submit">제출 코드 만들기</button>
 
-            <div id="outer-code-box" hidden style="margin-top:14px;">
+            <div id="outer-code-box" class="mt-14" hidden>
               <p class="submit-status ok">아래 코드를 복사해서 선생님이 안내한 곳(채팅방·게시판 등)에 붙여넣어 주세요.</p>
               <textarea id="outer-code" readonly rows="3" style="font-family:'JetBrains Mono',monospace; font-size:11.5px;"></textarea>
               <div style="display:flex; gap:10px; margin-top:10px; flex-wrap:wrap; align-items:center;">
@@ -1198,7 +1199,11 @@
         <div class="rb-card">
           <h4>진행 방법</h4>
           <ol class="rule-list">
-            <li><span class="rule-text">각 팀은 무작위 폭력 사례 1가지와 경매에 참여할 수 있는 칩 20개를 가지고 시작합니다.</span></li>
+            <li><span class="rule-text">각 팀은 무작위 폭력 사례 1가지와 경매에 참여할 수 있는 칩 20개를 가지고 시작합니다.</span>
+              <ul class="sub-rules">
+                <li>무작위 폭력 사례는 세트마다 1번씩 주어집니다. (1세트 시작 시 1개, 2세트 시작 시 1개)</li>
+              </ul>
+            </li>
             <li><span class="rule-text">게임은 총 2세트로 진행됩니다. 1세트는 6라운드, 2세트는 8라운드입니다.</span>
               <ul class="sub-rules">
                 <li>1세트는 매 라운드 무작위 폭력 사례 2가지가, 2세트는 3가지가 제시됩니다.</li>
@@ -1237,7 +1242,7 @@
           <ul class="sub-rules">
             <li>사례를 2가지 이상 연계하면 동료 평가 점수를 그대로 받습니다. (직접-직접, 구조-구조처럼 같은 유형끼리 연계도 가능)</li>
             <li>서로 다른 유형 3가지(직접-구조-문화)를 모두 연계하면 동료 평가 점수에 +2점을 더 받습니다.</li>
-            <li>게임 종료 시점 남은 칩은 1개당 1점으로 환산됩니다.</li>
+            <li>게임 종료 시점 남은 칩은 2개당 1점으로 환산됩니다. (나머지는 버림)</li>
             <li>게임 종료 시점 낙찰받았지만 사용하지 않은 폭력 사례는 사례당 1점이 차감됩니다.</li>
           </ul>
         </div>
@@ -1246,7 +1251,8 @@
           <h4>구제 규칙</h4>
           <ul class="sub-rules">
             <li>각 세트가 끝난 시점, 낙찰받지 못한 팀이 있다면 무작위 사례 1개를 받을 수 있습니다.</li>
-            <li>구제로 사례를 받은 팀은 칩 6개를 회수당합니다. (보유 칩이 6개 미만이면 있는 만큼만 회수)</li>
+            <li>구제로 사례를 받은 팀은, 그 시점까지 칩을 가장 많이 사용한 팀의 사용량만큼 칩을 회수당합니다. (보유 칩보다 많으면 있는 만큼만 회수)</li>
+            <li>즉 다른 팀들이 경매에 적극적일수록, 구제받는 팀의 회수량도 함께 커집니다.</li>
           </ul>
         </div>
 
@@ -1568,7 +1574,7 @@
     </div>
   </div>
 
-  <div class="card" style="margin-top:14px;">
+  <div class="card mt-14">
     <p style="margin:0 0 10px; font-size:13.5px; color:var(--ink-2);">코드 대신 학생이 저장한 답안 파일을 받았다면 여기로 가져올 수도 있어요.</p>
     <label class="dropzone" id="teacher-dropzone">
       <input type="file" id="teacher-file-input" accept=".json,application/json" multiple>
@@ -1576,9 +1582,9 @@
     </label>
   </div>
 
-  <div class="info-chips" id="teacher-summary" style="margin-top:14px;"></div>
+  <div class="info-chips mt-14" id="teacher-summary"></div>
 
-  <div class="table-wrap" style="margin-top:14px;">
+  <div class="table-wrap mt-14">
     <table class="subm-table">
       <thead>
         <tr><th>이름</th><th>투자 지역</th><th>이유</th><th>제출 시각</th></tr>
@@ -1620,7 +1626,7 @@
       <label for="groups-count">전체 인원수</label>
       <input type="number" id="groups-count" min="2" max="60" step="1" placeholder="예: 24">
     </div>
-    <button type="button" class="btn next" id="groups-step1-go" style="margin-top:14px;">이름 입력하기 →</button>
+    <button type="button" class="btn next mt-14" id="groups-step1-go">이름 입력하기 →</button>
   </div>
 
   <div class="card" id="groups-step2" hidden>
