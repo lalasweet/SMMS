@@ -657,8 +657,8 @@
 
   .table-wrap{ overflow-x: auto; border: 1px solid var(--line-soft); border-radius: 10px; }
   table.subm-table{ width: 100%; border-collapse: collapse; font-size: 13px; min-width: 560px; }
-  table.subm-table th, table.subm-table td{ padding: 9px 12px; border-bottom: 1px solid var(--line-soft); text-align: left; vertical-align: top; }
-  table.subm-table th{ background: var(--surface-2); font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: .04em; color: var(--ink-3); }
+  table.subm-table th, table.subm-table td{ padding: 9px 12px; border-bottom: 1px solid var(--line-soft); text-align: left; vertical-align: middle; line-height: 1.5; }
+  table.subm-table th{ background: var(--surface-2); font-family: "JetBrains Mono", "Noto Sans KR", monospace; font-size: 11px; letter-spacing: .04em; color: var(--ink-3); }
   table.subm-table tr:last-child td{ border-bottom: none; }
 
   .name-grid{ display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 8px; margin-top: 12px; }
@@ -1020,8 +1020,9 @@
   table.mig-board-table thead th{
     background: transparent;
     color: var(--accent);
-    font-family: "JetBrains Mono", monospace;
+    font-family: "JetBrains Mono", "Noto Sans KR", monospace;
     letter-spacing: 0.04em;
+    line-height: 1.5;
     border-bottom: 1px dashed var(--line);
   }
   table.mig-board-table tbody tr{ border-bottom: 1px dashed var(--line-soft); }
@@ -1170,8 +1171,8 @@
 
   .hr-calc-scroll{ overflow-x: auto; }
   table.hr-calc-table{ width: 100%; border-collapse: collapse; font-size: 12.5px; min-width: 640px; }
-  table.hr-calc-table th, table.hr-calc-table td{ padding: 7px 8px; border-bottom: 1px solid var(--line-soft); text-align: center; vertical-align: middle; }
-  table.hr-calc-table th{ background: var(--surface-2); font-family: "JetBrains Mono", monospace; font-size: 10.5px; letter-spacing: .03em; color: var(--ink-3); font-weight: 700; }
+  table.hr-calc-table th, table.hr-calc-table td{ padding: 7px 8px; border-bottom: 1px solid var(--line-soft); text-align: center; vertical-align: middle; line-height: 1.5; }
+  table.hr-calc-table th{ background: var(--surface-2); font-family: "JetBrains Mono", "Noto Sans KR", monospace; font-size: 10.5px; letter-spacing: .03em; color: var(--ink-3); font-weight: 700; }
   table.hr-calc-table td:first-child, table.hr-calc-table th:first-child{ text-align: left; }
   table.hr-calc-table tbody tr:last-child td{ border-bottom: none; }
   table.hr-calc-table input[type="number"]{ width: 76px; padding: 6px 5px; font-size: 12.5px; text-align: center; }
@@ -1194,6 +1195,72 @@
   .hr-denom-row{ display: flex; align-items: center; gap: 6px; font-size: 11.5px; color: var(--ink-3); }
   .hr-denom-row input{ width: 48px; padding: 4px 5px; font-size: 11.5px; text-align: center; }
   .hr-denom-team .hr-denom-computed{ font-size: 11px; color: var(--ink-3); font-family: "JetBrains Mono", monospace; }
+
+  /* ---------------- 교사용 도구: 탄소의 딜레마 계산기 ---------------- */
+  .cd-badge{
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 999px;
+    margin: 2px 4px 2px 0;
+  }
+  .cd-badge.lead{ background: color-mix(in srgb, var(--accent) 20%, transparent); color: var(--accent); }
+  .cd-badge.carbon{ background: color-mix(in srgb, var(--danger) 18%, transparent); color: var(--danger); }
+  .cd-badge.neutral{ background: var(--surface-2); color: var(--ink-3); }
+  .cd-badge.win{ background: color-mix(in srgb, var(--accent-2) 24%, transparent); color: var(--accent-2); }
+
+  table.cd-team-table th, table.cd-team-table td{ padding: 9px 10px; vertical-align: middle; }
+  table.cd-team-table input[type="text"]{ width: 110px; padding: 6px 8px; font-size: 12.5px; }
+  table.cd-team-table td:nth-child(1){ font-weight: 600; }
+  table.cd-team-table td.cd-num{ font-family: "JetBrains Mono", monospace; font-weight: 700; text-align: center; }
+  .cd-team-remove-btn{
+    background: transparent; border: 1px solid var(--line-soft); color: var(--ink-3);
+    border-radius: 6px; padding: 5px 8px; font-size: 11.5px; cursor: pointer;
+  }
+  .cd-team-remove-btn:hover{ color: var(--danger); border-color: var(--danger); }
+
+  .cd-round-pills{ display: flex; gap: 6px; flex-wrap: wrap; margin: 4px 0 14px; }
+  .cd-round-pill{
+    font-size: 12px; padding: 5px 12px; border-radius: 16px; border: 1px solid var(--line-soft);
+    color: var(--ink-3); font-family: "JetBrains Mono", monospace; background: var(--surface);
+  }
+  .cd-round-pill.done{ background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  .cd-round-pill.current{ background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-weight: 700; }
+
+  .cd-calc-scroll{ overflow-x: auto; }
+  table.cd-calc-table{ width: 100%; border-collapse: collapse; font-size: 12.5px; min-width: 640px; }
+  table.cd-calc-table th, table.cd-calc-table td{ padding: 8px 9px; border-bottom: 1px solid var(--line-soft); text-align: center; vertical-align: middle; line-height: 1.5; }
+  table.cd-calc-table th{ background: var(--surface-2); font-family: "JetBrains Mono", "Noto Sans KR", monospace; font-size: 10.5px; letter-spacing: .03em; color: var(--ink-3); font-weight: 700; }
+  table.cd-calc-table td:first-child, table.cd-calc-table th:first-child{ text-align: left; }
+  table.cd-calc-table tbody tr:last-child td{ border-bottom: none; }
+  table.cd-calc-table input[type="number"]{ width: 62px; padding: 6px 5px; font-size: 12.5px; text-align: center; }
+  .cd-chip-left{ font-size: 10.5px; color: var(--ink-3); margin-top: 3px; }
+  table.cd-calc-table td.cd-power{ font-family: "JetBrains Mono", monospace; font-weight: 700; }
+  table.cd-calc-table td.cd-rank-1{ color: var(--accent); font-weight: 700; }
+  table.cd-calc-table tr.cd-invalid-row td{ background: color-mix(in srgb, var(--danger) 7%, transparent); }
+
+  .cd-warn-list{ font-size: 12px; color: var(--danger); margin: 8px 0 0; line-height: 1.6; }
+
+  .cd-reveal-card{ border-left: 3px solid var(--accent-2); background: color-mix(in srgb, var(--accent-2) 9%, var(--surface)); border-radius: 0 10px 10px 0; padding: 13px 16px; margin-top: 14px; font-size: 13.5px; line-height: 1.6; color: var(--ink-2); }
+  .cd-reveal-card strong{ color: var(--ink); }
+
+  .cd-final-card{ border: 1.5px solid var(--accent); border-radius: 12px; padding: 18px 20px; margin-top: 16px; background: color-mix(in srgb, var(--accent) 6%, var(--surface)); }
+  .cd-final-card h4{ margin: 0 0 10px; font-family: "Noto Serif KR", serif; font-size: 16px; color: var(--accent); }
+  .cd-final-winner{ font-size: 15px; font-weight: 700; color: var(--ink); margin: 6px 0; }
+  .cd-final-note{ font-size: 12.5px; color: var(--ink-2); line-height: 1.6; }
+
+  .cd-mvp-team-block{ margin-top: 12px; padding-top: 12px; border-top: 1px dashed var(--line-soft); }
+  .cd-mvp-team-block:first-child{ margin-top: 8px; padding-top: 0; border-top: none; }
+  .cd-mvp-team-title{ font-size: 13px; font-weight: 700; color: var(--ink); margin: 0 0 8px; }
+  .cd-mvp-grid{ display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
+  .cd-mvp-player{ display: flex; flex-direction: column; gap: 5px; padding: 8px 10px; border-radius: 8px; background: var(--surface); border: 1px solid var(--line-soft); }
+  .cd-mvp-player.top{ border-color: var(--accent-2); background: color-mix(in srgb, var(--accent-2) 12%, var(--surface)); }
+  .cd-mvp-player input[type="text"]{ font-size: 12.5px; padding: 5px 7px; }
+  .cd-mvp-player input[type="number"]{ font-size: 12.5px; padding: 5px 7px; text-align:center; }
+  .cd-mvp-player .cd-mvp-star{ font-size: 11px; font-weight: 700; color: var(--accent-2); }
+  #view-carbon-tools button.btn:disabled{ opacity: .4; cursor: not-allowed; }
+  #view-carbon-tools button.btn:disabled:hover{ filter: none; }
 
   /* 전체 화면(브라우저 UI 숨김) 토글 버튼 */
   #fs-toggle-btn{
@@ -1476,6 +1543,10 @@
         <button type="button" class="tool-card" data-unit="price-tools" data-panel-default="draw">
           <span class="tool-title">히든 프라이스 도구</span>
           <span class="tool-desc">"히든 프라이스: 자원 외교전" 진행용 — 자원 추첨과 라운드별 수출가 계산기를 한 화면에서 버튼으로 오가며 써요.</span>
+        </button>
+        <button type="button" class="tool-card" data-unit="carbon-tools" data-panel-default="board">
+          <span class="tool-title">탄소의 딜레마 계산기</span>
+          <span class="tool-desc">"탄소의 딜레마" 진행용 — 팀별 승점·탄소 사용량 현황판과 7라운드 경제력 계산기를 한 화면에서 버튼으로 오가며 써요.</span>
         </button>
       </div>
     </div>
@@ -3175,6 +3246,106 @@
   <div class="tool-switcher" role="tablist" aria-label="동정심 마켓 도구 전환">
     <button type="button" class="tool-switch-btn" data-panel="board" aria-selected="true">🏅 현황판</button>
     <button type="button" class="tool-switch-btn" data-panel="calc" aria-selected="false">🧮 기부 계산기</button>
+  </div>
+  </section>
+
+  <section id="view-carbon-tools" class="view" hidden>
+  <button type="button" class="back-btn">← 단원 목록으로</button>
+  <header class="masthead unit-masthead">
+    <div class="compass-mark" aria-hidden="true">
+      <svg viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="44"></circle>
+        <circle cx="50" cy="50" r="2.4" fill="currentColor" style="fill:var(--ink)"></circle>
+        <path d="M50 10 L57 50 L50 90 L43 50 Z" class="n"></path>
+        <path d="M10 50 L50 43 L90 50 L50 57 Z"></path>
+      </svg>
+    </div>
+    <div class="masthead-text">
+      <p class="eyebrow">교사용 도구 · 환경과 에너지</p>
+      <h1 class="title">탄소의 딜레마 계산기</h1>
+      <p class="lede">팀(연합)별 누적 승점·탄소 사용량을 기록하는 "현황판"과 라운드별 경제력을 계산하는 "라운드 계산기"를 한 페이지에서 씁니다. 맨 아래 두 버튼으로 바로바로 전환하세요.</p>
+    </div>
+  </header>
+
+  <div class="tool-panel" data-panel="board">
+    <p class="tool-panel-title">🌍 탄소의 딜레마 현황판</p>
+    <p class="tool-panel-sub">연합별 누적 승점과 탄소·친환경 에너지 사용량을 기록해요. 승점이 가장 높은 연합이 선두로 표시되고, 지금까지 탄소를 가장 많이 쓴 연합은 따로 표시돼요. 이 브라우저에만 저장되며, 새로고침해도 유지돼요.</p>
+
+    <div class="card">
+      <div class="table-wrap">
+        <table class="subm-table cd-team-table" id="cd-team-table">
+          <thead>
+            <tr>
+              <th>연합명</th>
+              <th>🏆 누적 승점</th>
+              <th>🛢️ 누적 탄소 사용</th>
+              <th>🌱 누적 친환경 사용</th>
+              <th>상태</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="cd-team-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div style="display:flex; gap:10px; margin-top:14px; flex-wrap:wrap; align-items:center;">
+      <button type="button" class="btn next" id="cd-team-add">+ 연합 추가</button>
+      <button type="button" class="btn restart" id="cd-team-reset">기본 4연합으로 초기화</button>
+      <span class="info-chip" id="cd-team-round-chip">현재 라운드: 1 / 7</span>
+    </div>
+
+    <div id="cd-reveal-box"></div>
+    <div id="cd-final-box"></div>
+  </div>
+
+  <div class="tool-panel" data-panel="calc" hidden>
+    <p class="tool-panel-title">🧮 라운드 계산기</p>
+    <p class="tool-panel-sub">라운드마다 연합별로 제출한 탄소 에너지 칩·친환경 에너지 칩 개수를 입력하세요 (연합당 최소 1개 이상 제출). 경제력(탄소×3 + 친환경×1)이 가장 높은 연합부터 3·2·1점을 얻고, 그 라운드 경제력이 가장 낮은 연합은 0점이에요. "결과 반영" 버튼을 누르면 현황판에 자동으로 더해지고 다음 라운드로 넘어가요.</p>
+
+    <div class="card">
+      <span class="mission-label">현재 라운드 <span id="cd-calc-round" style="color:var(--ink-3); font-weight:400;">1 / 7</span></span>
+      <div class="cd-round-pills" id="cd-round-pills"></div>
+      <div class="cd-calc-scroll">
+        <table class="cd-calc-table" id="cd-calc-table">
+          <thead>
+            <tr>
+              <th>연합</th>
+              <th>🛢️ 탄소 에너지 칩</th>
+              <th>🌱 친환경 에너지 칩</th>
+              <th>경제력</th>
+              <th>이번 라운드 순위</th>
+              <th>획득 승점</th>
+            </tr>
+          </thead>
+          <tbody id="cd-calc-tbody"></tbody>
+        </table>
+      </div>
+      <div class="cd-warn-list" id="cd-warn-list" hidden></div>
+    </div>
+
+    <details class="fold mt-14">
+      <summary>라운드별 결과 내역 보기</summary>
+      <div class="table-wrap mt-14">
+        <table class="subm-table" id="cd-history-table">
+          <thead>
+            <tr><th>라운드</th><th>연합</th><th>탄소</th><th>친환경</th><th>경제력</th><th>순위</th><th>승점</th></tr>
+          </thead>
+          <tbody id="cd-history-tbody"></tbody>
+        </table>
+      </div>
+    </details>
+
+    <div style="display:flex; gap:10px; margin-top:16px; flex-wrap:wrap; align-items:center;">
+      <button type="button" class="btn next" id="cd-calc-apply">✅ 결과를 현황판에 반영 + 다음 라운드</button>
+      <button type="button" class="btn restart" id="cd-calc-clear">입력 지우기</button>
+      <button type="button" class="btn restart" id="cd-game-reset">🔄 전체 초기화 (새 게임 시작)</button>
+    </div>
+  </div>
+
+  <div class="tool-switcher" role="tablist" aria-label="탄소의 딜레마 도구 전환">
+    <button type="button" class="tool-switch-btn" data-panel="board" aria-selected="true">🌍 현황판</button>
+    <button type="button" class="tool-switch-btn" data-panel="calc" aria-selected="false">🧮 라운드 계산기</button>
   </div>
   </section>
 </div>
@@ -5451,6 +5622,494 @@
     renderCalc();
   })();
 
+  /* ================= 탄소의 딜레마: 현황판 + 라운드 계산기 ================= */
+  (function initCarbonTools(){
+    var teamTbody = document.getElementById("cd-team-tbody");
+    if(!teamTbody) return;
+
+    var addBtn = document.getElementById("cd-team-add");
+    var resetBtn = document.getElementById("cd-team-reset");
+    var roundChip = document.getElementById("cd-team-round-chip");
+    var revealBox = document.getElementById("cd-reveal-box");
+    var finalBox = document.getElementById("cd-final-box");
+
+    var calcRoundEl = document.getElementById("cd-calc-round");
+    var roundPillsEl = document.getElementById("cd-round-pills");
+    var calcTbody = document.getElementById("cd-calc-tbody");
+    var warnListEl = document.getElementById("cd-warn-list");
+    var historyTbody = document.getElementById("cd-history-tbody");
+    var applyBtn = document.getElementById("cd-calc-apply");
+    var clearBtn = document.getElementById("cd-calc-clear");
+    var gameResetBtn = document.getElementById("cd-game-reset");
+
+    var CD_STORAGE_KEY = "carbonDilemma_v1";
+    var CD_TOTAL_ROUNDS = 7;
+    var CD_CARBON_POINT = 3;
+    var CD_ECO_POINT = 1;
+    var CD_CHIP_MAX = 27; // 3인 x 9개 = 팀 전체 누적 사용 한도(참고용 표시)
+
+    function defaultTeams(){
+      return [1, 2, 3, 4].map(function(n){ return { name: n + "연합", points: 0, carbonUsed: 0, ecoUsed: 0 }; });
+    }
+    function freshState(){
+      return { teams: defaultTeams(), round: 1, history: [], mvp: {} };
+    }
+
+    function loadState(){
+      try{
+        var raw = localStorage.getItem(CD_STORAGE_KEY);
+        if(!raw) return null;
+        var parsed = JSON.parse(raw);
+        if(!parsed || !Array.isArray(parsed.teams)) return null;
+        parsed.teams = parsed.teams.map(function(t){
+          return { name: t.name || "연합", points: Number(t.points) || 0, carbonUsed: Number(t.carbonUsed) || 0, ecoUsed: Number(t.ecoUsed) || 0 };
+        });
+        parsed.round = Number(parsed.round) || 1;
+        parsed.history = Array.isArray(parsed.history) ? parsed.history : [];
+        parsed.mvp = (parsed.mvp && typeof parsed.mvp === "object") ? parsed.mvp : {};
+        return parsed;
+      }catch(e){ return null; }
+    }
+    function saveState(){
+      try{ localStorage.setItem(CD_STORAGE_KEY, JSON.stringify(state)); }catch(e){}
+    }
+
+    var state = loadState() || freshState();
+    var calcInputs = state.teams.map(function(){ return { carbon: 0, eco: 0 }; });
+
+    function cdEsc(s){
+      return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    }
+
+    function syncCalcInputsLength(){
+      while(calcInputs.length < state.teams.length) calcInputs.push({ carbon: 0, eco: 0 });
+      if(calcInputs.length > state.teams.length) calcInputs.length = state.teams.length;
+    }
+
+    // 경제력 = 탄소칩x3 + 친환경칩x1. 표준 경쟁 순위(동점 공동순위)로 1~3등에 3·2·1점,
+    // 그 라운드 경제력이 가장 낮은 팀은(전원 동점이 아닌 한) 항상 0점.
+    function computeRound(carbonArr, ecoArr){
+      var n = carbonArr.length;
+      var power = carbonArr.map(function(c, i){ return c * CD_CARBON_POINT + (ecoArr[i] || 0) * CD_ECO_POINT; });
+      var order = power.map(function(_, i){ return i; }).sort(function(a, b){ return power[b] - power[a]; });
+      var ranks = new Array(n);
+      var prevPower = null, prevRank = 0;
+      order.forEach(function(idx, pos){
+        if(power[idx] === prevPower){ ranks[idx] = prevRank; }
+        else { ranks[idx] = pos + 1; prevRank = pos + 1; prevPower = power[idx]; }
+      });
+      var minPower = n ? Math.min.apply(null, power) : 0;
+      var maxPower = n ? Math.max.apply(null, power) : 0;
+      var allTied = (minPower === maxPower);
+      var points = ranks.map(function(r, i){
+        if(!allTied && power[i] === minPower) return 0;
+        if(r === 1) return 3;
+        if(r === 2) return 2;
+        if(r === 3) return 1;
+        return 0;
+      });
+      return { power: power, ranks: ranks, points: points };
+    }
+
+    function carbonThroughRound(roundLimit){
+      var sums = state.teams.map(function(){ return 0; });
+      state.history.forEach(function(h){
+        if(h.round <= roundLimit){
+          h.carbon.forEach(function(c, i){ if(i < sums.length) sums[i] += c; });
+        }
+      });
+      return sums;
+    }
+
+    // 최종 승자 판정: 승점 순위(동점 그룹) 위에서부터, 그 그룹 전원이 "누적 탄소 최다 사용팀"이면
+    // 통째로 실격시키고 다음 순위 그룹으로 넘어간다. 그룹 안에 자격 있는 팀이 남으면
+    // (탄소를 가장 적게 쓴 팀 = 가장 많이 남긴 팀)을 최종 우승으로, 그마저 같으면 공동 우승으로 처리.
+    function computeFinal(){
+      if(state.history.length < CD_TOTAL_ROUNDS) return null;
+      var teams = state.teams;
+      var totalPoints = teams.map(function(t){ return t.points; });
+      var totalCarbon = teams.map(function(t){ return t.carbonUsed; });
+      var maxCarbon = totalCarbon.length ? Math.max.apply(null, totalCarbon) : 0;
+      var maxCarbonSet = {};
+      totalCarbon.forEach(function(c, i){ if(c === maxCarbon) maxCarbonSet[i] = true; });
+
+      var order = totalPoints.map(function(_, i){ return i; }).sort(function(a, b){ return totalPoints[b] - totalPoints[a]; });
+      var tiers = [];
+      order.forEach(function(idx){
+        var last = tiers[tiers.length - 1];
+        if(last && totalPoints[last[0]] === totalPoints[idx]) last.push(idx);
+        else tiers.push([idx]);
+      });
+
+      var winners = [];
+      var pointLeaderDisqualified = false;
+      for(var t = 0; t < tiers.length; t++){
+        var tier = tiers[t];
+        var qualifying = tier.filter(function(idx){ return !maxCarbonSet[idx]; });
+        if(qualifying.length > 0){
+          var minC = Math.min.apply(null, qualifying.map(function(idx){ return totalCarbon[idx]; }));
+          winners = qualifying.filter(function(idx){ return totalCarbon[idx] === minC; });
+          if(t > 0) pointLeaderDisqualified = true;
+          break;
+        }
+      }
+      var fellBack = false;
+      if(!winners.length && tiers.length){
+        winners = tiers[0];
+        fellBack = true;
+      }
+
+      return {
+        totalPoints: totalPoints,
+        totalCarbon: totalCarbon,
+        maxCarbon: maxCarbon,
+        maxCarbonIdxs: Object.keys(maxCarbonSet).map(Number),
+        winnerIdxs: winners,
+        pointLeaderDisqualified: pointLeaderDisqualified,
+        fellBack: fellBack
+      };
+    }
+
+    function computeBadges(){
+      var teams = state.teams;
+      if(!teams.length) return [];
+      var anyProgress = state.history.length > 0;
+      var maxPoints = anyProgress ? Math.max.apply(null, teams.map(function(t){ return t.points; })) : 0;
+      var maxCarbon = anyProgress ? Math.max.apply(null, teams.map(function(t){ return t.carbonUsed; })) : 0;
+      return teams.map(function(t){
+        var badges = [];
+        if(anyProgress && t.points === maxPoints && maxPoints > 0) badges.push({ cls: "lead", text: "승점 선두" });
+        if(anyProgress && t.carbonUsed === maxCarbon && maxCarbon > 0) badges.push({ cls: "carbon", text: "탄소 최다" });
+        if(!badges.length) badges.push({ cls: "neutral", text: "—" });
+        return badges;
+      });
+    }
+
+    function renderBoard(){
+      var badgesPerTeam = computeBadges();
+      teamTbody.innerHTML = "";
+      state.teams.forEach(function(t, i){
+        var tr = document.createElement("tr");
+        var badgesHtml = badgesPerTeam[i].map(function(b){
+          return '<span class="cd-badge ' + b.cls + '">' + b.text + '</span>';
+        }).join(" ");
+        tr.innerHTML =
+          '<td><input type="text" class="cd-name-input" data-idx="' + i + '" value="' + cdEsc(t.name) + '"></td>' +
+          '<td class="cd-num">' + t.points + '</td>' +
+          '<td class="cd-num">' + t.carbonUsed + '</td>' +
+          '<td class="cd-num">' + t.ecoUsed + '</td>' +
+          '<td>' + badgesHtml + '</td>' +
+          '<td><button type="button" class="cd-team-remove-btn" data-idx="' + i + '">삭제</button></td>';
+        teamTbody.appendChild(tr);
+      });
+
+      var roundLabel = (state.round > CD_TOTAL_ROUNDS) ? (CD_TOTAL_ROUNDS + " / " + CD_TOTAL_ROUNDS + " · 종료") : (state.round + " / " + CD_TOTAL_ROUNDS);
+      if(roundChip) roundChip.textContent = "현재 라운드: " + roundLabel;
+      if(calcRoundEl) calcRoundEl.textContent = roundLabel;
+
+      if(state.history.length >= 4){
+        var sums4 = carbonThroughRound(4);
+        var max4 = sums4.length ? Math.max.apply(null, sums4) : 0;
+        var leaders4 = state.teams.filter(function(t, i){ return sums4[i] === max4; }).map(function(t){ return t.name; });
+        revealBox.innerHTML =
+          '<div class="cd-reveal-card"><span class="callout-label">4라운드 공개</span>' +
+          '4라운드까지 탄소 에너지를 가장 많이 사용한 연합은 <strong>' + leaders4.map(cdEsc).join(", ") + '</strong>입니다 (누적 ' + max4 + '개).</div>';
+      } else {
+        revealBox.innerHTML = "";
+      }
+
+      var final = computeFinal();
+      if(final){
+        var winnerNames = final.winnerIdxs.map(function(i){ return state.teams[i] ? state.teams[i].name : "?"; });
+        var maxCarbonNames = final.maxCarbonIdxs.map(function(i){ return state.teams[i] ? state.teams[i].name : "?"; });
+        var sortedForTable = state.teams.map(function(t, i){ return { name: t.name, points: t.points, carbon: t.carbonUsed, idx: i }; })
+          .sort(function(a, b){ return b.points - a.points; });
+        var tableRows = sortedForTable.map(function(r){
+          var isWinner = final.winnerIdxs.indexOf(r.idx) !== -1;
+          var isMaxCarbon = final.maxCarbonIdxs.indexOf(r.idx) !== -1;
+          return "<tr" + (isWinner ? ' style="background:color-mix(in srgb, var(--accent-2) 14%, transparent);"' : "") + ">" +
+            "<td>" + cdEsc(r.name) + (isWinner ? " 🏆" : "") + "</td>" +
+            '<td class="cd-num">' + r.points + "</td>" +
+            '<td class="cd-num">' + r.carbon + (isMaxCarbon ? " 🛢️" : "") + "</td>" +
+            "</tr>";
+        }).join("");
+
+        var noteHtml = "";
+        if(final.fellBack){
+          noteHtml = '<p class="cd-final-note">⚠️ 모든 승점 상위 연합이 탄소 최다 사용팀과 겹쳐서 규정을 그대로 적용할 수 없었어요. 일단 승점 1위 연합을 우승으로 표시했으니, 교사가 직접 한 번 더 확인해 주세요.</p>';
+        } else if(final.pointLeaderDisqualified){
+          noteHtml = '<p class="cd-final-note">🚫 승점 1위 연합이 탄소를 가장 많이 사용한 연합이라, 규정에 따라 다음 순위 연합이 최종 우승으로 처리됐어요.</p>';
+        }
+
+        var mvpHtml = final.winnerIdxs.map(function(teamIdx){
+          var team = state.teams[teamIdx];
+          if(!team) return "";
+          var mvpData = state.mvp[teamIdx] || [{ name: "", left: "" }, { name: "", left: "" }, { name: "", left: "" }];
+          var maxLeft = -1;
+          mvpData.forEach(function(p){ var v = Number(p.left); if(!isNaN(v) && p.left !== "" && v > maxLeft) maxLeft = v; });
+          var playersHtml = [0, 1, 2].map(function(pi){
+            var p = mvpData[pi] || { name: "", left: "" };
+            var v = Number(p.left);
+            var isTop = (p.left !== "" && !isNaN(v) && v === maxLeft && maxLeft >= 0);
+            return '<div class="cd-mvp-player' + (isTop ? " top" : "") + '">' +
+              '<input type="text" placeholder="선수 이름" data-team="' + teamIdx + '" data-player="' + pi + '" data-field="name" value="' + cdEsc(p.name || "") + '">' +
+              '<input type="number" min="0" max="9" placeholder="남은 탄소 칩" data-team="' + teamIdx + '" data-player="' + pi + '" data-field="left" value="' + cdEsc(p.left || "") + '">' +
+              (isTop ? '<span class="cd-mvp-star">⭐ 추가 보상 후보</span>' : "") +
+              "</div>";
+          }).join("");
+          return '<div class="cd-mvp-team-block"><p class="cd-mvp-team-title">🏆 ' + cdEsc(team.name) + ' 선수별 남은 탄소 에너지 칩 (0~9)</p><div class="cd-mvp-grid">' + playersHtml + "</div></div>";
+        }).join("");
+
+        finalBox.innerHTML =
+          '<div class="cd-final-card"><h4>🏁 최종 결과 (7라운드 종료)</h4>' +
+          '<p class="cd-final-winner">최종 우승: ' + winnerNames.map(cdEsc).join(", ") + "</p>" +
+          '<p class="cd-final-note">탄소 에너지를 가장 많이 사용한 연합: ' + maxCarbonNames.map(cdEsc).join(", ") + " (누적 " + final.maxCarbon + "개)</p>" +
+          noteHtml +
+          '<div class="table-wrap mt-14"><table class="subm-table"><thead><tr><th>연합</th><th>누적 승점</th><th>누적 탄소 사용</th></tr></thead><tbody>' + tableRows + "</tbody></table></div>" +
+          '<div class="mt-14"><p class="cd-final-note" style="margin-bottom:6px;">우승 연합에서 탄소 에너지를 가장 많이 남긴(=아낀) 선수는 추가 보상을 받아요. 게임이 끝난 뒤 각 선수의 남은 탄소 에너지 칩 개수를 세어 입력하면 자동으로 표시돼요.</p>' + mvpHtml + "</div>" +
+          "</div>";
+      } else {
+        finalBox.innerHTML = "";
+      }
+    }
+
+    function renderRoundPills(){
+      if(!roundPillsEl) return;
+      roundPillsEl.innerHTML = "";
+      for(var r = 1; r <= CD_TOTAL_ROUNDS; r++){
+        var span = document.createElement("span");
+        var cls = "cd-round-pill";
+        if(r < state.round) cls += " done";
+        else if(r === state.round) cls += " current";
+        span.className = cls;
+        span.textContent = "라운드 " + r;
+        roundPillsEl.appendChild(span);
+      }
+    }
+
+    function refreshCalcLive(){
+      var gameOver = state.round > CD_TOTAL_ROUNDS;
+      var carbonArr = state.teams.map(function(t, i){ return Number((calcInputs[i] || {}).carbon) || 0; });
+      var ecoArr = state.teams.map(function(t, i){ return Number((calcInputs[i] || {}).eco) || 0; });
+      var preview = computeRound(carbonArr, ecoArr);
+      var rows = calcTbody.querySelectorAll("tr[data-row]");
+      var invalidIdxs = [];
+      rows.forEach(function(tr){
+        var i = Number(tr.dataset.row);
+        var sum = carbonArr[i] + ecoArr[i];
+        var isInvalid = sum < 1;
+        if(isInvalid) invalidIdxs.push(i);
+        tr.className = isInvalid ? "cd-invalid-row" : "";
+        var powerCell = tr.querySelector(".cd-power-cell");
+        var rankCell = tr.querySelector(".cd-rank-cell");
+        var pointsCell = tr.querySelector(".cd-points-cell");
+        if(powerCell) powerCell.textContent = preview.power[i];
+        if(rankCell){ rankCell.textContent = preview.ranks[i] + "위"; rankCell.className = "cd-rank-cell" + (preview.ranks[i] === 1 ? " cd-rank-1" : ""); }
+        if(pointsCell) pointsCell.textContent = preview.points[i] + "점";
+      });
+
+      if(!state.teams.length){
+        warnListEl.hidden = true;
+        applyBtn.disabled = true;
+        applyBtn.textContent = "✅ 결과를 현황판에 반영 + 다음 라운드";
+      } else if(gameOver){
+        warnListEl.hidden = true;
+        applyBtn.disabled = true;
+        applyBtn.textContent = "🏁 7라운드 모두 종료됐어요";
+      } else if(invalidIdxs.length){
+        warnListEl.hidden = false;
+        warnListEl.textContent = "⚠️ " + invalidIdxs.map(function(i){ return state.teams[i] ? state.teams[i].name : "?"; }).join(", ") + " — 최소 1개 이상 제출해야 해요.";
+        applyBtn.disabled = true;
+        applyBtn.textContent = "✅ 결과를 현황판에 반영 + 다음 라운드";
+      } else {
+        warnListEl.hidden = true;
+        applyBtn.disabled = false;
+        applyBtn.textContent = "✅ 결과를 현황판에 반영 + 다음 라운드";
+      }
+    }
+
+    function renderCalc(){
+      renderRoundPills();
+      syncCalcInputsLength();
+
+      if(!state.teams.length){
+        calcTbody.innerHTML = '<tr><td colspan="6" style="color:var(--ink-3); text-align:left;">현황판에서 연합을 먼저 추가하세요.</td></tr>';
+        warnListEl.hidden = true;
+        applyBtn.disabled = true;
+        return;
+      }
+
+      var gameOver = state.round > CD_TOTAL_ROUNDS;
+      calcTbody.innerHTML = "";
+      state.teams.forEach(function(t, i){
+        var carbonVal = calcInputs[i] ? calcInputs[i].carbon : 0;
+        var ecoVal = calcInputs[i] ? calcInputs[i].eco : 0;
+        var tr = document.createElement("tr");
+        tr.dataset.row = i;
+        tr.innerHTML =
+          "<td>" + cdEsc(t.name) + "</td>" +
+          '<td><input type="number" min="0" step="1" inputmode="numeric" data-idx="' + i + '" data-field="carbon" value="' + (carbonVal || 0) + '" ' + (gameOver ? "disabled" : "") + ">" +
+            '<div class="cd-chip-left">누적 사용 ' + t.carbonUsed + " / " + CD_CHIP_MAX + "</div></td>" +
+          '<td><input type="number" min="0" step="1" inputmode="numeric" data-idx="' + i + '" data-field="eco" value="' + (ecoVal || 0) + '" ' + (gameOver ? "disabled" : "") + ">" +
+            '<div class="cd-chip-left">누적 사용 ' + t.ecoUsed + " / " + CD_CHIP_MAX + "</div></td>" +
+          '<td class="cd-power cd-power-cell">0</td>' +
+          '<td class="cd-rank-cell">-</td>' +
+          '<td class="cd-power cd-points-cell">0점</td>';
+        calcTbody.appendChild(tr);
+      });
+      refreshCalcLive();
+    }
+
+    function renderHistory(){
+      historyTbody.innerHTML = "";
+      state.history.forEach(function(h){
+        h.carbon.forEach(function(c, i){
+          var team = state.teams[i];
+          var tr = document.createElement("tr");
+          tr.innerHTML =
+            "<td>" + h.round + "</td>" +
+            "<td>" + cdEsc(team ? team.name : ("연합 " + (i + 1))) + "</td>" +
+            "<td>" + c + "</td>" +
+            "<td>" + (h.eco[i] || 0) + "</td>" +
+            "<td>" + h.power[i] + "</td>" +
+            "<td>" + h.ranks[i] + "위</td>" +
+            "<td>" + h.points[i] + "점</td>";
+          historyTbody.appendChild(tr);
+        });
+      });
+    }
+
+    function renderAll(){
+      renderBoard();
+      renderCalc();
+      renderHistory();
+    }
+
+    // ---- 현황판: 연합명/삭제/추가/초기화 ----
+    teamTbody.addEventListener("change", function(e){
+      var input = e.target.closest(".cd-name-input");
+      if(!input) return;
+      var idx = Number(input.dataset.idx);
+      if(state.teams[idx]) state.teams[idx].name = input.value.trim() || (idx + 1) + "연합";
+      saveState();
+      renderCalc();
+      renderHistory();
+    });
+    teamTbody.addEventListener("click", function(e){
+      var rm = e.target.closest(".cd-team-remove-btn");
+      if(!rm) return;
+      var idx = Number(rm.dataset.idx);
+      if(!confirm("정말 이 연합을 삭제할까요? 누적 기록도 함께 사라져요.")) return;
+      state.teams.splice(idx, 1);
+      calcInputs.splice(idx, 1);
+      saveState();
+      renderAll();
+    });
+    addBtn.addEventListener("click", function(){
+      state.teams.push({ name: (state.teams.length + 1) + "연합", points: 0, carbonUsed: 0, ecoUsed: 0 });
+      calcInputs.push({ carbon: 0, eco: 0 });
+      saveState();
+      renderAll();
+    });
+    resetBtn.addEventListener("click", function(){
+      if(!confirm("현재 진행 상황을 지우고 기본 4연합으로 새로 시작할까요?")) return;
+      state = freshState();
+      calcInputs = state.teams.map(function(){ return { carbon: 0, eco: 0 }; });
+      saveState();
+      renderAll();
+    });
+    gameResetBtn.addEventListener("click", function(){
+      if(!confirm("정말 전체 게임을 초기화할까요? 모든 라운드 기록이 사라져요.")) return;
+      state = freshState();
+      calcInputs = state.teams.map(function(){ return { carbon: 0, eco: 0 }; });
+      saveState();
+      renderAll();
+    });
+
+    // ---- 라운드 계산기 ----
+    calcTbody.addEventListener("input", function(e){
+      var input = e.target.closest("input[data-field]");
+      if(!input) return;
+      var idx = Number(input.dataset.idx);
+      var field = input.dataset.field;
+      if(!calcInputs[idx]) return;
+      calcInputs[idx][field] = input.value === "" ? 0 : Math.max(0, Math.round(Number(input.value) || 0));
+      refreshCalcLive();
+    });
+
+    applyBtn.addEventListener("click", function(){
+      if(!state.teams.length || state.round > CD_TOTAL_ROUNDS) return;
+      var carbonArr = state.teams.map(function(t, i){ return Number((calcInputs[i] || {}).carbon) || 0; });
+      var ecoArr = state.teams.map(function(t, i){ return Number((calcInputs[i] || {}).eco) || 0; });
+      var sums = carbonArr.map(function(c, i){ return c + ecoArr[i]; });
+      if(sums.some(function(s){ return s < 1; })) return;
+
+      var result = computeRound(carbonArr, ecoArr);
+      state.teams.forEach(function(t, i){
+        t.points += result.points[i];
+        t.carbonUsed += carbonArr[i];
+        t.ecoUsed += ecoArr[i];
+      });
+      state.history.push({ round: state.round, carbon: carbonArr, eco: ecoArr, power: result.power, ranks: result.ranks, points: result.points });
+      state.round = state.round + 1;
+      calcInputs = state.teams.map(function(){ return { carbon: 0, eco: 0 }; });
+      saveState();
+      renderAll();
+    });
+
+    clearBtn.addEventListener("click", function(){
+      calcInputs = state.teams.map(function(){ return { carbon: 0, eco: 0 }; });
+      renderCalc();
+    });
+
+    // ---- 최종 결과 카드 내부: MVP(가장 많이 남긴 선수) 입력 (동적 생성이라 위임 처리) ----
+    // 입력칸 자체를 다시 만들지 않고 "top" 표시만 갱신한다 — innerHTML로 통째로 다시 그리면
+    // change/blur 처리 중간에 같은 입력칸의 DOM을 갈아치우게 되어, 브라우저가 "노드가 이미
+    // 부모에서 제거됐다" 예외를 던지거나(포커스 이동과 충돌) 타이핑 중 포커스를 잃을 수 있다.
+    function refreshMvpHighlight(){
+      var blocks = finalBox.querySelectorAll(".cd-mvp-team-block");
+      blocks.forEach(function(block){
+        var players = Array.prototype.slice.call(block.querySelectorAll(".cd-mvp-player"));
+        var lefts = players.map(function(p){
+          var inp = p.querySelector('input[data-field="left"]');
+          if(!inp || inp.value === "") return null;
+          var v = Number(inp.value);
+          return isNaN(v) ? null : v;
+        });
+        var maxLeft = -1;
+        lefts.forEach(function(v){ if(v !== null && v > maxLeft) maxLeft = v; });
+        players.forEach(function(p, i){
+          var isTop = (lefts[i] !== null && lefts[i] === maxLeft && maxLeft >= 0);
+          p.classList.toggle("top", isTop);
+          var star = p.querySelector(".cd-mvp-star");
+          if(isTop && !star){
+            star = document.createElement("span");
+            star.className = "cd-mvp-star";
+            star.textContent = "⭐ 추가 보상 후보";
+            p.appendChild(star);
+          } else if(!isTop && star){
+            star.remove();
+          }
+        });
+      });
+    }
+
+    finalBox.addEventListener("input", function(e){
+      var input = e.target.closest("input[data-team][data-player][data-field]");
+      if(!input) return;
+      var teamIdx = input.dataset.team;
+      var playerIdx = Number(input.dataset.player);
+      var field = input.dataset.field;
+      if(!state.mvp[teamIdx]) state.mvp[teamIdx] = [{ name: "", left: "" }, { name: "", left: "" }, { name: "", left: "" }];
+      if(!state.mvp[teamIdx][playerIdx]) state.mvp[teamIdx][playerIdx] = { name: "", left: "" };
+      state.mvp[teamIdx][playerIdx][field] = input.value;
+      saveState();
+      refreshMvpHighlight();
+    });
+
+    renderAll();
+  })();
+
   /* ---------------- 도구 페이지 공용: 하단 스위처로 패널 전환 (이주 로드 / 동정심 마켓 공용) ---------------- */
   function createPanelSwitcher(root, viewId){
     if(!root) return;
@@ -5476,6 +6135,7 @@
   createPanelSwitcher(document.getElementById("view-mig-tools"), "mig-tools");
   createPanelSwitcher(document.getElementById("view-hr-tools"), "hr-tools");
   createPanelSwitcher(document.getElementById("view-price-tools"), "price-tools");
+  createPanelSwitcher(document.getElementById("view-carbon-tools"), "carbon-tools");
 
 })();
 </script>
