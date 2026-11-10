@@ -1238,6 +1238,11 @@
   .hr-org-totals-chip b{ color: var(--ink); font-family: "JetBrains Mono", monospace; }
   .hr-org-totals-chip.lowest{ border-color: var(--danger); background: color-mix(in srgb, var(--danger) 8%, var(--surface-2)); color: var(--danger); }
   .hr-org-totals-chip.lowest b{ color: var(--danger); }
+  .hr-org-totals-chip.bonus{ border-color: var(--accent-2); background: color-mix(in srgb, var(--accent-2) 10%, var(--surface-2)); }
+  .hr-org-totals-bonus-tag{
+    font-family: "JetBrains Mono", monospace; font-weight: 700; color: var(--accent-2);
+    font-size: 11px; margin-left: 2px;
+  }
 
   .hr-calc-teams{ display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
   @media (max-width: 720px){ .hr-calc-teams{ grid-template-columns: 1fr; } }
@@ -1340,12 +1345,21 @@
   .hr-reveal-winner-team{ font-family: "Gothic A1", "Jua", "Noto Sans KR", sans-serif; font-weight: 800; font-size: clamp(16px, 2.2vw, 21px); color: var(--accent-2); }
   .hr-reveal-winner-row.no-donation .hr-reveal-winner-team{ color: var(--ink-3); font-weight: 600; font-size: clamp(13px, 1.6vw, 15px); }
   .hr-reveal-subtitle{ font-size: clamp(15px, 2vw, 17px); color: var(--ink-2); margin: 0 0 16px; }
-  .hr-reveal-vulnerable-box{ display: flex; flex-direction: column; gap: 16px; align-items: center; }
+  .hr-reveal-vulnerable-box{ display: flex; flex-direction: column; gap: 16px; align-items: center; margin-bottom: 28px; }
   .hr-reveal-vulnerable-org{
     font-family: "Gothic A1", "Jua", "Noto Sans KR", sans-serif; font-weight: 700; font-size: clamp(31.5px, 5.2vw, 54px);
     color: var(--danger); background: color-mix(in srgb, var(--danger) 10%, var(--surface));
     border: 1.5px solid color-mix(in srgb, var(--danger) 40%, transparent);
     border-radius: 16px; padding: 24px 40px; margin: 0;
+  }
+  .hr-reveal-top-org{
+    font-family: "Gothic A1", "Jua", "Noto Sans KR", sans-serif; font-weight: 700; font-size: clamp(31.5px, 5.2vw, 54px);
+    color: var(--accent-2); background: color-mix(in srgb, var(--accent-2) 10%, var(--surface));
+    border: 1.5px solid color-mix(in srgb, var(--accent-2) 40%, transparent);
+    border-radius: 16px; padding: 24px 40px; margin: 0;
+  }
+  .hr-reveal-bonus-note{
+    margin: 18px 0 0; font-size: clamp(14px, 1.8vw, 16px); font-weight: 700; color: var(--accent-2);
   }
 
   /* ---------------- 교사용 도구: 탄소의 딜레마 계산기 ---------------- */
@@ -2352,11 +2366,16 @@
               <li>기부금이 가장 적은 팀이 여럿이라면 모두가 인류애 마이너스 증서를 받습니다.</li>
             </ul>
           </li>
-          <li><span class="rule-text">매 라운드가 종료되고 각 팀이 얼마나 기부했는지는 공개되지 않습니다. 단, 가장 적은 기부를 받은 인권 기구가 어딘지는 공개됩니다. (인권 취약 기구)</span></li>
+          <li><span class="rule-text">매 라운드가 종료되고 각 팀이 "얼마나" 기부했는지(금액)는 공개되지 않습니다. 단, 기구별로 그 라운드 1등 팀(증서를 받은 팀)과, 가장 많은 기부를 받은 기구·가장 적은 기부를 받은 인권 기구(인권 취약 기구)가 어딘지는 공개됩니다.</span></li>
+          <li><span class="rule-text">그 라운드의 인권 취약 기구(가장 적은 기부를 받은 기구)는 다음 라운드에 "소외 기구 보너스"가 적용됩니다 — 그 기구에서 다음 라운드 1등을 하면 인권 보호 증서를 1장 더 받습니다.</span>
+            <ul class="sub-rules">
+              <li>아무도 거들떠보지 않는 곳에 보태는 한 걸음이 실제로는 더 크게 작용한다는 걸 체감해보는 규칙입니다.</li>
+            </ul>
+          </li>
           <li><span class="rule-text">8라운드가 종료되면 각 팀이 받은 인권 기부 증서와 인류애 마이너스 증서를 확인합니다. 인류애 마이너스 증서가 가장 많은 팀은 우승 후보에서 자동으로 제외됩니다. 제외 조건을 계산하고 인권 기부 증서가 가장 많은 팀이 우승합니다. 동점이 발생한 경우 공동 우승처리가 됩니다.</span>
             <ul class="sub-rules">
               <li>우승한 팀에게는 소정의 상품을 드립니다.</li>
-              <li>기부 증서를 18장 얻은 팀에게 우승 여부와 무관하게 소정의 상품을 드립니다.</li>
+              <li>기부 증서를 13장 얻은 팀에게 우승 여부와 무관하게 소정의 상품을 드립니다. (참가상 성격 — 8라운드 평균치 수준입니다)</li>
             </ul>
           </li>
         </ol>
@@ -5449,6 +5468,11 @@
           return { name: t.name || "팀", certs: Number(t.certs) || 0, minus: Number(t.minus) || 0 };
         });
         parsed.round = Number(parsed.round) || 1;
+        // 소외 기구 보너스: 직전 라운드에 가장 적은 기부를 받은 기구(들)는 이번 라운드에
+        // 그 기구 1등 팀에게 증서 1장을 추가로 준다. 저장된 값이 없던 옛 버전 상태도 안전하게 처리.
+        parsed.bonusOrgIdxs = Array.isArray(parsed.bonusOrgIdxs)
+          ? parsed.bonusOrgIdxs.map(Number).filter(function(j){ return j >= 0 && j <= 3; })
+          : [];
         return parsed;
       }catch(e){ return null; }
     }
@@ -5456,7 +5480,7 @@
       try{ localStorage.setItem(HR_STORAGE_KEY, JSON.stringify(state)); }catch(e){}
     }
 
-    var state = loadState() || { teams: defaultTeams(), round: 1 };
+    var state = loadState() || { teams: defaultTeams(), round: 1, bonusOrgIdxs: [] };
     var calcInputs = state.teams.map(function(){ return [0, 0, 0, 0]; });
     // denomInputs[팀 인덱스][기구 인덱스] = [100권, 50권, 10권, 5권, 1권] 개수
     var denomInputs = state.teams.map(function(){
@@ -5552,6 +5576,8 @@
       }
 
       // 기구별로 이번 라운드 최고 기부팀(들)을 따로 계산 — 기구마다 증서 장수가 다르다.
+      // 소외 기구 보너스: 직전 라운드 최저 기부처였던 기구는 이번 라운드 1등에게 증서 +1.
+      var bonusSet = state.bonusOrgIdxs || [];
       var orgResults = [];
       for(var j = 0; j < 4; j++){
         var vals2 = teams.map(function(t, i){ return Number((calcInputs[i] || [])[j]) || 0; });
@@ -5564,7 +5590,12 @@
           tieBroken = resolvedWinners.length < winners.length;
           winners = resolvedWinners;
         }
-        orgResults.push({ maxVal: maxVal, winners: winners, tieBroken: tieBroken, certValue: HR_ORG_CERT_VALUES[j] });
+        var isBonus = bonusSet.indexOf(j) !== -1;
+        orgResults.push({
+          maxVal: maxVal, winners: winners, tieBroken: tieBroken,
+          certValue: HR_ORG_CERT_VALUES[j] + (isBonus ? 1 : 0),
+          bonus: isBonus
+        });
       }
 
       var minTotal = n ? Math.min.apply(null, rowTotals) : 0;
@@ -5575,9 +5606,16 @@
       var lowestOrgIdxs = [];
       orgTotals.forEach(function(t, i){ if(t === minOrgTotal) lowestOrgIdxs.push(i); });
 
+      var maxOrgTotal = n ? Math.max.apply(null, orgTotals) : 0;
+      var highestOrgIdxs = [];
+      if(maxOrgTotal > 0){
+        orgTotals.forEach(function(t, i){ if(t === maxOrgTotal) highestOrgIdxs.push(i); });
+      }
+
       return {
         orgTotals: orgTotals, rowTotals: rowTotals, orgResults: orgResults,
-        minTotal: minTotal, bottomIdxs: bottomIdxs, lowestOrgIdxs: lowestOrgIdxs
+        minTotal: minTotal, bottomIdxs: bottomIdxs, lowestOrgIdxs: lowestOrgIdxs,
+        maxOrgTotal: maxOrgTotal, highestOrgIdxs: highestOrgIdxs
       };
     }
 
@@ -5592,7 +5630,7 @@
         var label = HR_ORG_ICONS[j] + " " + HR_ORGS[j];
         if(res.maxVal > 0){
           var winners = res.winners.map(function(i){ return teams[i].name; });
-          lines.push('<p>' + label + ': <strong>' + winners.map(hrEsc).join(", ") + '</strong> (' + res.maxVal + '크레딧) → 인권 보호 증서 +' + res.certValue + (winners.length > 1 ? " (각 팀)" : "") + '</p>');
+          lines.push('<p>' + label + ': <strong>' + winners.map(hrEsc).join(", ") + '</strong> (' + res.maxVal + '크레딧) → 인권 보호 증서 +' + res.certValue + (winners.length > 1 ? " (각 팀)" : "") + (res.bonus ? ' <span style="color:var(--accent-2); font-weight:700;">🎁 소외 기구 보너스 +1 포함</span>' : "") + '</p>');
           if(res.tieBroken) lines.push('<p style="font-size:12px; padding-left:20px;">↳ 화폐 단위 비교로 우선순위를 좁혔어요.</p>');
         } else {
           lines.push('<p>' + label + ': 이번 라운드 기부 없음</p>');
@@ -5600,6 +5638,10 @@
       });
       var losers = calc.bottomIdxs.map(function(i){ return teams[i].name; });
       lines.push('<p>🖤 최저 기부팀 (총 기부액 기준): <strong>' + losers.map(hrEsc).join(", ") + '</strong> (' + calc.minTotal + '크레딧) → 인류애 마이너스 증서 +1' + (losers.length > 1 ? " (각 팀)" : "") + '</p>');
+      if(calc.highestOrgIdxs && calc.highestOrgIdxs.length){
+        var topOrgNames = calc.highestOrgIdxs.map(function(i){ return HR_ORGS[i]; });
+        lines.push('<p>📈 최대 기부처: <strong>' + topOrgNames.map(hrEsc).join(", ") + '</strong> (' + calc.orgTotals[calc.highestOrgIdxs[0]] + '크레딧)</p>');
+      }
       if(calc.lowestOrgIdxs.length){
         var orgNames = calc.lowestOrgIdxs.map(function(i){ return HR_ORGS[i]; });
         lines.push('<p>📉 최저 기부처 (인권 취약 기구): <strong>' + orgNames.map(hrEsc).join(", ") + '</strong> (' + calc.orgTotals[calc.lowestOrgIdxs[0]] + '크레딧)</p>');
@@ -5618,9 +5660,14 @@
 
     function renderOrgTotalsStrip(calc){
       if(!orgTotalsStripEl) return;
+      var bonusSet = state.bonusOrgIdxs || [];
       orgTotalsStripEl.innerHTML = HR_ORGS.map(function(name, j){
         var isLowest = calc.orgTotals.length && calc.lowestOrgIdxs.indexOf(j) !== -1;
-        return '<span class="hr-org-totals-chip' + (isLowest ? " lowest" : "") + '">' + HR_ORG_ICONS[j] + " " + hrEsc(name) + ": <b>" + (calc.orgTotals[j] || 0) + "</b>크레딧</span>";
+        var isBonus = bonusSet.indexOf(j) !== -1;
+        return '<span class="hr-org-totals-chip' + (isLowest ? " lowest" : "") + (isBonus ? " bonus" : "") + '">' +
+          (isBonus ? "🎁 " : "") + HR_ORG_ICONS[j] + " " + hrEsc(name) + ": <b>" + (calc.orgTotals[j] || 0) + "</b>크레딧" +
+          (isBonus ? ' <span class="hr-org-totals-bonus-tag">+1 보너스</span>' : "") +
+        '</span>';
       }).join("");
     }
 
@@ -5634,7 +5681,7 @@
       if(!teams.length){
         calcTeamsEl.innerHTML = '<p style="color:var(--ink-3); font-size:13px;">현황판에서 팀을 먼저 추가하세요.</p>';
         orgTotalsStripEl.innerHTML = "";
-        renderCalcSummary({ orgTotals: [0, 0, 0, 0], rowTotals: [], orgResults: [], minTotal: 0, bottomIdxs: [], lowestOrgIdxs: [] });
+        renderCalcSummary({ orgTotals: [0, 0, 0, 0], rowTotals: [], orgResults: [], minTotal: 0, bottomIdxs: [], lowestOrgIdxs: [], maxOrgTotal: 0, highestOrgIdxs: [] });
         return;
       }
 
@@ -5761,7 +5808,7 @@
     });
     resetBtn.addEventListener("click", function(){
       if(!confirm("현재 기록을 지우고 기본 6팀으로 초기화할까요?")) return;
-      state = { teams: defaultTeams(), round: 1 };
+      state = { teams: defaultTeams(), round: 1, bonusOrgIdxs: [] };
       calcInputs = state.teams.map(function(){ return [0, 0, 0, 0]; });
       denomInputs = freshDenomInputs();
       saveState();
@@ -5790,6 +5837,8 @@
         }
       });
       calc.bottomIdxs.forEach(function(i){ state.teams[i].minus += 1; });
+      // 이번 라운드 최저 기부처(들)는 다음 라운드에 증서 +1 보너스를 받는다.
+      state.bonusOrgIdxs = calc.lowestOrgIdxs.slice();
       if(state.round < 8) state.round += 1;
       saveState();
       calcInputs = state.teams.map(function(){ return [0, 0, 0, 0]; });
@@ -5921,7 +5970,7 @@
       var r = lastRoundResult;
       // 룰북 규정: 라운드마다 팀별로 "얼마를" 기부했는지는 공개되지 않는다. 그래서 금액/크레딧 수치는
       // 절대 보내지 않는다. 다만 기구별로 그 라운드 1등 팀이 "누구"인지(증서를 받은 팀 이름)와,
-      // 가장 적은 기부를 받은 인권 기구(인권 취약 기구)는 공개 대상이라 같이 보낸다.
+      // 가장 많은/적은 기부를 받은 기구(최대 기부처 · 인권 취약 기구)는 공개 대상이라 같이 보낸다.
       var payload = {
         type: "hr-reveal",
         round: r.round,
@@ -5933,6 +5982,9 @@
             name: name,
             teamNames: hasWinner ? res.winners.map(function(i){ return r.teamNames[i]; }) : []
           };
+        }),
+        highestOrgs: (r.calc.highestOrgIdxs || []).map(function(j){
+          return { icon: HR_ORG_ICONS[j], name: HR_ORGS[j] };
         }),
         lowestOrgs: r.calc.lowestOrgIdxs.map(function(j){
           return { icon: HR_ORG_ICONS[j], name: HR_ORGS[j] };
@@ -5973,7 +6025,10 @@
           '<span class="hr-reveal-winner-team">' + teamText + '</span>' +
         '</div>';
       }).join("");
-      var orgsHtml = (payload.lowestOrgs || []).map(function(o){
+      var topOrgsHtml = (payload.highestOrgs || []).map(function(o){
+        return '<p class="hr-reveal-top-org">' + o.icon + " " + hrEsc(o.name) + '</p>';
+      }).join("");
+      var lowOrgsHtml = (payload.lowestOrgs || []).map(function(o){
         return '<p class="hr-reveal-vulnerable-org">' + o.icon + " " + hrEsc(o.name) + '</p>';
       }).join("");
       displayConnectBox.hidden = true;
@@ -5982,8 +6037,10 @@
         '<p class="hr-reveal-round">ROUND ' + payload.round + '</p>' +
         '<h2 class="hr-reveal-title">이번 라운드 기구별 1등 팀</h2>' +
         '<div class="hr-reveal-winners">' + winnersHtml + '</div>' +
+        (topOrgsHtml ? '<p class="hr-reveal-subtitle">이번 라운드 가장 많은 기부를 받은 기구는…</p><div class="hr-reveal-vulnerable-box hr-reveal-top-box">' + topOrgsHtml + '</div>' : "") +
         '<p class="hr-reveal-subtitle">그리고, 가장 적은 기부를 받은 인권 취약 기구는…</p>' +
-        '<div class="hr-reveal-vulnerable-box">' + orgsHtml + '</div>';
+        '<div class="hr-reveal-vulnerable-box">' + lowOrgsHtml + '</div>' +
+        (lowOrgsHtml ? '<p class="hr-reveal-bonus-note">🎁 다음 라운드엔 이 기구에서 1등을 하면 인권 보호 증서를 1장 더 받아요!</p>' : "");
     }
 
     function connectDisplayTo(code){
