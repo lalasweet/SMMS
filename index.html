@@ -1239,31 +1239,32 @@
   .hr-org-totals-chip.lowest{ border-color: var(--danger); background: color-mix(in srgb, var(--danger) 8%, var(--surface-2)); color: var(--danger); }
   .hr-org-totals-chip.lowest b{ color: var(--danger); }
 
-  .hr-calc-teams{ display: flex; flex-direction: column; gap: 16px; }
+  .hr-calc-teams{ display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+  @media (max-width: 720px){ .hr-calc-teams{ grid-template-columns: 1fr; } }
   .hr-team-calc-card{
-    border: 1px solid var(--line-soft); border-radius: 12px; padding: 14px 16px; background: var(--surface);
+    border: 1px solid var(--line-soft); border-radius: 12px; padding: 11px 13px; background: var(--surface);
   }
   .hr-team-calc-card.hr-team-calc-card-bottom{ border-color: var(--danger); background: color-mix(in srgb, var(--danger) 5%, var(--surface)); }
   .hr-team-calc-head{
-    display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 8px;
-    padding-bottom: 10px; margin-bottom: 10px; border-bottom: 1px dashed var(--line-soft);
+    display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 6px;
+    padding-bottom: 7px; margin-bottom: 7px; border-bottom: 1px dashed var(--line-soft);
   }
-  .hr-team-calc-name{ font-size: 20px; font-weight: 800; color: var(--ink); font-family: "Gothic A1", "Jua", "Noto Sans KR", sans-serif; }
-  .hr-team-calc-sum{ font-size: 14.5px; font-weight: 700; color: var(--ink-2); font-family: "JetBrains Mono", monospace; }
-  .hr-team-org-list{ display: flex; flex-direction: column; gap: 10px; }
+  .hr-team-calc-name{ font-size: 17px; font-weight: 800; color: var(--ink); font-family: "Gothic A1", "Jua", "Noto Sans KR", sans-serif; }
+  .hr-team-calc-sum{ font-size: 12.5px; font-weight: 700; color: var(--ink-2); font-family: "JetBrains Mono", monospace; }
+  .hr-team-org-list{ display: flex; flex-direction: column; gap: 6px; }
   .hr-team-org-row{
-    padding: 10px 12px; border-radius: 8px; background: var(--surface-2);
-    display: flex; flex-direction: column; gap: 6px;
+    padding: 7px 9px; border-radius: 7px; background: var(--surface-2);
+    display: flex; flex-direction: column; gap: 4px;
   }
   .hr-team-org-row.hr-team-org-row-winner{
     background: color-mix(in srgb, var(--accent-2) 16%, var(--surface-2)); box-shadow: inset 0 0 0 1.5px var(--accent-2);
   }
-  .hr-team-org-name{ font-size: 14px; font-weight: 700; color: var(--ink); margin: 0; }
-  .hr-denom-inputs{ display: flex; flex-wrap: wrap; gap: 6px 10px; }
-  .hr-denom-row{ display: flex; align-items: center; gap: 5px; font-size: 13px; color: var(--ink-3); }
-  .hr-denom-row input{ width: 48px; padding: 4px 5px; font-size: 13px; text-align: center; }
-  .hr-team-org-total{ font-size: 13.5px; color: var(--ink-2); font-family: "JetBrains Mono", monospace; margin: 0; }
-  .hr-team-org-total-detail{ color: var(--ink-3); font-family: "Jua", "Noto Sans KR", sans-serif; }
+  .hr-team-org-name{ font-size: 12.5px; font-weight: 700; color: var(--ink); margin: 0; }
+  .hr-denom-inputs{ display: flex; flex-wrap: wrap; gap: 4px 7px; }
+  .hr-denom-row{ display: flex; align-items: center; gap: 3px; font-size: 11px; color: var(--ink-3); }
+  .hr-denom-row input{ width: 38px; padding: 3px 4px; font-size: 12px; text-align: center; }
+  .hr-team-org-total{ font-size: 12px; color: var(--ink-2); font-family: "JetBrains Mono", monospace; margin: 0; }
+  .hr-team-org-total-detail{ color: var(--ink-3); font-family: "Jua", "Noto Sans KR", sans-serif; font-size: 11px; }
 
   /* ---------------- 동정심 마켓: 발표 화면(2기기 연동) ---------------- */
   .hr-display-toggle-btn{
@@ -1324,7 +1325,21 @@
   @keyframes hr-pulse{ 0%,100%{ opacity: .35; } 50%{ opacity: 1; } }
 
   .hr-reveal-round{ font-size: 18px; letter-spacing: .06em; color: var(--ink-3); margin: 0 0 8px; }
-  .hr-reveal-title{ font-family: "Gothic A1", "Jua", "Noto Sans KR", sans-serif; font-size: clamp(24.5px, 3.6vw, 36px); color: var(--ink); margin: 0 0 30px; line-height: 1.4; }
+  .hr-reveal-title{ font-family: "Gothic A1", "Jua", "Noto Sans KR", sans-serif; font-size: clamp(22px, 3.2vw, 31px); color: var(--ink); margin: 0 0 20px; line-height: 1.4; }
+  .hr-reveal-winners{ display: flex; flex-direction: column; gap: 10px; margin: 0 0 30px; text-align: left; }
+  .hr-reveal-winner-row{
+    display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+    padding: 14px 18px; border-radius: 12px;
+    background: color-mix(in srgb, var(--accent-2) 12%, var(--surface));
+    border: 1.5px solid color-mix(in srgb, var(--accent-2) 35%, transparent);
+  }
+  .hr-reveal-winner-row.no-donation{
+    background: var(--surface-2); border-color: var(--line-soft);
+  }
+  .hr-reveal-winner-org{ font-family: "Gothic A1", "Jua", "Noto Sans KR", sans-serif; font-weight: 800; font-size: clamp(16px, 2vw, 19px); color: var(--ink); }
+  .hr-reveal-winner-team{ font-family: "Gothic A1", "Jua", "Noto Sans KR", sans-serif; font-weight: 800; font-size: clamp(16px, 2.2vw, 21px); color: var(--accent-2); }
+  .hr-reveal-winner-row.no-donation .hr-reveal-winner-team{ color: var(--ink-3); font-weight: 600; font-size: clamp(13px, 1.6vw, 15px); }
+  .hr-reveal-subtitle{ font-size: clamp(15px, 2vw, 17px); color: var(--ink-2); margin: 0 0 16px; }
   .hr-reveal-vulnerable-box{ display: flex; flex-direction: column; gap: 16px; align-items: center; }
   .hr-reveal-vulnerable-org{
     font-family: "Gothic A1", "Jua", "Noto Sans KR", sans-serif; font-weight: 700; font-size: clamp(31.5px, 5.2vw, 54px);
@@ -5904,12 +5919,21 @@
     revealBtn.addEventListener("click", function(){
       if(!hostConns.length || !lastRoundResult) return;
       var r = lastRoundResult;
-      // 룰북 규정: 라운드마다 팀별로 얼마를 기부했는지는 공개되지 않는다 — 공개되는 건
-      // "이번 라운드 가장 적은 기부를 받은 인권 기구(인권 취약 기구)"뿐이다. 그래서 발표 화면에는
-      // 팀별 순위나 금액, 증서 수여 내역은 절대 보내지 않고 이 정보 하나만 보낸다.
+      // 룰북 규정: 라운드마다 팀별로 "얼마를" 기부했는지는 공개되지 않는다. 그래서 금액/크레딧 수치는
+      // 절대 보내지 않는다. 다만 기구별로 그 라운드 1등 팀이 "누구"인지(증서를 받은 팀 이름)와,
+      // 가장 적은 기부를 받은 인권 기구(인권 취약 기구)는 공개 대상이라 같이 보낸다.
       var payload = {
         type: "hr-reveal",
         round: r.round,
+        orgWinners: HR_ORGS.map(function(name, j){
+          var res = r.calc.orgResults[j];
+          var hasWinner = res && res.maxVal > 0 && res.winners.length;
+          return {
+            icon: HR_ORG_ICONS[j],
+            name: name,
+            teamNames: hasWinner ? res.winners.map(function(i){ return r.teamNames[i]; }) : []
+          };
+        }),
         lowestOrgs: r.calc.lowestOrgIdxs.map(function(j){
           return { icon: HR_ORG_ICONS[j], name: HR_ORGS[j] };
         })
@@ -5940,7 +5964,15 @@
     }
 
     function renderRevealOnDisplay(payload){
-      // 룰북대로, 팀별 기부액이나 순위는 절대 보여주지 않고 "이번 라운드 인권 취약 기구"만 크게 보여준다.
+      // 룰북대로, 팀별 기부 "금액"은 절대 보여주지 않는다. 기구별 1등 팀(증서 수여 대상)과
+      // 이번 라운드 인권 취약 기구, 이 두 가지만 보여준다.
+      var winnersHtml = (payload.orgWinners || []).map(function(o){
+        var teamText = o.teamNames && o.teamNames.length ? o.teamNames.map(hrEsc).join(" · ") : "이번 라운드 기부 없음";
+        return '<div class="hr-reveal-winner-row' + (o.teamNames && o.teamNames.length ? "" : " no-donation") + '">' +
+          '<span class="hr-reveal-winner-org">' + o.icon + " " + hrEsc(o.name) + '</span>' +
+          '<span class="hr-reveal-winner-team">' + teamText + '</span>' +
+        '</div>';
+      }).join("");
       var orgsHtml = (payload.lowestOrgs || []).map(function(o){
         return '<p class="hr-reveal-vulnerable-org">' + o.icon + " " + hrEsc(o.name) + '</p>';
       }).join("");
@@ -5948,7 +5980,9 @@
       displayRevealBox.hidden = false;
       displayRevealBox.innerHTML =
         '<p class="hr-reveal-round">ROUND ' + payload.round + '</p>' +
-        '<h2 class="hr-reveal-title">이번 라운드, 가장 적은 기부를 받은<br>인권 취약 기구는…</h2>' +
+        '<h2 class="hr-reveal-title">이번 라운드 기구별 1등 팀</h2>' +
+        '<div class="hr-reveal-winners">' + winnersHtml + '</div>' +
+        '<p class="hr-reveal-subtitle">그리고, 가장 적은 기부를 받은 인권 취약 기구는…</p>' +
         '<div class="hr-reveal-vulnerable-box">' + orgsHtml + '</div>';
     }
 
