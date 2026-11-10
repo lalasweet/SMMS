@@ -1300,7 +1300,7 @@
   html.hr-display-lock, body.hr-display-lock{ overflow: hidden !important; height: 100%; }
   .hr-display-overlay{
     position: fixed; inset: 0; z-index: 400; background: var(--bg);
-    display: flex; align-items: center; justify-content: center; padding: 28px 20px;
+    display: flex; align-items: center; justify-content: center; padding: 14px 20px;
     overflow-y: auto;
   }
   .hr-display-exit-btn{
@@ -1329,37 +1329,37 @@
   }
   @keyframes hr-pulse{ 0%,100%{ opacity: .35; } 50%{ opacity: 1; } }
 
-  .hr-reveal-round{ font-size: 18px; letter-spacing: .06em; color: var(--ink-3); margin: 0 0 8px; }
-  .hr-reveal-title{ font-family: "Gothic A1", "Jua", "Noto Sans KR", sans-serif; font-size: clamp(22px, 3.2vw, 31px); color: var(--ink); margin: 0 0 20px; line-height: 1.4; }
-  .hr-reveal-winners{ display: flex; flex-direction: column; gap: 10px; margin: 0 0 30px; text-align: left; }
+  .hr-reveal-round{ font-size: 14px; letter-spacing: .06em; color: var(--ink-3); margin: 0 0 4px; }
+  .hr-reveal-title{ font-family: "Gothic A1", "Jua", "Noto Sans KR", sans-serif; font-size: clamp(18px, 2.4vw, 23px); color: var(--ink); margin: 0 0 10px; line-height: 1.3; }
+  .hr-reveal-winners{ display: flex; flex-direction: column; gap: 6px; margin: 0 0 14px; text-align: left; }
   .hr-reveal-winner-row{
     display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
-    padding: 14px 18px; border-radius: 12px;
+    padding: 8px 14px; border-radius: 10px;
     background: color-mix(in srgb, var(--accent-2) 12%, var(--surface));
     border: 1.5px solid color-mix(in srgb, var(--accent-2) 35%, transparent);
   }
   .hr-reveal-winner-row.no-donation{
     background: var(--surface-2); border-color: var(--line-soft);
   }
-  .hr-reveal-winner-org{ font-family: "Gothic A1", "Jua", "Noto Sans KR", sans-serif; font-weight: 800; font-size: clamp(16px, 2vw, 19px); color: var(--ink); }
-  .hr-reveal-winner-team{ font-family: "Gothic A1", "Jua", "Noto Sans KR", sans-serif; font-weight: 800; font-size: clamp(16px, 2.2vw, 21px); color: var(--accent-2); }
-  .hr-reveal-winner-row.no-donation .hr-reveal-winner-team{ color: var(--ink-3); font-weight: 600; font-size: clamp(13px, 1.6vw, 15px); }
-  .hr-reveal-subtitle{ font-size: clamp(15px, 2vw, 17px); color: var(--ink-2); margin: 0 0 16px; }
-  .hr-reveal-vulnerable-box{ display: flex; flex-direction: column; gap: 16px; align-items: center; margin-bottom: 28px; }
+  .hr-reveal-winner-org{ font-family: "Gothic A1", "Jua", "Noto Sans KR", sans-serif; font-weight: 800; font-size: clamp(13.5px, 1.5vw, 15.5px); color: var(--ink); }
+  .hr-reveal-winner-team{ font-family: "Gothic A1", "Jua", "Noto Sans KR", sans-serif; font-weight: 800; font-size: clamp(13.5px, 1.7vw, 17px); color: var(--accent-2); }
+  .hr-reveal-winner-row.no-donation .hr-reveal-winner-team{ color: var(--ink-3); font-weight: 600; font-size: clamp(11px, 1.2vw, 12.5px); }
+  .hr-reveal-subtitle{ font-size: clamp(12px, 1.4vw, 13.5px); color: var(--ink-2); margin: 0 0 6px; }
+  .hr-reveal-vulnerable-box{ display: flex; flex-direction: column; gap: 8px; align-items: center; margin-bottom: 12px; }
   .hr-reveal-vulnerable-org{
-    font-family: "Gothic A1", "Jua", "Noto Sans KR", sans-serif; font-weight: 700; font-size: clamp(31.5px, 5.2vw, 54px);
+    font-family: "Gothic A1", "Jua", "Noto Sans KR", sans-serif; font-weight: 700; font-size: clamp(20px, 3vw, 30px);
     color: var(--danger); background: color-mix(in srgb, var(--danger) 10%, var(--surface));
     border: 1.5px solid color-mix(in srgb, var(--danger) 40%, transparent);
-    border-radius: 16px; padding: 24px 40px; margin: 0;
+    border-radius: 12px; padding: 10px 20px; margin: 0;
   }
   .hr-reveal-top-org{
-    font-family: "Gothic A1", "Jua", "Noto Sans KR", sans-serif; font-weight: 700; font-size: clamp(31.5px, 5.2vw, 54px);
+    font-family: "Gothic A1", "Jua", "Noto Sans KR", sans-serif; font-weight: 700; font-size: clamp(20px, 3vw, 30px);
     color: var(--accent-2); background: color-mix(in srgb, var(--accent-2) 10%, var(--surface));
     border: 1.5px solid color-mix(in srgb, var(--accent-2) 40%, transparent);
-    border-radius: 16px; padding: 24px 40px; margin: 0;
+    border-radius: 12px; padding: 10px 20px; margin: 0;
   }
   .hr-reveal-bonus-note{
-    margin: 18px 0 0; font-size: clamp(14px, 1.8vw, 16px); font-weight: 700; color: var(--accent-2);
+    margin: 8px 0 0; font-size: clamp(11.5px, 1.3vw, 13px); font-weight: 700; color: var(--accent-2);
   }
 
   /* ---------------- 교사용 도구: 탄소의 딜레마 계산기 ---------------- */
