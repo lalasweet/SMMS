@@ -3,77 +3,87 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@700;800;900&family=Jua&family=Noto+Sans+KR:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/peerjs@1.5.5/dist/peerjs.min.js"></script>
 <style>
   :root{
-    --bg: #f2e9d6;
-    --surface: #e9dcc0;
-    --surface-2: #ded0ae;
-    --ink: #26221a;
-    --ink-2: #5a5644;
-    --ink-3: #857f68;
-    --line: #b8a97e;
-    --line-soft: #cbbe97;
-    --accent: #a5651f;
-    --accent-ink: #fff8ec;
-    --accent-2: #2c6a82;
-    --accent-2-ink: #f2fbff;
-    --danger: #9c3b2c;
-    --danger-ink: #fff3ee;
+    --bg: #ffffff;
+    --surface: #ffffff;
+    --surface-2: #f3f2ec;
+    --ink: #15181d;
+    --ink-2: #4b5160;
+    --ink-3: #8d93a0;
+    --line: #e4e2da;
+    --line-soft: #ecebe4;
+    --accent: #c9552c;
+    --accent-ink: #fff7f1;
+    --accent-2: #1c6e68;
+    --accent-2-ink: #effbf9;
+    --danger: #b33b3b;
+    --danger-ink: #fff2f0;
     --outer: #5b7a35;
-    --land: #d8c79e;
-    --land-line: #b7a06a;
-    --ocean: #ece0c4;
-    --grat: #c3b287;
-    --shadow: rgba(50, 38, 12, 0.18);
-    --focus: #1d5f78;
+    --land: #e8e2d3;
+    --land-line: #b4a074;
+    --ocean: #f1eee4;
+    --grat: #d3c9b2;
+    --shadow: rgba(20, 16, 10, 0.12);
+    --focus: #1c6e68;
+    --band-bg: #15181d;
+    --band-ink: #f5f4f0;
+    --band-accent: #e8824a;
   }
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
-      --bg: #0a121c;
-      --surface: #101c28;
-      --surface-2: #16283a;
-      --ink: #e4ecf2;
-      --ink-2: #a9bdcc;
-      --ink-3: #71879a;
-      --line: #274257;
-      --line-soft: #1c3245;
-      --accent: #e0a752;
-      --accent-ink: #211404;
-      --accent-2: #5cc2e8;
-      --accent-2-ink: #041b22;
+      --bg: #0e1217;
+      --surface: #161b22;
+      --surface-2: #1e242c;
+      --ink: #ecece4;
+      --ink-2: #b7bcc6;
+      --ink-3: #7b8290;
+      --line: #2b313b;
+      --line-soft: #232933;
+      --accent: #e8814a;
+      --accent-ink: #1f1208;
+      --accent-2: #4fc3bd;
+      --accent-2-ink: #07211f;
       --danger: #e2735f;
       --danger-ink: #2a0d07;
       --outer: #8fbf5a;
-      --land: #142434;
-      --land-line: #24425a;
-      --ocean: #081019;
-      --grat: #1d3547;
-      --shadow: rgba(0, 0, 0, 0.45);
-      --focus: #5cc2e8;
+      --land: #1b222b;
+      --land-line: #30404e;
+      --ocean: #0b0f14;
+      --grat: #232b35;
+      --shadow: rgba(0, 0, 0, 0.5);
+      --focus: #4fc3bd;
+      --band-bg: #05070a;
+      --band-ink: #f5f4f0;
+      --band-accent: #e8814a;
     }
   }
   :root[data-theme="dark"]{
-    --bg: #0a121c;
-    --surface: #101c28;
-    --surface-2: #16283a;
-    --ink: #e4ecf2;
-    --ink-2: #a9bdcc;
-    --ink-3: #71879a;
-    --line: #274257;
-    --line-soft: #1c3245;
-    --accent: #e0a752;
-    --accent-ink: #211404;
-    --accent-2: #5cc2e8;
-    --accent-2-ink: #041b22;
+    --bg: #0e1217;
+    --surface: #161b22;
+    --surface-2: #1e242c;
+    --ink: #ecece4;
+    --ink-2: #b7bcc6;
+    --ink-3: #7b8290;
+    --line: #2b313b;
+    --line-soft: #232933;
+    --accent: #e8814a;
+    --accent-ink: #1f1208;
+    --accent-2: #4fc3bd;
+    --accent-2-ink: #07211f;
     --danger: #e2735f;
     --danger-ink: #2a0d07;
-    --land: #142434;
-    --land-line: #24425a;
-    --ocean: #081019;
-    --grat: #1d3547;
-    --shadow: rgba(0, 0, 0, 0.45);
-    --focus: #5cc2e8;
+    --land: #1b222b;
+    --land-line: #30404e;
+    --ocean: #0b0f14;
+    --grat: #232b35;
+    --shadow: rgba(0, 0, 0, 0.5);
+    --focus: #4fc3bd;
+    --band-bg: #05070a;
+    --band-ink: #f5f4f0;
+    --band-accent: #e8814a;
   }
 
   *{ box-sizing: border-box; }
@@ -83,38 +93,48 @@
     margin: 0;
     background: var(--bg);
     color: var(--ink);
-    font-family: "Noto Sans KR", "Malgun Gothic", sans-serif;
-    line-height: 1.55;
+    font-family: "Jua", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    font-size: 18.5px;
+    line-height: 1.6;
     padding: clamp(14px, 3vw, 40px);
   }
   .wrap{ max-width: 1180px; margin: 0 auto; }
 
-  h1, h2, h3{ font-family: "Noto Serif KR", serif; font-weight: 700; margin: 0; text-wrap: balance; }
+  h1, h2, h3{ font-family: "Gothic A1", "Jua", "Noto Sans KR", sans-serif; font-weight: 800; margin: 0; text-wrap: balance; }
 
   /* ---------- masthead ---------- */
   .masthead{
     display: flex;
     align-items: center;
     gap: 20px;
-    padding-bottom: 20px;
-    margin-bottom: 22px;
-    border-bottom: 3px double var(--line);
+    padding-bottom: 22px;
+    margin-bottom: 26px;
+    border-bottom: 1px solid var(--line);
   }
-  .compass-mark{ flex: none; width: 56px; height: 56px; }
+  .compass-mark{
+    flex: none; width: 56px; height: 56px; padding: 10px; border-radius: 16px;
+    background: color-mix(in srgb, var(--accent) 14%, var(--surface));
+    box-sizing: border-box;
+  }
   .compass-mark svg{ width: 100%; height: 100%; display: block; }
   .compass-mark circle{ fill: none; stroke: var(--accent); stroke-width: 1.4; }
   .compass-mark path{ fill: var(--accent); }
   .compass-mark .n{ fill: var(--danger); }
   .eyebrow{
-    margin: 0 0 4px;
+    display: inline-block;
+    margin: 0 0 8px;
     font-family: "JetBrains Mono", monospace;
-    font-size: 11px;
-    letter-spacing: 0.14em;
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--ink-3);
+    color: var(--accent-2-ink);
+    background: var(--accent-2);
+    padding: 4px 11px;
+    border-radius: 999px;
   }
-  h1.title{ font-size: clamp(24px, 3.4vw, 34px); color: var(--ink); }
-  .lede{ margin: 6px 0 0; color: var(--ink-2); font-size: 14.5px; max-width: 62ch; }
+  h1.title{ font-size: clamp(27px, 3.4vw, 38px); color: var(--ink); font-weight: 800; }
+  .lede{ margin: 8px 0 0; color: var(--ink-2); font-size: 16px; max-width: 62ch; }
 
   /* ---------- tabs ---------- */
   .tabs{
@@ -124,8 +144,8 @@
     margin-bottom: 18px;
   }
   .tab-btn, .game-tab-btn{
-    font-family: "Noto Sans KR", sans-serif;
-    font-size: 14px;
+    font-family: "Jua", "Noto Sans KR", sans-serif;
+    font-size: 15.5px;
     font-weight: 600;
     padding: 9px 16px;
     background: var(--surface);
@@ -157,11 +177,11 @@
     background: transparent;
     border: 1px solid var(--line-soft);
     color: var(--ink-2);
-    font-family: "Noto Sans KR", sans-serif;
-    font-size: 13px;
-    font-weight: 600;
+    font-family: "Jua", "Noto Sans KR", sans-serif;
+    font-size: 14.5px;
+    font-weight: 700;
     padding: 7px 14px;
-    border-radius: 8px;
+    border-radius: 999px;
     cursor: pointer;
     margin-bottom: 16px;
     transition: background .15s ease, color .15s ease;
@@ -171,55 +191,66 @@
   .unit-grid{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 14px;
+    gap: 16px;
   }
   .unit-card{
     text-align: left;
     background: var(--surface);
     border: 1px solid var(--line-soft);
-    border-radius: 12px;
-    padding: 18px 18px 20px;
+    border-radius: 16px;
+    padding: 20px 20px 22px;
     cursor: pointer;
     font-family: inherit;
     color: inherit;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
     min-height: 168px;
-    transition: transform .12s ease, border-color .15s ease, box-shadow .15s ease;
+    box-shadow: 0 1px 0 var(--line-soft);
+    transition: transform .14s ease, border-color .15s ease, box-shadow .15s ease;
   }
   .unit-card:not(:disabled):hover{
     border-color: var(--accent);
-    transform: translateY(-2px);
-    box-shadow: 0 10px 22px var(--shadow);
+    transform: translateY(-3px);
+    box-shadow: 0 14px 26px var(--shadow);
   }
-  .unit-card:disabled{ cursor: not-allowed; opacity: 0.6; }
+  .unit-card:disabled{ cursor: not-allowed; opacity: 0.55; }
   .unit-card-top{ display: flex; justify-content: space-between; align-items: center; }
-  .unit-num{ font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--ink-3); letter-spacing: 0.08em; }
+  .unit-icon-box{
+    flex: none; width: 38px; height: 38px; border-radius: 11px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; line-height: 1;
+    background: color-mix(in srgb, var(--accent) 16%, var(--surface));
+  }
+  .unit-card:nth-of-type(4n+2) .unit-icon-box{ background: color-mix(in srgb, var(--accent-2) 18%, var(--surface)); }
+  .unit-card:nth-of-type(4n+3) .unit-icon-box{ background: color-mix(in srgb, var(--danger) 15%, var(--surface)); }
+  .unit-card:nth-of-type(4n+4) .unit-icon-box{ background: color-mix(in srgb, var(--outer) 20%, var(--surface)); }
+  .unit-num{ font-family: "JetBrains Mono", monospace; font-size: 13.5px; color: var(--ink-3); letter-spacing: 0.08em; font-weight: 700; }
   .unit-status{
     font-family: "JetBrains Mono", monospace;
-    font-size: 10.5px;
+    font-size: 12px;
+    font-weight: 700;
     letter-spacing: 0.05em;
-    padding: 3px 9px;
+    padding: 4px 10px;
     border-radius: 999px;
     border: 1px solid var(--line-soft);
     color: var(--ink-3);
   }
   .unit-status.ready{ color: var(--accent-ink); background: var(--accent); border-color: var(--accent); font-weight: 700; }
-  .unit-title{ font-family: "Noto Serif KR", serif; font-size: 17px; font-weight: 700; margin: 0; text-wrap: balance; }
-  .unit-desc{ font-size: 13px; color: var(--ink-2); margin: 0; line-height: 1.55; }
-  .unit-cta{ margin-top: auto; padding-top: 4px; font-size: 12.5px; color: var(--accent); font-weight: 700; }
+  .unit-title{ font-family: "Gothic A1", "Jua", "Noto Sans KR", sans-serif; font-size: 20px; font-weight: 800; margin: 0; text-wrap: balance; }
+  .unit-desc{ font-size: 14.5px; color: var(--ink-2); margin: 0; line-height: 1.55; }
+  .unit-cta{ margin-top: auto; padding-top: 4px; font-size: 14px; color: var(--accent); font-weight: 800; }
 
   /* ---------- rulebooks ---------- */
   .rulebook-wrap{ max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
   .rulebook-head{ display: flex; flex-direction: column; gap: 8px; }
-  .rulebook-head .game-en{ font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--ink-3); letter-spacing: 0.04em; }
-  .rulebook-head h3{ font-family: "Noto Serif KR", serif; font-size: 22px; margin: 0; }
+  .rulebook-head .game-en{ font-family: "JetBrains Mono", monospace; font-size: 13.5px; color: var(--ink-3); letter-spacing: 0.04em; }
+  .rulebook-head h3{ font-family: "Gothic A1", "Jua", "Noto Sans KR", sans-serif; font-size: 24.5px; margin: 0; }
 
   .info-chips{ display: flex; flex-wrap: wrap; gap: 8px; margin: 2px 0 0; }
   .info-chip{
     font-family: "JetBrains Mono", monospace;
-    font-size: 11.5px;
+    font-size: 13px;
     padding: 5px 11px;
     border-radius: 999px;
     background: var(--surface-2);
@@ -229,19 +260,19 @@
   .rb-card{
     background: var(--surface);
     border: 1px solid var(--line-soft);
-    border-radius: 12px;
+    border-radius: 16px;
     padding: 18px 20px;
   }
   .rb-card h4{
-    font-family: "Noto Serif KR", serif;
-    font-size: 14.5px;
+    font-family: "Gothic A1", "Jua", "Noto Sans KR", sans-serif;
+    font-size: 16px;
     margin: 0 0 10px;
     color: var(--accent);
     display: flex;
     align-items: center;
     gap: 6px;
   }
-  .rb-card > p{ margin: 0; font-size: 14px; line-height: 1.7; color: var(--ink-2); }
+  .rb-card > p{ margin: 0; font-size: 15.5px; line-height: 1.7; color: var(--ink-2); }
   .rb-card > p + p{ margin-top: 10px; }
 
   .rule-list{ list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 16px; counter-reset: rule; }
@@ -258,15 +289,15 @@
     background: var(--accent);
     color: var(--accent-ink);
     font-family: "JetBrains Mono", monospace;
-    font-size: 12.5px;
+    font-size: 14px;
     font-weight: 700;
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  .rule-list > li > .rule-text{ font-size: 14px; line-height: 1.65; color: var(--ink); }
+  .rule-list > li > .rule-text{ font-size: 15.5px; line-height: 1.65; color: var(--ink); }
   .rule-list .sub-rules{ list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
-  .rule-list .sub-rules li{ font-size: 13px; color: var(--ink-2); padding-left: 15px; position: relative; line-height: 1.55; }
+  .rule-list .sub-rules li{ font-size: 14.5px; color: var(--ink-2); padding-left: 15px; position: relative; line-height: 1.55; }
   .rule-list .sub-rules li::before{ content: "–"; position: absolute; left: 0; color: var(--ink-3); }
 
   .callout{
@@ -274,7 +305,7 @@
     background: color-mix(in srgb, var(--accent-2) 9%, var(--surface));
     border-radius: 0 10px 10px 0;
     padding: 13px 16px;
-    font-size: 13.5px;
+    font-size: 15px;
     line-height: 1.65;
     color: var(--ink-2);
   }
@@ -283,7 +314,7 @@
   .callout-label{
     display: block;
     font-family: "JetBrains Mono", monospace;
-    font-size: 10.5px;
+    font-size: 12px;
     letter-spacing: 0.08em;
     color: var(--ink-3);
     margin-bottom: 5px;
@@ -293,16 +324,16 @@
 
   .action-grid{ display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; }
   .action-card{ background: var(--surface-2); border: 1px solid var(--line-soft); border-radius: 10px; padding: 13px 15px; }
-  .action-card .tag{ font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.06em; color: var(--accent-2); }
-  .action-card h5{ font-family: "Noto Serif KR", serif; font-size: 14.5px; margin: 4px 0 6px; }
-  .action-card p{ margin: 0; font-size: 12.5px; color: var(--ink-2); line-height: 1.55; }
+  .action-card .tag{ font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.06em; color: var(--accent-2); }
+  .action-card h5{ font-family: "Gothic A1", "Jua", "Noto Sans KR", sans-serif; font-size: 16px; margin: 4px 0 6px; }
+  .action-card p{ margin: 0; font-size: 14px; color: var(--ink-2); line-height: 1.55; }
 
   /* ---------- assessment (수행평가) page ---------- */
   .assess-wrap{ max-width: 920px; }
   .assess-wrap .rb-card h4{ flex-wrap: wrap; }
-  .assess-wrap .rb-card h4 .area-meta{ margin-left: auto; font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.02em; color: var(--ink-3); font-weight: 400; }
+  .assess-wrap .rb-card h4 .area-meta{ margin-left: auto; font-family: "JetBrains Mono", monospace; font-size: 12.5px; letter-spacing: 0.02em; color: var(--ink-3); font-weight: 400; }
   .assess-wrap table.subm-table td.subm-score{ font-family: "JetBrains Mono", monospace; font-weight: 700; color: var(--accent); text-align: right; white-space: nowrap; }
-  .assess-wrap table.subm-table td[rowspan]{ font-family: "Noto Serif KR", serif; font-weight: 700; font-size: 12.5px; color: var(--ink); background: var(--surface-2); vertical-align: middle; }
+  .assess-wrap table.subm-table td[rowspan]{ font-family: "Gothic A1", "Jua", "Noto Sans KR", sans-serif; font-weight: 700; font-size: 14px; color: var(--ink); background: var(--surface-2); vertical-align: middle; }
   @media (max-width: 640px){
     .assess-wrap .rb-card h4 .area-meta{ margin-left: 0; }
   }
@@ -319,18 +350,18 @@
   .doc-scan-cap{
     margin-top: 6px;
     font-family: "JetBrains Mono", monospace;
-    font-size: 11px;
+    font-size: 12.5px;
     color: var(--ink-3);
     text-align: center;
   }
 
   .vio-title-group + .vio-title-group{ margin-top: 14px; }
-  .vio-title-group-head{ display: flex; align-items: center; gap: 8px; font-family: "Noto Serif KR", serif; font-size: 13.5px; font-weight: 700; color: var(--ink); margin: 0 0 6px; }
-  .vio-title-list{ margin: 0; font-size: 12.5px; color: var(--ink-2); line-height: 1.85; }
+  .vio-title-group-head{ display: flex; align-items: center; gap: 8px; font-family: "Gothic A1", "Jua", "Noto Sans KR", sans-serif; font-size: 15px; font-weight: 700; color: var(--ink); margin: 0 0 6px; }
+  .vio-title-list{ margin: 0; font-size: 14px; color: var(--ink-2); line-height: 1.85; }
 
   .glossary-item + .glossary-item{ margin-top: 12px; padding-top: 12px; border-top: 1px dashed var(--line-soft); }
-  .glossary-item dt{ font-family: "Noto Serif KR", serif; font-weight: 700; font-size: 13.5px; color: var(--ink); margin-bottom: 4px; }
-  .glossary-item dd{ margin: 0; font-size: 12.5px; color: var(--ink-2); line-height: 1.6; }
+  .glossary-item dt{ font-family: "Gothic A1", "Jua", "Noto Sans KR", sans-serif; font-weight: 700; font-size: 15px; color: var(--ink); margin-bottom: 4px; }
+  .glossary-item dd{ margin: 0; font-size: 14px; color: var(--ink-2); line-height: 1.6; }
 
   /* ---------- panel / stage ---------- */
   .panel, .game-panel{ display: none; }
@@ -399,7 +430,7 @@
     border: 1px solid var(--line-soft);
     border-radius: 6px;
     font-family: "JetBrains Mono", monospace;
-    font-size: 15px;
+    font-size: 17px;
     line-height: 1;
     cursor: pointer;
     backdrop-filter: blur(2px);
@@ -407,12 +438,12 @@
   }
   .zoom-btn:hover{ background: var(--surface-2); }
   .zoom-btn:active{ transform: translateY(1px); }
-  .zoom-btn.reset{ font-size: 13px; }
+  .zoom-btn.reset{ font-size: 14.5px; }
 
   .map-caption{
     margin-top: 10px;
     font-family: "JetBrains Mono", monospace;
-    font-size: 11px;
+    font-size: 12.5px;
     color: var(--ink-3);
     letter-spacing: 0.04em;
     display: flex;
@@ -424,14 +455,14 @@
   .land{ fill: var(--land); stroke: var(--land-line); stroke-width: 0.6; fill-rule: evenodd; }
   .grat-line{ stroke: var(--grat); stroke-width: 0.5; }
   .grat-line.major{ stroke-width: 0.8; opacity: 0.9; }
-  .grat-label{ font-family: "JetBrains Mono", monospace; font-size: 8px; fill: var(--ink-3); }
+  .grat-label{ font-family: "JetBrains Mono", monospace; font-size: 9px; fill: var(--ink-3); }
   .frame-border{ fill: none; stroke: var(--line); stroke-width: 1.2; }
 
   .places{ pointer-events: none; }
   .place-continent{
-    font-family: "Noto Serif KR", serif;
+    font-family: "Gothic A1", "Jua", "Noto Sans KR", sans-serif;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 15.5px;
     font-style: italic;
     letter-spacing: 0.06em;
     fill: var(--ink-3);
@@ -443,8 +474,8 @@
   }
   .place-country circle{ fill: var(--ink-3); opacity: 0.75; }
   .place-country-label{
-    font-family: "Noto Sans KR", sans-serif;
-    font-size: 8.5px;
+    font-family: "Jua", "Noto Sans KR", sans-serif;
+    font-size: 9.5px;
     fill: var(--ink-2);
     opacity: 0.9;
     paint-order: stroke;
@@ -464,7 +495,7 @@
   .zone-fill{ fill: var(--accent-2); fill-opacity: 0.22; stroke: var(--accent-2); stroke-width: 1.1; stroke-dasharray: 3 2; transition: fill-opacity .2s ease; }
   .zone-fill.heart{ fill: var(--danger); stroke: var(--danger); fill-opacity: 0.22; }
   .zone-fill.outer{ fill: var(--outer); stroke: var(--outer); fill-opacity: 0.22; }
-  .zone-label{ font-family: "Noto Serif KR", serif; font-weight: 600; font-size: 13px; paint-order: stroke; stroke: var(--surface); stroke-width: 3px; fill: var(--ink); }
+  .zone-label{ font-family: "Gothic A1", "Jua", "Noto Sans KR", sans-serif; font-weight: 600; font-size: 14.5px; paint-order: stroke; stroke: var(--surface); stroke-width: 3px; fill: var(--ink); }
 
   .marker-guess circle{ stroke-width: 2; }
   .marker-guess.correct circle{ fill: var(--accent); fill-opacity: 0.35; stroke: var(--accent); }
@@ -475,24 +506,24 @@
 
   .marker-target circle{ fill: var(--accent-2); stroke: var(--surface); stroke-width: 1.4; }
   .marker-target line{ stroke: var(--accent-2); stroke-width: 1; stroke-dasharray: 2 2; }
-  .marker-target text{ font-family: "JetBrains Mono", monospace; font-size: 9.5px; fill: var(--ink); paint-order: stroke; stroke: var(--surface); stroke-width: 3px; }
+  .marker-target text{ font-family: "JetBrains Mono", monospace; font-size: 10.5px; fill: var(--ink); paint-order: stroke; stroke: var(--surface); stroke-width: 3px; }
 
   .choke-pin circle{ fill: var(--accent); stroke: var(--surface); stroke-width: 1.2; }
-  .choke-pin text{ font-family: "JetBrains Mono", monospace; font-size: 9px; fill: var(--ink); paint-order: stroke; stroke: var(--surface); stroke-width: 3px; }
+  .choke-pin text{ font-family: "JetBrains Mono", monospace; font-size: 10px; fill: var(--ink); paint-order: stroke; stroke: var(--surface); stroke-width: 3px; }
 
   /* ---------- briefing sidebar ---------- */
   .brief{ display: flex; flex-direction: column; gap: 12px; min-width: 0; }
   .card{
     background: var(--surface);
     border: 1px solid var(--line-soft);
-    border-radius: 10px;
+    border-radius: 14px;
     padding: 14px 16px;
   }
   .fold summary{
     cursor: pointer;
     font-weight: 600;
-    font-family: "Noto Serif KR", serif;
-    font-size: 14.5px;
+    font-family: "Gothic A1", "Jua", "Noto Sans KR", sans-serif;
+    font-size: 16px;
     list-style: none;
     display: flex;
     align-items: center;
@@ -506,9 +537,9 @@
     display: inline-block;
   }
   .fold[open] summary::before{ transform: rotate(90deg); }
-  .fold p{ margin: 10px 0 0; font-size: 13.5px; color: var(--ink-2); }
+  .fold p{ margin: 10px 0 0; font-size: 15px; color: var(--ink-2); }
   .fold p + p{ margin-top: 8px; }
-  .fold .cite{ font-size: 11.5px; color: var(--ink-3); margin-top: 8px; font-family: "JetBrains Mono", monospace; }
+  .fold .cite{ font-size: 13px; color: var(--ink-3); margin-top: 8px; font-family: "JetBrains Mono", monospace; }
 
   .mission-row{
     display: flex;
@@ -518,14 +549,14 @@
   }
   .mission-label{
     font-family: "JetBrains Mono", monospace;
-    font-size: 10.5px;
+    font-size: 12px;
     letter-spacing: 0.12em;
     color: var(--accent);
     font-weight: 600;
   }
-  .mission-progress{ font-family: "JetBrains Mono", monospace; font-size: 12.5px; color: var(--ink-3); }
-  .prompt{ margin: 0; font-size: 15.5px; }
-  .prompt strong{ color: var(--accent); font-family: "Noto Serif KR", serif; }
+  .mission-progress{ font-family: "JetBrains Mono", monospace; font-size: 14px; color: var(--ink-3); }
+  .prompt{ margin: 0; font-size: 17.5px; }
+  .prompt strong{ color: var(--accent); font-family: "Gothic A1", "Jua", "Noto Sans KR", sans-serif; }
 
   .hint-row{ margin-top: 10px; }
   button.btn.hint-btn{
@@ -533,7 +564,7 @@
     color: var(--accent-2);
     border: 1px dashed var(--accent-2);
     padding: 6px 12px;
-    font-size: 12.5px;
+    font-size: 14px;
   }
   button.btn.hint-btn:hover{ background: color-mix(in srgb, var(--accent-2) 12%, transparent); }
   button.btn.hint-btn:disabled{ opacity: 0.45; cursor: default; }
@@ -541,7 +572,7 @@
   .hint-text{
     margin: 10px 0 0;
     padding: 9px 11px;
-    font-size: 13px;
+    font-size: 14.5px;
     font-style: italic;
     color: var(--ink-2);
     background: color-mix(in srgb, var(--accent-2) 10%, var(--surface));
@@ -552,20 +583,20 @@
   .feedback{
     border-radius: 8px;
     padding: 11px 13px;
-    font-size: 13.5px;
+    font-size: 15px;
     border: 1px solid var(--line-soft);
   }
   .feedback.correct{ background: color-mix(in srgb, var(--accent) 16%, var(--surface)); border-color: var(--accent); }
   .feedback.wrong{ background: color-mix(in srgb, var(--danger) 14%, var(--surface)); border-color: var(--danger); }
-  .feedback .verdict{ font-weight: 700; font-family: "Noto Serif KR", serif; display: block; margin-bottom: 4px; }
+  .feedback .verdict{ font-weight: 700; font-family: "Gothic A1", "Jua", "Noto Sans KR", sans-serif; display: block; margin-bottom: 4px; }
   .feedback.correct .verdict{ color: var(--accent); }
   .feedback.wrong .verdict{ color: var(--danger); }
-  .feedback .meta{ font-family: "JetBrains Mono", monospace; font-size: 11.5px; color: var(--ink-3); display: block; margin-top: 6px; }
+  .feedback .meta{ font-family: "JetBrains Mono", monospace; font-size: 13px; color: var(--ink-3); display: block; margin-top: 6px; }
 
   .score-row{
     display: flex;
     justify-content: space-between;
-    font-size: 12.5px;
+    font-size: 14px;
     color: var(--ink-2);
     font-family: "JetBrains Mono", monospace;
   }
@@ -573,24 +604,25 @@
   .best{ color: var(--ink-3); }
 
   button.btn{
-    font-family: "Noto Sans KR", sans-serif;
-    font-weight: 600;
-    font-size: 14px;
-    padding: 10px 16px;
-    border-radius: 8px;
+    font-family: "Jua", "Noto Sans KR", sans-serif;
+    font-weight: 700;
+    font-size: 15.5px;
+    padding: 10px 18px;
+    border-radius: 999px;
     border: 1px solid transparent;
     cursor: pointer;
-    transition: transform .08s ease, filter .15s ease;
+    transition: transform .08s ease, filter .15s ease, box-shadow .15s ease;
   }
   button.btn:hover{ filter: brightness(1.06); }
   button.btn:active{ transform: translateY(1px); }
-  button.btn.next{ background: var(--ink); color: var(--bg); }
+  button.btn.next{ background: var(--accent); color: var(--accent-ink); }
+  button.btn.next:hover{ box-shadow: 0 6px 16px color-mix(in srgb, var(--accent) 35%, transparent); }
   button.btn.restart{ background: transparent; color: var(--ink); border-color: var(--line); }
   button.btn.restart:hover{ background: var(--surface-2); }
 
   .end-card{ text-align: center; padding: 22px 16px; }
-  .end-card .big{ font-family: "Noto Serif KR", serif; font-size: 30px; font-weight: 700; color: var(--accent); margin: 4px 0 2px; font-variant-numeric: tabular-nums; }
-  .end-card p{ margin: 0 0 14px; color: var(--ink-2); font-size: 13.5px; }
+  .end-card .big{ font-family: "Gothic A1", "Jua", "Noto Sans KR", sans-serif; font-size: 33.5px; font-weight: 700; color: var(--accent); margin: 4px 0 2px; font-variant-numeric: tabular-nums; }
+  .end-card p{ margin: 0 0 14px; color: var(--ink-2); font-size: 15px; }
 
   /* ---------- overview legend ---------- */
   .legend-list{ display: flex; flex-direction: column; gap: 8px; }
@@ -598,7 +630,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 13.5px;
+    font-size: 15px;
     cursor: pointer;
     padding: 6px 8px;
     border-radius: 6px;
@@ -614,8 +646,8 @@
 
   /* ---------- form controls ---------- */
   input[type="text"], input[type="number"], select, textarea{
-    font-family: "Noto Sans KR", sans-serif;
-    font-size: 13.5px;
+    font-family: "Jua", "Noto Sans KR", sans-serif;
+    font-size: 15px;
     padding: 9px 11px;
     border-radius: 8px;
     border: 1px solid var(--line-soft);
@@ -628,44 +660,70 @@
     outline: 2px solid var(--focus); outline-offset: 1px;
   }
   .field{ display: flex; flex-direction: column; gap: 6px; margin-top: 12px; }
-  .field label{ font-size: 12.5px; font-weight: 600; color: var(--ink-2); }
+  .field label{ font-size: 14px; font-weight: 600; color: var(--ink-2); }
   .field input, .field select, .field textarea{ width: 100%; }
-  .submit-status{ margin-top: 10px; font-size: 12.5px; white-space: pre-wrap; }
+  .submit-status{ margin-top: 10px; font-size: 14px; white-space: pre-wrap; }
   .submit-status.ok{ color: var(--accent); }
   .submit-status.err{ color: var(--danger); }
 
   /* ---------- teacher tools ---------- */
-  .tool-section{ margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--line-soft); }
-  .tool-section h2{ font-family: "Noto Serif KR", serif; font-size: 15px; margin: 0 0 10px; color: var(--ink-2); }
+  .tool-section{ margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--line-soft); }
+  .tool-section h2{
+    font-family: "JetBrains Mono", monospace; font-size: 13px; font-weight: 700; margin: 0 0 14px;
+    color: var(--ink-3); letter-spacing: 0.1em; text-transform: uppercase;
+  }
+
+  /* ---------- home hero stat band ---------- */
+  .home-stat-band{
+    display: flex; flex-wrap: wrap; gap: 0; margin: 20px 0 28px; border-radius: 16px; overflow: hidden;
+    background: var(--band-bg);
+  }
+  .home-stat-item{
+    flex: 1 1 140px; padding: 18px 20px; color: var(--band-ink);
+    border-right: 1px solid color-mix(in srgb, var(--band-ink) 12%, transparent);
+  }
+  .home-stat-item:last-child{ border-right: none; }
+  .home-stat-num{
+    font-family: "Gothic A1", "Jua", "Noto Sans KR", sans-serif; font-weight: 800; font-size: clamp(27px, 3vw, 36px);
+    color: var(--band-accent); line-height: 1.1; font-variant-numeric: tabular-nums;
+  }
+  .home-stat-label{ margin-top: 4px; font-size: 13.5px; color: color-mix(in srgb, var(--band-ink) 72%, transparent); }
   .tool-row{ display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
   .tool-card{
-    text-align: left; background: var(--surface); border: 1px solid var(--line-soft); border-radius: 12px;
-    padding: 15px 16px; cursor: pointer; font-family: inherit; color: inherit;
-    display: flex; flex-direction: column; gap: 4px; transition: transform .12s ease, border-color .15s ease;
+    text-align: left; background: var(--surface); border: 1px solid var(--line-soft); border-radius: 14px;
+    padding: 16px 17px; cursor: pointer; font-family: inherit; color: inherit;
+    display: flex; flex-direction: column; gap: 5px; transition: transform .12s ease, border-color .15s ease, box-shadow .15s ease;
   }
-  .tool-card:hover{ border-color: var(--accent-2); transform: translateY(-2px); }
-  .tool-card .tool-title{ font-weight: 700; font-size: 14.5px; }
-  .tool-card .tool-desc{ font-size: 12.5px; color: var(--ink-2); }
+  .tool-card:hover{ border-color: var(--accent-2); transform: translateY(-2px); box-shadow: 0 10px 20px var(--shadow); }
+  .tool-card .tool-icon-box{
+    flex: none; width: 30px; height: 30px; border-radius: 9px; margin-bottom: 4px;
+    display: flex; align-items: center; justify-content: center; font-size: 17px; line-height: 1;
+    background: color-mix(in srgb, var(--accent-2) 16%, var(--surface));
+  }
+  .tool-card:nth-of-type(3n+2) .tool-icon-box{ background: color-mix(in srgb, var(--accent) 16%, var(--surface)); }
+  .tool-card:nth-of-type(3n+3) .tool-icon-box{ background: color-mix(in srgb, var(--danger) 14%, var(--surface)); }
+  .tool-card .tool-title{ font-weight: 800; font-size: 16px; }
+  .tool-card .tool-desc{ font-size: 14px; color: var(--ink-2); }
 
   .dropzone{
     display: block; border: 2px dashed var(--line-soft); border-radius: 12px; padding: 26px 16px;
-    text-align: center; color: var(--ink-3); font-size: 13.5px; cursor: pointer;
+    text-align: center; color: var(--ink-3); font-size: 15px; cursor: pointer;
     transition: border-color .15s ease, background .15s ease;
   }
   .dropzone:hover, .dropzone.drag{ border-color: var(--accent-2); background: color-mix(in srgb, var(--accent-2) 8%, var(--surface)); }
   .dropzone input{ display: none; }
 
   .table-wrap{ overflow-x: auto; border: 1px solid var(--line-soft); border-radius: 10px; }
-  table.subm-table{ width: 100%; border-collapse: collapse; font-size: 13px; min-width: 560px; }
+  table.subm-table{ width: 100%; border-collapse: collapse; font-size: 14.5px; min-width: 560px; }
   table.subm-table th, table.subm-table td{ padding: 9px 12px; border-bottom: 1px solid var(--line-soft); text-align: left; vertical-align: middle; line-height: 1.5; }
-  table.subm-table th{ background: var(--surface-2); font-family: "JetBrains Mono", "Noto Sans KR", monospace; font-size: 11px; letter-spacing: .04em; color: var(--ink-3); }
+  table.subm-table th{ background: var(--surface-2); font-family: "JetBrains Mono", "Jua", "Noto Sans KR", monospace; font-size: 12.5px; letter-spacing: .04em; color: var(--ink-3); }
   table.subm-table tr:last-child td{ border-bottom: none; }
 
   .name-grid{ display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 8px; margin-top: 12px; }
   .group-grid{ display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; margin-top: 16px; }
   .group-card{ background: var(--surface); border: 1px solid var(--line-soft); border-radius: 10px; padding: 14px; }
-  .group-card h4{ margin: 0 0 8px; font-family: "Noto Serif KR", serif; font-size: 14px; color: var(--accent-2); }
-  .group-card ul{ margin: 0; padding-left: 18px; font-size: 13px; color: var(--ink); line-height: 1.7; }
+  .group-card h4{ margin: 0 0 8px; font-family: "Gothic A1", "Jua", "Noto Sans KR", sans-serif; font-size: 15.5px; color: var(--accent-2); }
+  .group-card ul{ margin: 0; padding-left: 18px; font-size: 14.5px; color: var(--ink); line-height: 1.7; }
 
   /* ---------- violence-type card drawer ---------- */
   #view-violence{
@@ -702,7 +760,7 @@
 
   .vio-mode-toggle{ display: flex; flex-wrap: wrap; gap: 8px; }
   .vio-mode-btn{
-    font-family: "Noto Sans KR", sans-serif; font-weight: 600; font-size: 13px;
+    font-family: "Jua", "Noto Sans KR", sans-serif; font-weight: 600; font-size: 14.5px;
     padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line-soft);
     background: var(--surface); color: var(--ink-2); cursor: pointer;
     transition: background .15s ease, color .15s ease, border-color .15s ease;
@@ -711,7 +769,7 @@
   .vio-mode-btn[aria-selected="true"]{ background: var(--ink); color: var(--bg); border-color: var(--ink); }
 
   .vio-team-setting{ display: flex; align-items: center; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
-  .vio-team-setting label{ font-size: 13px; color: var(--ink-2); font-weight: 600; }
+  .vio-team-setting label{ font-size: 14.5px; color: var(--ink-2); font-weight: 600; }
   .vio-team-setting input{ width: 74px; }
 
   .vio-reveal-row{ display: flex; flex-wrap: wrap; gap: 18px; justify-content: center; margin-top: 26px; perspective: 1400px; }
@@ -725,24 +783,24 @@
   .vio-reveal-row .vio-card.reveal.discarded{ opacity: .32; pointer-events: none; }
   .vio-discard-tag{
     position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);
-    font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.06em;
+    font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.06em;
     color: var(--ink-3); background: var(--surface-2); padding: 3px 10px; border-radius: 999px;
     border: 1px solid var(--line-soft); white-space: nowrap;
   }
 
   .vio-assign-row{ margin-top: 24px; text-align: center; }
-  .vio-assign-label{ font-family: "Noto Serif KR", serif; font-size: 15.5px; margin: 0 0 12px; color: var(--ink); }
+  .vio-assign-label{ font-family: "Gothic A1", "Jua", "Noto Sans KR", sans-serif; font-size: 17.5px; margin: 0 0 12px; color: var(--ink); }
   .vio-team-pick-row{ display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 12px; }
   .vio-team-pick-btn{ min-width: 62px; }
 
-  .vio-type-badge.sm{ font-size: 10px; padding: 2px 9px; margin-right: 6px; }
+  .vio-type-badge.sm{ font-size: 11px; padding: 2px 9px; margin-right: 6px; }
   .vio-team-board-grid{ display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; margin-top: 16px; }
   .vio-team-board-grid .group-card{ padding: 16px 18px; }
   .vio-team-list{ list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
-  .vio-team-list li{ font-size: 13px; color: var(--ink); display: flex; align-items: flex-start; flex-wrap: nowrap; gap: 6px; line-height: 1.5; }
+  .vio-team-list li{ font-size: 14.5px; color: var(--ink); display: flex; align-items: flex-start; flex-wrap: nowrap; gap: 6px; line-height: 1.5; }
   .vio-team-list li .vio-type-badge.sm{ flex: none; margin-right: 0; margin-top: 1px; }
   .vio-team-list li span:last-child{ word-break: keep-all; overflow-wrap: break-word; }
-  .vio-team-empty{ font-size: 12.5px; color: var(--ink-3); margin: 8px 0 0; }
+  .vio-team-empty{ font-size: 14px; color: var(--ink-3); margin: 8px 0 0; }
 
   .vio-stage{ display: flex; justify-content: center; padding: 34px 10px 14px; perspective: 1400px; }
   .vio-deck{ position: relative; width: min(210px, 52vw); aspect-ratio: 377 / 530; }
@@ -793,14 +851,14 @@
     100%{ opacity: 1; transform: rotateY(0deg) scale(1); }
   }
   .vio-type-badge{
-    align-self: center; font-family: "JetBrains Mono", monospace; font-size: 13px;
+    align-self: center; font-family: "JetBrains Mono", monospace; font-size: 14.5px;
     letter-spacing: 0.09em; font-weight: 700; padding: 5px 16px; border-radius: 999px;
   }
   .vio-type-badge.direct{ background: color-mix(in srgb, var(--danger) 18%, var(--surface)); color: var(--danger); border: 1px solid var(--danger); }
   .vio-type-badge.structural{ background: color-mix(in srgb, var(--accent-2) 18%, var(--surface)); color: var(--accent-2); border: 1px solid var(--accent-2); }
   .vio-type-badge.cultural{ background: color-mix(in srgb, var(--accent) 18%, var(--surface)); color: var(--accent); border: 1px solid var(--accent); }
-  .vio-case-text{ font-family: "Noto Serif KR", serif; font-size: clamp(19px, 3vw, 25px); font-weight: 700; line-height: 1.42; margin: 0; color: var(--ink); text-wrap: balance; word-break: keep-all; overflow-wrap: break-word; }
-  .vio-case-desc{ font-family: "Noto Sans KR", sans-serif; font-size: clamp(13px, 1.8vw, 14.5px); font-weight: 500; line-height: 1.55; margin: 0; color: var(--ink-2); text-wrap: balance; word-break: keep-all; overflow-wrap: break-word; }
+  .vio-case-text{ font-family: "Gothic A1", "Jua", "Noto Sans KR", sans-serif; font-size: clamp(21.5px, 3vw, 28px); font-weight: 700; line-height: 1.42; margin: 0; color: var(--ink); text-wrap: balance; word-break: keep-all; overflow-wrap: break-word; }
+  .vio-case-desc{ font-family: "Jua", "Noto Sans KR", sans-serif; font-size: clamp(14.5px, 1.8vw, 16px); font-weight: 500; line-height: 1.55; margin: 0; color: var(--ink-2); text-wrap: balance; word-break: keep-all; overflow-wrap: break-word; }
 
 
 
@@ -815,23 +873,23 @@
     padding: 26px 24px; width: min(320px, 100%); text-align: center;
     box-shadow: 0 24px 60px var(--shadow);
   }
-  .pw-modal-box h3{ font-family: "Noto Serif KR", serif; font-size: 17px; margin: 0 0 6px; }
-  .pw-modal-box p{ font-size: 13px; color: var(--ink-2); margin: 0 0 14px; }
+  .pw-modal-box h3{ font-family: "Gothic A1", "Jua", "Noto Sans KR", sans-serif; font-size: 19px; margin: 0 0 6px; }
+  .pw-modal-box p{ font-size: 14.5px; color: var(--ink-2); margin: 0 0 14px; }
   .pw-modal-box input{
-    width: 100%; text-align: center; font-size: 20px; letter-spacing: 0.4em;
+    width: 100%; text-align: center; font-size: 22.5px; letter-spacing: 0.4em;
     font-family: "JetBrains Mono", monospace;
   }
   .pw-modal-actions{ display: flex; gap: 8px; margin-top: 16px; }
   .pw-modal-actions button{ flex: 1; }
-  .pw-error{ color: var(--danger) !important; font-size: 12.5px !important; margin: 10px 0 0 !important; }
+  .pw-error{ color: var(--danger) !important; font-size: 14px !important; margin: 10px 0 0 !important; }
 
-  .hr-inst-grid .action-card p{ font-size: 12px; }
+  .hr-inst-grid .action-card p{ font-size: 13.5px; }
 
   footer{
     margin-top: 26px;
     padding-top: 14px;
     border-top: 1px solid var(--line-soft);
-    font-size: 11.5px;
+    font-size: 13px;
     color: var(--ink-3);
     font-family: "JetBrains Mono", monospace;
   }
@@ -839,7 +897,7 @@
   [hidden]{ display: none !important; }
 
   /* ---------- migration unit: rulebook tables + teacher tools ---------- */
-  table.subm-table td{ font-size: 12.5px; line-height: 1.5; }
+  table.subm-table td{ font-size: 14px; line-height: 1.5; }
   table.mig-country-table td:nth-child(1), table.mig-country-table td:nth-child(2),
   table.mig-profile-table td:nth-child(1), table.mig-profile-table td:nth-child(2),
   table.mig-profile-table td:nth-child(3), table.mig-profile-table td:nth-child(4){
@@ -855,8 +913,8 @@
     border-radius: 999px;
   }
   .mig-mode-btn{
-    font-family: "Noto Sans KR", sans-serif;
-    font-size: 13px;
+    font-family: "Jua", "Noto Sans KR", sans-serif;
+    font-size: 14.5px;
     font-weight: 700;
     padding: 8px 16px;
     border-radius: 999px;
@@ -921,15 +979,15 @@
     background: color-mix(in srgb, var(--accent) 10%, var(--surface));
     border: 1px solid var(--line-soft);
   }
-  .mig-event-placeholder{ margin: 0; color: var(--ink-3); font-size: 13.5px; }
+  .mig-event-placeholder{ margin: 0; color: var(--ink-3); font-size: 15px; }
   .mig-event-name{
     margin: 0;
-    font-family: "Noto Serif KR", serif;
+    font-family: "Gothic A1", "Jua", "Noto Sans KR", sans-serif;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 22.5px;
     color: var(--accent);
   }
-  .mig-event-desc{ margin: 0; font-size: 14px; color: var(--ink-2); line-height: 1.6; }
+  .mig-event-desc{ margin: 0; font-size: 15.5px; color: var(--ink-2); line-height: 1.6; }
   .mig-event-reveal.mig-flash{ animation: mig-flash-anim .4s ease; }
   @keyframes mig-flash-anim{
     0%{ background: color-mix(in srgb, var(--accent) 30%, var(--surface)); }
@@ -944,14 +1002,14 @@
     display: flex;
     align-items: baseline;
     gap: 8px;
-    font-size: 12.5px;
+    font-size: 14px;
     padding: 6px 9px;
     border-radius: 6px;
     background: var(--surface-2);
   }
-  .mig-history-item .idx{ font-family: "JetBrains Mono", monospace; color: var(--ink-3); font-size: 11px; flex: none; }
+  .mig-history-item .idx{ font-family: "JetBrains Mono", monospace; color: var(--ink-3); font-size: 12.5px; flex: none; }
   .mig-history-item .mode-tag{
-    font-size: 10.5px; padding: 1px 6px; border-radius: 4px; flex: none;
+    font-size: 12px; padding: 1px 6px; border-radius: 4px; flex: none;
     font-family: "JetBrains Mono", monospace;
   }
   .mig-history-item .mode-tag.growth{ background: color-mix(in srgb, var(--accent) 22%, transparent); color: var(--accent); }
@@ -961,14 +1019,14 @@
 
   table.mig-board-table th, table.mig-board-table td{ padding: 6px 7px; vertical-align: middle; }
   table.mig-board-table input[type="text"], table.mig-board-table input[type="number"], table.mig-board-table select{
-    padding: 6px 7px; font-size: 12.5px;
+    padding: 6px 7px; font-size: 14px;
   }
   table.mig-board-table input[type="text"]{ width: 128px; }
   table.mig-board-table input[type="number"]{ width: 52px; text-align: center; }
   table.mig-board-table select{ width: 140px; }
   .mig-board-remove-btn{
     background: transparent; border: 1px solid var(--line-soft); color: var(--ink-3);
-    border-radius: 6px; padding: 5px 8px; font-size: 11.5px; cursor: pointer;
+    border-radius: 6px; padding: 5px 8px; font-size: 13px; cursor: pointer;
   }
   .mig-board-remove-btn:hover{ color: var(--danger); border-color: var(--danger); }
   .mig-board-leader{ font-weight: 700; color: var(--accent) !important; }
@@ -976,7 +1034,7 @@
   /* ---------- 이주 로드 현황판: 출입국 심사대 테마 ---------- */
   .mig-passport-caption{
     font-family: "JetBrains Mono", monospace;
-    font-size: 11px;
+    font-size: 12.5px;
     font-weight: 700;
     letter-spacing: 0.14em;
     color: var(--accent);
@@ -984,7 +1042,7 @@
   }
   #mig-board-summary .info-chip{
     font-family: "JetBrains Mono", monospace;
-    font-size: 11.5px;
+    font-size: 13px;
     border: 1px dashed var(--accent);
     background: color-mix(in srgb, var(--accent) 12%, var(--surface));
     color: var(--ink);
@@ -1011,7 +1069,7 @@
     background: var(--ink);
     color: var(--bg);
     font-family: "JetBrains Mono", monospace;
-    font-size: 11px;
+    font-size: 12.5px;
     letter-spacing: 0.08em;
   }
   .mig-board-strip .accent{ color: var(--accent); font-weight: 700; }
@@ -1020,7 +1078,7 @@
   table.mig-board-table thead th{
     background: transparent;
     color: var(--accent);
-    font-family: "JetBrains Mono", "Noto Sans KR", monospace;
+    font-family: "JetBrains Mono", "Jua", "Noto Sans KR", monospace;
     letter-spacing: 0.04em;
     line-height: 1.5;
     border-bottom: 1px dashed var(--line);
@@ -1082,19 +1140,19 @@
   /* 이주 로드 도구 통합 페이지: 랜덤 인카운터 / 현황판 스왑 */
   .tool-panel-title{
     margin: 0 0 4px;
-    font-size: 19px;
+    font-size: 21.5px;
     font-weight: 800;
     color: var(--ink);
   }
   .tool-panel-sub{
     margin: 0 0 16px;
-    font-size: 13px;
+    font-size: 14.5px;
     color: var(--ink-3);
     line-height: 1.5;
   }
   .mig-passport-caption{
     margin: 0 0 2px;
-    font-size: 11px;
+    font-size: 12.5px;
     font-weight: 700;
     letter-spacing: 0.14em;
     color: var(--accent);
@@ -1120,7 +1178,7 @@
     border: none;
     cursor: pointer;
     padding: 8px 18px;
-    font-size: 13px;
+    font-size: 14.5px;
     font-weight: 700;
     font-family: inherit;
     color: var(--ink-2);
@@ -1139,7 +1197,7 @@
   /* ---------------- 동정심 마켓: 현황판 + 기부 계산기 ---------------- */
   .hr-badge{
     display: inline-flex; align-items: center; gap: 4px;
-    font-size: 10.5px; font-weight: 700; padding: 3px 9px; border-radius: 999px;
+    font-size: 12px; font-weight: 700; padding: 3px 9px; border-radius: 999px;
     font-family: "JetBrains Mono", monospace; letter-spacing: 0.02em;
     white-space: nowrap;
   }
@@ -1151,55 +1209,134 @@
   .hr-stepper{ display: inline-flex; align-items: center; gap: 7px; }
   .hr-stepper button{
     width: 26px; height: 26px; border-radius: 7px; border: 1px solid var(--line-soft);
-    background: var(--surface); color: var(--ink); font-weight: 700; font-size: 15px;
+    background: var(--surface); color: var(--ink); font-weight: 700; font-size: 17px;
     line-height: 1; cursor: pointer; font-family: inherit;
   }
   .hr-stepper button:hover{ background: var(--surface-2); }
   .hr-stepper .hr-stepper-val{
     min-width: 22px; text-align: center; font-family: "JetBrains Mono", monospace;
-    font-weight: 700; font-size: 14.5px; color: var(--ink);
+    font-weight: 700; font-size: 16px; color: var(--ink);
   }
 
   table.hr-team-table th, table.hr-team-table td{ padding: 9px 10px; vertical-align: middle; }
-  table.hr-team-table input[type="text"]{ width: 120px; padding: 6px 8px; font-size: 12.5px; }
+  table.hr-team-table input[type="text"]{ width: 120px; padding: 6px 8px; font-size: 14px; }
   table.hr-team-table td:nth-child(1){ font-weight: 600; }
   .hr-team-remove-btn{
     background: transparent; border: 1px solid var(--line-soft); color: var(--ink-3);
-    border-radius: 6px; padding: 5px 8px; font-size: 11.5px; cursor: pointer; font-family: inherit;
+    border-radius: 6px; padding: 5px 8px; font-size: 13px; cursor: pointer; font-family: inherit;
   }
   .hr-team-remove-btn:hover{ color: var(--danger); border-color: var(--danger); }
 
-  .hr-calc-scroll{ overflow-x: auto; }
-  table.hr-calc-table{ width: 100%; border-collapse: collapse; font-size: 12.5px; min-width: 640px; }
-  table.hr-calc-table th, table.hr-calc-table td{ padding: 7px 8px; border-bottom: 1px solid var(--line-soft); text-align: center; vertical-align: middle; line-height: 1.5; }
-  table.hr-calc-table th{ background: var(--surface-2); font-family: "JetBrains Mono", "Noto Sans KR", monospace; font-size: 10.5px; letter-spacing: .03em; color: var(--ink-3); font-weight: 700; }
-  table.hr-calc-table td:first-child, table.hr-calc-table th:first-child{ text-align: left; }
-  table.hr-calc-table tbody tr:last-child td{ border-bottom: none; }
-  table.hr-calc-table input[type="number"]{ width: 76px; padding: 6px 5px; font-size: 12.5px; text-align: center; }
-  table.hr-calc-table td.hr-calc-total{ font-family: "JetBrains Mono", monospace; font-weight: 700; }
-  table.hr-calc-table tfoot td{ font-family: "JetBrains Mono", monospace; font-weight: 700; color: var(--ink-2); background: color-mix(in srgb, var(--accent) 5%, transparent); border-bottom: none; }
-  tr.hr-calc-row-bottom{ background: color-mix(in srgb, var(--danger) 7%, transparent); }
-  td.hr-calc-cell-winner{ background: color-mix(in srgb, var(--accent-2) 16%, transparent); position: relative; }
-  td.hr-calc-cell-winner input{ border-color: var(--accent-2) !important; font-weight: 700; }
-  td.hr-calc-col-lowest{ color: var(--danger); font-weight: 700; }
-
-  .hr-calc-summary{ display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: var(--ink-2); line-height: 1.6; }
+  .hr-calc-summary{ display: flex; flex-direction: column; gap: 6px; font-size: 14.5px; color: var(--ink-2); line-height: 1.6; }
   .hr-calc-summary strong{ color: var(--ink); }
 
-  .hr-denom-org-block{ margin-top: 16px; padding-top: 14px; border-top: 1px dashed var(--line-soft); }
-  .hr-denom-org-block:first-child{ margin-top: 8px; padding-top: 0; border-top: none; }
-  .hr-denom-org-title{ font-size: 13px; font-weight: 700; color: var(--ink); margin: 0 0 8px; }
-  .hr-denom-grid{ display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px 14px; }
-  .hr-denom-team{ display: flex; flex-direction: column; gap: 5px; }
-  .hr-denom-team .hr-denom-name{ font-size: 12px; font-weight: 700; color: var(--ink); }
-  .hr-denom-row{ display: flex; align-items: center; gap: 6px; font-size: 11.5px; color: var(--ink-3); }
-  .hr-denom-row input{ width: 48px; padding: 4px 5px; font-size: 11.5px; text-align: center; }
-  .hr-denom-team .hr-denom-computed{ font-size: 11px; color: var(--ink-3); font-family: "JetBrains Mono", monospace; }
+  .hr-org-totals-strip{ display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 16px; }
+  .hr-org-totals-chip{
+    font-size: 13.5px; color: var(--ink-3); background: var(--surface-2); border: 1px solid var(--line-soft);
+    border-radius: 999px; padding: 6px 12px; font-family: "Jua", "Noto Sans KR", sans-serif;
+  }
+  .hr-org-totals-chip b{ color: var(--ink); font-family: "JetBrains Mono", monospace; }
+  .hr-org-totals-chip.lowest{ border-color: var(--danger); background: color-mix(in srgb, var(--danger) 8%, var(--surface-2)); color: var(--danger); }
+  .hr-org-totals-chip.lowest b{ color: var(--danger); }
+
+  .hr-calc-teams{ display: flex; flex-direction: column; gap: 16px; }
+  .hr-team-calc-card{
+    border: 1px solid var(--line-soft); border-radius: 12px; padding: 14px 16px; background: var(--surface);
+  }
+  .hr-team-calc-card.hr-team-calc-card-bottom{ border-color: var(--danger); background: color-mix(in srgb, var(--danger) 5%, var(--surface)); }
+  .hr-team-calc-head{
+    display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+    padding-bottom: 10px; margin-bottom: 10px; border-bottom: 1px dashed var(--line-soft);
+  }
+  .hr-team-calc-name{ font-size: 20px; font-weight: 800; color: var(--ink); font-family: "Gothic A1", "Jua", "Noto Sans KR", sans-serif; }
+  .hr-team-calc-sum{ font-size: 14.5px; font-weight: 700; color: var(--ink-2); font-family: "JetBrains Mono", monospace; }
+  .hr-team-org-list{ display: flex; flex-direction: column; gap: 10px; }
+  .hr-team-org-row{
+    padding: 10px 12px; border-radius: 8px; background: var(--surface-2);
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .hr-team-org-row.hr-team-org-row-winner{
+    background: color-mix(in srgb, var(--accent-2) 16%, var(--surface-2)); box-shadow: inset 0 0 0 1.5px var(--accent-2);
+  }
+  .hr-team-org-name{ font-size: 14px; font-weight: 700; color: var(--ink); margin: 0; }
+  .hr-denom-inputs{ display: flex; flex-wrap: wrap; gap: 6px 10px; }
+  .hr-denom-row{ display: flex; align-items: center; gap: 5px; font-size: 13px; color: var(--ink-3); }
+  .hr-denom-row input{ width: 48px; padding: 4px 5px; font-size: 13px; text-align: center; }
+  .hr-team-org-total{ font-size: 13.5px; color: var(--ink-2); font-family: "JetBrains Mono", monospace; margin: 0; }
+  .hr-team-org-total-detail{ color: var(--ink-3); font-family: "Jua", "Noto Sans KR", sans-serif; }
+
+  /* ---------------- 동정심 마켓: 발표 화면(2기기 연동) ---------------- */
+  .hr-display-toggle-btn{
+    margin-top: 10px; background: transparent; border: 1px dashed var(--line-soft); color: var(--ink-3);
+    border-radius: 999px; padding: 7px 14px; font-size: 13.5px; cursor: pointer; font-family: inherit;
+  }
+  .hr-display-toggle-btn:hover{ color: var(--ink); border-color: var(--ink-3); }
+
+  .hr-broadcast-desc{ font-size: 14px; color: var(--ink-3); line-height: 1.6; margin: 0 0 10px; }
+  .hr-broadcast-row{ display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .hr-broadcast-status{ font-size: 14px; color: var(--ink-3); font-family: "JetBrains Mono", "Jua", "Noto Sans KR", monospace; }
+  .hr-broadcast-status.connected{ color: var(--accent-2); font-weight: 700; }
+  .hr-broadcast-status.waiting{ color: var(--accent); font-weight: 700; }
+  .hr-broadcast-status.err{ color: var(--danger); font-weight: 700; }
+  .hr-broadcast-code{
+    margin-top: 12px; padding: 14px 16px; border-radius: 10px; background: var(--surface-2);
+    border: 1.5px dashed var(--accent); display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  }
+  .hr-broadcast-code .hr-broadcast-code-val{
+    font-family: "JetBrains Mono", monospace; font-size: 24.5px; font-weight: 700; letter-spacing: .06em; color: var(--accent);
+  }
+  .hr-broadcast-code .hr-broadcast-code-hint{ font-size: 13.5px; color: var(--ink-3); }
+
+  button.hr-reveal-btn{ background: var(--accent-2); border-color: var(--accent-2); color: var(--accent-ink, #1c1406); }
+  button.hr-reveal-btn:hover{ filter: brightness(1.06); }
+  #view-hr-tools button.hr-reveal-btn:disabled{ opacity: .4; cursor: not-allowed; filter: none; }
+
+  html.hr-display-lock, body.hr-display-lock{ overflow: hidden !important; height: 100%; }
+  .hr-display-overlay{
+    position: fixed; inset: 0; z-index: 400; background: var(--bg);
+    display: flex; align-items: center; justify-content: center; padding: 28px 20px;
+    overflow-y: auto;
+  }
+  .hr-display-exit-btn{
+    position: fixed; top: 16px; left: 16px; z-index: 401;
+    background: var(--surface); border: 1px solid var(--line-soft); color: var(--ink-3);
+    border-radius: 999px; padding: 7px 14px; font-size: 13.5px; cursor: pointer; font-family: inherit;
+  }
+  .hr-display-exit-btn:hover{ color: var(--danger); border-color: var(--danger); }
+  .hr-display-stage{ width: 100%; max-width: 820px; text-align: center; }
+
+  .hr-display-eyebrow{ font-size: 14.5px; letter-spacing: .08em; color: var(--ink-3); text-transform: uppercase; margin: 0 0 10px; }
+  .hr-display-connect h2{ font-family: "Gothic A1", "Jua", "Noto Sans KR", sans-serif; font-size: clamp(22.5px, 3.4vw, 31.5px); margin: 0 0 20px; color: var(--ink); }
+  .hr-display-code-input-row{ display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .hr-display-code-input-row input{
+    font-family: "JetBrains Mono", monospace; font-size: 22.5px; letter-spacing: .08em; text-align: center;
+    padding: 12px 16px; width: 220px; text-transform: uppercase;
+  }
+  .hr-display-status{ margin-top: 16px; font-size: 15px; color: var(--ink-3); min-height: 18px; }
+  .hr-display-status.err{ color: var(--danger); }
+  .hr-display-status.ok{ color: var(--accent-2); }
+
+  .hr-display-waiting{ font-size: clamp(20px, 3vw, 27px); color: var(--ink-3); }
+  .hr-display-waiting .pulse-dot{
+    display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--accent-2);
+    margin-right: 8px; animation: hr-pulse 1.3s ease-in-out infinite;
+  }
+  @keyframes hr-pulse{ 0%,100%{ opacity: .35; } 50%{ opacity: 1; } }
+
+  .hr-reveal-round{ font-size: 18px; letter-spacing: .06em; color: var(--ink-3); margin: 0 0 8px; }
+  .hr-reveal-title{ font-family: "Gothic A1", "Jua", "Noto Sans KR", sans-serif; font-size: clamp(24.5px, 3.6vw, 36px); color: var(--ink); margin: 0 0 30px; line-height: 1.4; }
+  .hr-reveal-vulnerable-box{ display: flex; flex-direction: column; gap: 16px; align-items: center; }
+  .hr-reveal-vulnerable-org{
+    font-family: "Gothic A1", "Jua", "Noto Sans KR", sans-serif; font-weight: 700; font-size: clamp(31.5px, 5.2vw, 54px);
+    color: var(--danger); background: color-mix(in srgb, var(--danger) 10%, var(--surface));
+    border: 1.5px solid color-mix(in srgb, var(--danger) 40%, transparent);
+    border-radius: 16px; padding: 24px 40px; margin: 0;
+  }
 
   /* ---------------- 교사용 도구: 탄소의 딜레마 계산기 ---------------- */
   .cd-badge{
     display: inline-block;
-    font-size: 11px;
+    font-size: 12.5px;
     font-weight: 700;
     padding: 3px 9px;
     border-radius: 999px;
@@ -1211,18 +1348,18 @@
   .cd-badge.win{ background: color-mix(in srgb, var(--accent-2) 24%, transparent); color: var(--accent-2); }
 
   table.cd-team-table th, table.cd-team-table td{ padding: 9px 10px; vertical-align: middle; }
-  table.cd-team-table input[type="text"]{ width: 110px; padding: 6px 8px; font-size: 12.5px; }
+  table.cd-team-table input[type="text"]{ width: 110px; padding: 6px 8px; font-size: 14px; }
   table.cd-team-table td:nth-child(1){ font-weight: 600; }
   table.cd-team-table td.cd-num{ font-family: "JetBrains Mono", monospace; font-weight: 700; text-align: center; }
   .cd-team-remove-btn{
     background: transparent; border: 1px solid var(--line-soft); color: var(--ink-3);
-    border-radius: 6px; padding: 5px 8px; font-size: 11.5px; cursor: pointer;
+    border-radius: 6px; padding: 5px 8px; font-size: 13px; cursor: pointer;
   }
   .cd-team-remove-btn:hover{ color: var(--danger); border-color: var(--danger); }
 
   .cd-round-pills{ display: flex; gap: 6px; flex-wrap: wrap; margin: 4px 0 14px; }
   .cd-round-pill{
-    font-size: 12px; padding: 5px 12px; border-radius: 16px; border: 1px solid var(--line-soft);
+    font-size: 13.5px; padding: 5px 12px; border-radius: 16px; border: 1px solid var(--line-soft);
     color: var(--ink-3); font-family: "JetBrains Mono", monospace; background: var(--surface);
   }
   .cd-round-pill.done{ background: var(--ink); color: var(--bg); border-color: var(--ink); }
@@ -1232,41 +1369,41 @@
   .cd-team-calc-card{ border: 1px solid var(--line-soft); border-radius: 12px; padding: 12px 14px; background: var(--surface); }
   .cd-team-calc-card.cd-invalid-card{ border-color: var(--danger); background: color-mix(in srgb, var(--danger) 6%, var(--surface)); }
   .cd-team-calc-head{ display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
-  .cd-team-calc-name{ font-weight: 700; font-size: 14px; color: var(--ink); }
-  .cd-team-calc-stats{ font-size: 12px; color: var(--ink-3); font-family: "JetBrains Mono", "Noto Sans KR", monospace; }
+  .cd-team-calc-name{ font-weight: 700; font-size: 15.5px; color: var(--ink); }
+  .cd-team-calc-stats{ font-size: 13.5px; color: var(--ink-3); font-family: "JetBrains Mono", "Jua", "Noto Sans KR", monospace; }
   .cd-team-calc-stats b{ color: var(--ink); }
   .cd-team-calc-stats .cd-rank-1{ color: var(--accent); }
   .cd-calc-scroll{ overflow-x: auto; }
-  table.cd-player-table{ width: 100%; border-collapse: collapse; font-size: 12.5px; min-width: 420px; }
+  table.cd-player-table{ width: 100%; border-collapse: collapse; font-size: 14px; min-width: 420px; }
   table.cd-player-table th, table.cd-player-table td{ padding: 7px 8px; border-bottom: 1px solid var(--line-soft); text-align: center; vertical-align: middle; line-height: 1.5; }
-  table.cd-player-table th{ background: var(--surface-2); font-family: "JetBrains Mono", "Noto Sans KR", monospace; font-size: 10px; letter-spacing: .03em; color: var(--ink-3); font-weight: 700; }
+  table.cd-player-table th{ background: var(--surface-2); font-family: "JetBrains Mono", "Jua", "Noto Sans KR", monospace; font-size: 11px; letter-spacing: .03em; color: var(--ink-3); font-weight: 700; }
   table.cd-player-table td:first-child, table.cd-player-table th:first-child{ text-align: left; }
   table.cd-player-table tbody tr:last-child td{ border-bottom: none; }
-  table.cd-player-table input[type="text"]{ width: 90px; padding: 6px 7px; font-size: 12px; }
-  table.cd-player-table input[type="number"]{ width: 56px; padding: 6px 5px; font-size: 12.5px; text-align: center; }
+  table.cd-player-table input[type="text"]{ width: 90px; padding: 6px 7px; font-size: 13.5px; }
+  table.cd-player-table input[type="number"]{ width: 56px; padding: 6px 5px; font-size: 14px; text-align: center; }
   table.cd-player-table tr.cd-invalid-row td{ background: color-mix(in srgb, var(--danger) 7%, transparent); }
-  .cd-chip-left{ font-size: 10px; color: var(--ink-3); margin-top: 3px; }
+  .cd-chip-left{ font-size: 11px; color: var(--ink-3); margin-top: 3px; }
   .cd-chip-left.cd-chip-full{ color: var(--danger); font-weight: 700; }
 
-  .cd-warn-list{ font-size: 12px; color: var(--danger); margin: 8px 0 0; line-height: 1.6; }
+  .cd-warn-list{ font-size: 13.5px; color: var(--danger); margin: 8px 0 0; line-height: 1.6; }
 
-  .cd-reveal-card{ border-left: 3px solid var(--accent-2); background: color-mix(in srgb, var(--accent-2) 9%, var(--surface)); border-radius: 0 10px 10px 0; padding: 13px 16px; margin-top: 14px; font-size: 13.5px; line-height: 1.6; color: var(--ink-2); }
+  .cd-reveal-card{ border-left: 3px solid var(--accent-2); background: color-mix(in srgb, var(--accent-2) 9%, var(--surface)); border-radius: 0 10px 10px 0; padding: 13px 16px; margin-top: 14px; font-size: 15px; line-height: 1.6; color: var(--ink-2); }
   .cd-reveal-card strong{ color: var(--ink); }
 
   .cd-final-card{ border: 1.5px solid var(--accent); border-radius: 12px; padding: 18px 20px; margin-top: 16px; background: color-mix(in srgb, var(--accent) 6%, var(--surface)); }
-  .cd-final-card h4{ margin: 0 0 10px; font-family: "Noto Serif KR", serif; font-size: 16px; color: var(--accent); }
-  .cd-final-winner{ font-size: 15px; font-weight: 700; color: var(--ink); margin: 6px 0; }
-  .cd-final-note{ font-size: 12.5px; color: var(--ink-2); line-height: 1.6; }
+  .cd-final-card h4{ margin: 0 0 10px; font-family: "Gothic A1", "Jua", "Noto Sans KR", sans-serif; font-size: 18px; color: var(--accent); }
+  .cd-final-winner{ font-size: 17px; font-weight: 700; color: var(--ink); margin: 6px 0; }
+  .cd-final-note{ font-size: 14px; color: var(--ink-2); line-height: 1.6; }
 
   .cd-mvp-team-block{ margin-top: 12px; padding-top: 12px; border-top: 1px dashed var(--line-soft); }
   .cd-mvp-team-block:first-child{ margin-top: 8px; padding-top: 0; border-top: none; }
-  .cd-mvp-team-title{ font-size: 13px; font-weight: 700; color: var(--ink); margin: 0 0 8px; }
+  .cd-mvp-team-title{ font-size: 14.5px; font-weight: 700; color: var(--ink); margin: 0 0 8px; }
   .cd-mvp-grid{ display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
   .cd-mvp-player{ display: flex; flex-direction: column; gap: 4px; padding: 8px 10px; border-radius: 8px; background: var(--surface); border: 1px solid var(--line-soft); }
   .cd-mvp-player.top{ border-color: var(--accent-2); background: color-mix(in srgb, var(--accent-2) 12%, var(--surface)); }
-  .cd-mvp-player .cd-mvp-name{ font-size: 12.5px; font-weight: 600; color: var(--ink); }
-  .cd-mvp-player .cd-mvp-left{ font-size: 11.5px; color: var(--ink-3); font-family: "JetBrains Mono", monospace; }
-  .cd-mvp-player .cd-mvp-star{ font-size: 11px; font-weight: 700; color: var(--accent-2); }
+  .cd-mvp-player .cd-mvp-name{ font-size: 14px; font-weight: 600; color: var(--ink); }
+  .cd-mvp-player .cd-mvp-left{ font-size: 13px; color: var(--ink-3); font-family: "JetBrains Mono", monospace; }
+  .cd-mvp-player .cd-mvp-star{ font-size: 12.5px; font-weight: 700; color: var(--accent-2); }
   #view-carbon-tools button.btn:disabled{ opacity: .4; cursor: not-allowed; }
   #view-carbon-tools button.btn:disabled:hover{ filter: none; }
 
@@ -1280,7 +1417,7 @@
     align-items: center;
     gap: 6px;
     padding: 8px 12px;
-    font-size: 12.5px;
+    font-size: 14px;
     font-weight: 700;
     font-family: inherit;
     color: var(--ink-2);
@@ -1321,55 +1458,55 @@
   box-shadow:0 4px 18px rgba(50,35,10,.25), inset 0 0 60px rgba(120,90,40,.12);
 }
 #rl-app .wrap{padding:1.5rem 1.25rem 3rem}
-#rl-app h2{font-size:19px;font-weight:700;margin-bottom:.7rem;font-family:Georgia,'Batang','Nanum Myeongjo',serif;letter-spacing:.02em}
-#rl-app h3{font-size:13px;font-weight:700;margin:0 0 .8rem;display:inline-block;font-family:Georgia,'Batang','Nanum Myeongjo',serif;
+#rl-app h2{font-size: 21.5px;font-weight:700;margin-bottom:.7rem;font-family:Georgia,'Batang','Nanum Myeongjo',serif;letter-spacing:.02em}
+#rl-app h3{font-size: 14.5px;font-weight:700;margin:0 0 .8rem;display:inline-block;font-family:Georgia,'Batang','Nanum Myeongjo',serif;
   color:var(--gn-gold-light);background:linear-gradient(180deg,#3d2e1c,#1e150b);border:1px solid var(--gn-gold);
   border-radius:5px;padding:5px 14px;letter-spacing:.04em;
   box-shadow:0 2px 4px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.08);}
 #rl-app .card{background:var(--gn-paper-card);border:1px solid var(--gn-brown-line);border-radius:10px;padding:1rem 1.2rem;margin-bottom:.9rem;
   box-shadow:0 1px 3px rgba(60,40,10,.12), inset 0 0 25px rgba(150,120,60,.08);}
-#rl-app .info-box{background:rgba(255,255,255,.35);border:1px dashed var(--gn-brown-line);border-radius:8px;padding:.6rem .9rem;font-size:12.5px;color:#5a4a2e;margin-bottom:.8rem;line-height:1.55}
+#rl-app .info-box{background:rgba(255,255,255,.35);border:1px dashed var(--gn-brown-line);border-radius:8px;padding:.6rem .9rem;font-size: 14px;color:#5a4a2e;margin-bottom:.8rem;line-height:1.55}
 #rl-app .pool-grid{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:.5rem}
-#rl-app .pool-chip{font-size:12px;padding:5px 10px;border-radius:7px;background:#e7d8b0;color:#5a4a2e;border:1px solid #cdb583;transition:opacity .3s, transform .3s}
+#rl-app .pool-chip{font-size: 13.5px;padding:5px 10px;border-radius:7px;background:#e7d8b0;color:#5a4a2e;border:1px solid #cdb583;transition:opacity .3s, transform .3s}
 #rl-app .pool-chip.rare{background:#f0d9c9;color:var(--gn-red);border-color:#c99a80}
-#rl-app .legend{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:.8rem;font-size:12px;color:#6b5a3a}
+#rl-app .legend{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:.8rem;font-size: 13.5px;color:#6b5a3a}
 #rl-app .legend-item{display:flex;align-items:center;gap:5px}
 #rl-app .dot{width:9px;height:9px;border-radius:50%;display:inline-block}
 #rl-app input[type=text]{width:100%;padding:8px 10px;border:1px solid var(--gn-brown-line);border-radius:7px;
-  font-size:14px;margin-bottom:.5rem;outline:none;font-family:inherit;background:rgba(255,255,255,.55);color:var(--gn-ink);}
+  font-size: 15.5px;margin-bottom:.5rem;outline:none;font-family:inherit;background:rgba(255,255,255,.55);color:var(--gn-ink);}
 #rl-app input[type=text]:focus{border-color:var(--gn-gold)}
 #rl-app .btn-primary{background:linear-gradient(180deg,#40311f,#221708);color:var(--gn-gold-light);border:1px solid var(--gn-gold);width:100%;padding:11px;
-  font-size:15px;font-weight:700;margin-top:.6rem;border-radius:9px;cursor:pointer;font-family:Georgia,'Batang',serif;letter-spacing:.03em;
+  font-size: 17px;font-weight:700;margin-top:.6rem;border-radius:9px;cursor:pointer;font-family:Georgia,'Batang',serif;letter-spacing:.03em;
   box-shadow:0 2px 6px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.08);
   transition:opacity .2s, transform .1s;}
 #rl-app .btn-primary:hover{opacity:.9}
 #rl-app .btn-primary:active{transform:translateY(1px)}
 #rl-app .btn-primary:disabled{opacity:.35;cursor:not-allowed}
 #rl-app .btn-secondary{background:rgba(255,255,255,.4);color:#5a4a2e;border:1px solid var(--gn-brown-line);padding:10px 14px;
-  font-size:14px;border-radius:9px;cursor:pointer;width:100%;margin-top:.5rem;font-weight:600;}
+  font-size: 15.5px;border-radius:9px;cursor:pointer;width:100%;margin-top:.5rem;font-weight:600;}
 #rl-app .btn-secondary:hover{background:rgba(255,255,255,.65)}
 #rl-app .nation-avatar{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;
-  font-size:12px;font-weight:700;flex-shrink:0;background:#dccaa0;color:#4a3a20;border:1px solid #b89b6a;}
+  font-size: 13.5px;font-weight:700;flex-shrink:0;background:#dccaa0;color:#4a3a20;border:1px solid #b89b6a;}
 #rl-app .draw-row{display:flex;align-items:center;justify-content:space-between;padding:.6rem 0;border-bottom:1px dashed #cdb583;gap:8px}
 #rl-app .draw-row:last-child{border-bottom:none}
 #rl-app .draw-left{display:flex;align-items:center;gap:9px;flex:1;min-width:0}
-#rl-app .draw-name{font-size:13.5px}
+#rl-app .draw-name{font-size: 15px}
 #rl-app .draw-result{display:flex;gap:5px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
-#rl-app .res-tag{font-size:11.5px;padding:4px 9px;border-radius:7px;background:#e7d8b0;color:#5a4a2e;font-weight:700;border:1px solid #cdb583}
+#rl-app .res-tag{font-size: 13px;padding:4px 9px;border-radius:7px;background:#e7d8b0;color:#5a4a2e;font-weight:700;border:1px solid #cdb583}
 #rl-app .res-tag.rare{background:#f0d9c9;color:var(--gn-red);border-color:#c99a80}
-#rl-app .pending-tag{font-size:11.5px;padding:4px 10px;border-radius:7px;background:rgba(255,255,255,.3);color:#a3906a;border:1px dashed #cdb583}
-#rl-app .drawing-anim{display:inline-block;font-size:12px;color:var(--gn-brown);font-weight:700}
+#rl-app .pending-tag{font-size: 13px;padding:4px 10px;border-radius:7px;background:rgba(255,255,255,.3);color:#a3906a;border:1px dashed #cdb583}
+#rl-app .drawing-anim{display:inline-block;font-size: 13.5px;color:var(--gn-brown);font-weight:700}
 #rl-app .progress-bar-bg{height:8px;background:#dccaa0;border-radius:4px;overflow:hidden;margin:.6rem 0;border:1px solid #cdb583}
 #rl-app .progress-bar-fill{height:100%;background:linear-gradient(90deg,#c9a24b,#8a6a35);transition:width .4s}
-#rl-app .summary-table{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:.3rem}
+#rl-app .summary-table{width:100%;border-collapse:collapse;font-size: 14px;margin-top:.3rem}
 #rl-app .summary-table th{background:linear-gradient(180deg,#3d2e1c,#1e150b);color:var(--gn-gold-light);padding:7px 8px;text-align:left;font-weight:700;border-bottom:1px solid var(--gn-gold)}
 #rl-app .summary-table td{padding:6px 8px;border-bottom:1px dashed #cdb583}
 #rl-app .title-row{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:1.1rem;
   background:linear-gradient(180deg,#3d2e1c,#1e150b);border:2px solid var(--gn-gold);border-radius:8px;padding:.7rem .5rem;
   box-shadow:0 3px 8px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.08);}
 #rl-app .title-row h2{color:var(--gn-gold-light);text-shadow:0 1px 2px rgba(0,0,0,.6);margin-bottom:0}
-#rl-app .title-row .emoji{font-size:22px;filter:drop-shadow(0 1px 1px rgba(0,0,0,.5))}
-#rl-app footer{text-align:center;font-size:11px;color:#9a8a63;margin-top:1.5rem;letter-spacing:.03em}
+#rl-app .title-row .emoji{font-size: 24.5px;filter:drop-shadow(0 1px 1px rgba(0,0,0,.5))}
+#rl-app footer{text-align:center;font-size: 12.5px;color:#9a8a63;margin-top:1.5rem;letter-spacing:.03em}
 
 #hp-app, #hp-app *{box-sizing:border-box}
 #hp-app{
@@ -1396,74 +1533,74 @@
   box-shadow:0 4px 18px rgba(50,35,10,.25), inset 0 0 60px rgba(120,90,40,.12);
 }
 #hp-app .wrap{padding:1.5rem 1.25rem 3rem}
-#hp-app h2{font-size:19px;font-weight:700;margin-bottom:.7rem;font-family:Georgia,'Batang','Nanum Myeongjo',serif;letter-spacing:.02em}
-#hp-app h3{font-size:13px;font-weight:700;margin:0 0 .8rem;display:inline-block;font-family:Georgia,'Batang','Nanum Myeongjo',serif;
+#hp-app h2{font-size: 21.5px;font-weight:700;margin-bottom:.7rem;font-family:Georgia,'Batang','Nanum Myeongjo',serif;letter-spacing:.02em}
+#hp-app h3{font-size: 14.5px;font-weight:700;margin:0 0 .8rem;display:inline-block;font-family:Georgia,'Batang','Nanum Myeongjo',serif;
   color:var(--gn-gold-light);background:linear-gradient(180deg,#3d2e1c,#1e150b);border:1px solid var(--gn-gold);
   border-radius:5px;padding:5px 14px;letter-spacing:.04em;
   box-shadow:0 2px 4px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.08);}
 #hp-app .card{background:var(--gn-paper-card);border:1px solid var(--gn-brown-line);border-radius:10px;padding:1rem 1.2rem;margin-bottom:.9rem;
   box-shadow:0 1px 3px rgba(60,40,10,.12), inset 0 0 25px rgba(150,120,60,.08);}
-#hp-app .info-box{background:rgba(255,255,255,.35);border:1px dashed var(--gn-brown-line);border-radius:8px;padding:.6rem .9rem;font-size:12.5px;color:#5a4a2e;margin-bottom:.8rem;line-height:1.55}
-#hp-app label{font-size:12.5px;color:#6b5a3a;display:block;margin-bottom:4px}
+#hp-app .info-box{background:rgba(255,255,255,.35);border:1px dashed var(--gn-brown-line);border-radius:8px;padding:.6rem .9rem;font-size: 14px;color:#5a4a2e;margin-bottom:.8rem;line-height:1.55}
+#hp-app label{font-size: 14px;color:#6b5a3a;display:block;margin-bottom:4px}
 #hp-app input[type=text], #hp-app select{width:100%;padding:8px 10px;border:1px solid var(--gn-brown-line);border-radius:7px;
-  font-size:14px;margin-bottom:.5rem;outline:none;font-family:inherit;background:rgba(255,255,255,.55);color:var(--gn-ink);}
+  font-size: 15.5px;margin-bottom:.5rem;outline:none;font-family:inherit;background:rgba(255,255,255,.55);color:var(--gn-ink);}
 #hp-app input[type=text]:focus, #hp-app select:focus{border-color:var(--gn-gold)}
 #hp-app input[type=text]:disabled, #hp-app select:disabled{background:rgba(220,202,160,.4);color:#8a7a58;cursor:not-allowed}
 #hp-app .btn-primary{background:linear-gradient(180deg,#40311f,#221708);color:var(--gn-gold-light);border:1px solid var(--gn-gold);width:100%;padding:11px;
-  font-size:15px;font-weight:700;margin-top:.6rem;border-radius:9px;cursor:pointer;font-family:Georgia,'Batang',serif;letter-spacing:.03em;
+  font-size: 17px;font-weight:700;margin-top:.6rem;border-radius:9px;cursor:pointer;font-family:Georgia,'Batang',serif;letter-spacing:.03em;
   box-shadow:0 2px 6px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.08);
   transition:opacity .2s, transform .1s;}
 #hp-app .btn-primary:hover{opacity:.9}
 #hp-app .btn-primary:active{transform:translateY(1px)}
 #hp-app .btn-primary:disabled{opacity:.35;cursor:not-allowed}
 #hp-app .btn-secondary{background:rgba(255,255,255,.4);color:#5a4a2e;border:1px solid var(--gn-brown-line);padding:10px 14px;
-  font-size:14px;border-radius:9px;cursor:pointer;width:100%;margin-top:.5rem;font-weight:600;}
+  font-size: 15.5px;border-radius:9px;cursor:pointer;width:100%;margin-top:.5rem;font-weight:600;}
 #hp-app .btn-secondary:hover{background:rgba(255,255,255,.65)}
 #hp-app .btn-danger-outline{background:rgba(255,255,255,.3);color:var(--gn-red);border:1px solid #c99a80;padding:9px 14px;
-  font-size:13px;border-radius:9px;cursor:pointer;width:100%;margin-top:.8rem;font-weight:600;}
+  font-size: 14.5px;border-radius:9px;cursor:pointer;width:100%;margin-top:.8rem;font-weight:600;}
 #hp-app .btn-danger-outline:hover{background:rgba(255,255,255,.55)}
 #hp-app .nation-avatar{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;
-  font-size:12px;font-weight:700;flex-shrink:0;background:#dccaa0;color:#4a3a20;border:1px solid #b89b6a;}
+  font-size: 13.5px;font-weight:700;flex-shrink:0;background:#dccaa0;color:#4a3a20;border:1px solid #b89b6a;}
 #hp-app .player-row{border:1px solid var(--gn-brown-line);border-radius:10px;padding:.75rem .9rem;margin-bottom:.6rem;background:rgba(255,255,255,.28);}
 #hp-app .player-head{display:flex;align-items:center;gap:9px;margin-bottom:.6rem}
-#hp-app .player-name-input{font-size:14px;font-weight:700;border:none;background:transparent;padding:4px 0;flex:1;min-width:0;color:var(--gn-ink);}
+#hp-app .player-name-input{font-size: 15.5px;font-weight:700;border:none;background:transparent;padding:4px 0;flex:1;min-width:0;color:var(--gn-ink);}
 #hp-app .player-name-input:focus{border-bottom:1px solid var(--gn-gold)}
 #hp-app .player-name-input:disabled{background:transparent}
 #hp-app .res-row{display:grid;grid-template-columns:1fr 90px 60px;gap:8px;align-items:center;margin-bottom:6px}
-#hp-app .res-row label{margin-bottom:0;font-size:13px;color:#4a3a20}
+#hp-app .res-row label{margin-bottom:0;font-size: 14.5px;color:#4a3a20}
 #hp-app .res-select{margin-bottom:0}
 #hp-app .secret-check-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
 #hp-app .secret-check-wrap input[type=checkbox]{width:16px;height:16px;margin:0;cursor:pointer}
-#hp-app .secret-check-wrap span{font-size:9.5px;color:#8a7a58;white-space:nowrap}
+#hp-app .secret-check-wrap span{font-size: 10.5px;color:#8a7a58;white-space:nowrap}
 #hp-app .price-select{margin-bottom:0}
-#hp-app .rare-badge{font-size:10.5px;padding:1px 6px;border-radius:6px;background:#f0d9c9;color:var(--gn-red);margin-left:5px;font-weight:700;border:1px solid #c99a80}
-#hp-app .result-table{width:100%;border-collapse:collapse;font-size:13px}
+#hp-app .rare-badge{font-size: 12px;padding:1px 6px;border-radius:6px;background:#f0d9c9;color:var(--gn-red);margin-left:5px;font-weight:700;border:1px solid #c99a80}
+#hp-app .result-table{width:100%;border-collapse:collapse;font-size: 14.5px}
 #hp-app .result-table th{background:linear-gradient(180deg,#3d2e1c,#1e150b);color:var(--gn-gold-light);padding:7px 9px;text-align:left;font-weight:700;border-bottom:1px solid var(--gn-gold)}
 #hp-app .result-table td{padding:7px 9px;border-bottom:1px dashed #cdb583;vertical-align:middle}
-#hp-app .badge{display:inline-block;font-size:11.5px;padding:3px 8px;border-radius:8px;font-weight:700}
+#hp-app .badge{display:inline-block;font-size: 13px;padding:3px 8px;border-radius:8px;font-weight:700}
 #hp-app .badge-success{background:#e3ecc9;color:#3b6d11;border:1px solid #b9cf8a}
 #hp-app .badge-warn{background:#f5e6c2;color:#8a5a0e;border:1px solid #d9bd7c}
 #hp-app .badge-round{background:#f0e2b8;color:#7a5a1f;border:1px solid #d9bd7c}
-#hp-app .rank-row{display:flex;align-items:center;justify-content:space-between;padding:.55rem 0;border-bottom:1px dashed #cdb583;font-size:13.5px}
+#hp-app .rank-row{display:flex;align-items:center;justify-content:space-between;padding:.55rem 0;border-bottom:1px dashed #cdb583;font-size: 15px}
 #hp-app .rank-row:last-child{border-bottom:none}
 #hp-app .title-row{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:.9rem;
   background:linear-gradient(180deg,#3d2e1c,#1e150b);border:2px solid var(--gn-gold);border-radius:8px;padding:.65rem .5rem;
   box-shadow:0 3px 8px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.08);}
 #hp-app .title-row h2{color:var(--gn-gold-light);text-shadow:0 1px 2px rgba(0,0,0,.6);margin-bottom:0}
-#hp-app .title-row .emoji{font-size:22px;filter:drop-shadow(0 1px 1px rgba(0,0,0,.5))}
-#hp-app .warn-text{color:var(--gn-red);font-size:12px;margin-top:4px}
-#hp-app footer{text-align:center;font-size:11px;color:#9a8a63;margin-top:1.5rem;letter-spacing:.03em}
-#hp-app .check-count{font-size:11.5px;color:#8a7a58;margin-top:6px;text-align:right}
+#hp-app .title-row .emoji{font-size: 24.5px;filter:drop-shadow(0 1px 1px rgba(0,0,0,.5))}
+#hp-app .warn-text{color:var(--gn-red);font-size: 13.5px;margin-top:4px}
+#hp-app footer{text-align:center;font-size: 12.5px;color:#9a8a63;margin-top:1.5rem;letter-spacing:.03em}
+#hp-app .check-count{font-size: 13px;color:#8a7a58;margin-top:6px;text-align:right}
 #hp-app .round-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:.8rem}
 #hp-app .round-pills{display:flex;gap:6px}
-#hp-app .round-pill{font-size:12px;padding:4px 10px;border-radius:16px;border:1px solid var(--gn-brown-line);color:#a3906a;background:rgba(255,255,255,.3)}
+#hp-app .round-pill{font-size: 13.5px;padding:4px 10px;border-radius:16px;border:1px solid var(--gn-brown-line);color:#a3906a;background:rgba(255,255,255,.3)}
 #hp-app .round-pill.done{background:linear-gradient(180deg,#40311f,#221708);color:var(--gn-gold-light);border-color:#221708}
 #hp-app .round-pill.current{background:linear-gradient(180deg,#e8cf8a,#c9a24b);color:#2e2314;border-color:#8a6a35;font-weight:700;box-shadow:0 0 0 2px rgba(201,162,75,.35)}
-#hp-app .cumulative-row{display:flex;align-items:center;justify-content:space-between;padding:.55rem 0;border-bottom:1px dashed #cdb583;font-size:13.5px}
+#hp-app .cumulative-row{display:flex;align-items:center;justify-content:space-between;padding:.55rem 0;border-bottom:1px dashed #cdb583;font-size: 15px}
 #hp-app .cumulative-row:last-child{border-bottom:none}
-#hp-app .income-detail{font-size:11px;color:#8a7a58;margin-top:1px}
-#hp-app .delta-this-round{font-size:11.5px;padding:2px 7px;border-radius:6px;background:#e3ecc9;color:#3b6d11;font-weight:700;border:1px solid #b9cf8a}
-#hp-app .secret-pill{background:#e7d8b0;color:#6b5a3a;padding:3px 9px;border-radius:8px;font-size:12px;font-weight:700;border:1px solid #cdb583}
+#hp-app .income-detail{font-size: 12.5px;color:#8a7a58;margin-top:1px}
+#hp-app .delta-this-round{font-size: 13px;padding:2px 7px;border-radius:6px;background:#e3ecc9;color:#3b6d11;font-weight:700;border:1px solid #b9cf8a}
+#hp-app .secret-pill{background:#e7d8b0;color:#6b5a3a;padding:3px 9px;border-radius:8px;font-size: 13.5px;font-weight:700;border:1px solid #cdb583}
 </style>
 
 <button type="button" id="fs-toggle-btn" title="전체 화면으로 보기 (브라우저 화면 숨기기)">⛶ <span id="fs-toggle-label">전체 화면</span></button>
@@ -1487,38 +1624,49 @@
 
   <!-- ===================== HOME (단원 목록) ===================== -->
   <section id="view-home" class="view">
+    <div class="home-stat-band">
+      <div class="home-stat-item"><div class="home-stat-num">4</div><div class="home-stat-label">진행 가능한 단원</div></div>
+      <div class="home-stat-item"><div class="home-stat-num">6</div><div class="home-stat-label">교실 게임 &amp; 도구</div></div>
+      <div class="home-stat-item"><div class="home-stat-num">1</div><div class="home-stat-label">수행평가 안내 페이지</div></div>
+    </div>
     <div class="unit-grid">
       <button type="button" class="unit-card" data-unit="geo">
-        <span class="unit-card-top"><span class="unit-num">01</span><span class="unit-status ready">바로 시작</span></span>
+        <span class="unit-card-top"><span class="unit-icon-box" aria-hidden="true">🧭</span><span class="unit-status ready">바로 시작</span></span>
+        <span class="unit-num">UNIT 01</span>
         <h2 class="unit-title">지정학적 갈등과 공존</h2>
         <p class="unit-desc">초크포인트, 매킨더의 심장부·외곽 거점, 스파이크먼의 림랜드 이론을 세계지도 위에서 직접 찾아보는 지도 활동 5가지.</p>
         <span class="unit-cta">지도 활동 시작 →</span>
       </button>
       <button type="button" class="unit-card" data-unit="hr">
-        <span class="unit-card-top"><span class="unit-num">02</span><span class="unit-status ready">바로 시작</span></span>
+        <span class="unit-card-top"><span class="unit-icon-box" aria-hidden="true">✊</span><span class="unit-status ready">바로 시작</span></span>
+        <span class="unit-num">UNIT 02</span>
         <h2 class="unit-title">국제 사회의 인권 문제</h2>
         <p class="unit-desc">난민·빈곤·성소수자·무국적자 — 4곳의 인권 기구에 기부하는 교실 게임 "동정심 마켓"의 규칙서.</p>
         <span class="unit-cta">게임 규칙서 보기 →</span>
       </button>
       <button type="button" class="unit-card" data-unit="env">
-        <span class="unit-card-top"><span class="unit-num">03</span><span class="unit-status ready">바로 시작</span></span>
+        <span class="unit-card-top"><span class="unit-icon-box" aria-hidden="true">🌱</span><span class="unit-status ready">바로 시작</span></span>
+        <span class="unit-num">UNIT 03</span>
         <h2 class="unit-title">환경과 에너지 문제</h2>
         <p class="unit-desc">탄소 경쟁과 자원 수출 외교, 두 가지 교실 게임의 규칙서로 지구적 환경 문제와 자원 분쟁을 체험합니다.</p>
         <span class="unit-cta">게임 규칙서 보기 →</span>
       </button>
       <button type="button" class="unit-card" data-unit="migration">
-        <span class="unit-card-top"><span class="unit-num">04</span><span class="unit-status ready">바로 시작</span></span>
+        <span class="unit-card-top"><span class="unit-icon-box" aria-hidden="true">🧳</span><span class="unit-status ready">바로 시작</span></span>
+        <span class="unit-num">UNIT 04</span>
         <h2 class="unit-title">이주민과 문화 다양성 문제</h2>
         <p class="unit-desc">가진 자본과 배출요인에 따라 갈 수 있는 나라가 달라지는 개인전 교실 게임 "이주 로드"의 규칙서입니다.</p>
         <span class="unit-cta">게임 규칙서 보기 →</span>
       </button>
       <button type="button" class="unit-card" disabled>
-        <span class="unit-card-top"><span class="unit-num">05</span><span class="unit-status">준비 중</span></span>
+        <span class="unit-card-top"><span class="unit-icon-box" aria-hidden="true">🔭</span><span class="unit-status">준비 중</span></span>
+        <span class="unit-num">UNIT 05</span>
         <h2 class="unit-title">미래 사회의 전망과 대응</h2>
         <p class="unit-desc">정보사회, 생명윤리, 세계화와 글로컬라이제이션, 세계시민성을 다룰 예정입니다.</p>
       </button>
       <button type="button" class="unit-card" data-unit="assessment">
-        <span class="unit-card-top"><span class="unit-num">평가</span><span class="unit-status ready">바로 시작</span></span>
+        <span class="unit-card-top"><span class="unit-icon-box" aria-hidden="true">📋</span><span class="unit-status ready">바로 시작</span></span>
+        <span class="unit-num">평가</span>
         <h2 class="unit-title">수행평가 안내</h2>
         <p class="unit-desc">3개 영역 평가 계획(채점기준표)과 수행평가 1(폭력 해결 보고서) 작성지 구성을 확인하는 읽기 전용 안내 페이지.</p>
         <span class="unit-cta">평가 안내 보기 →</span>
@@ -1529,30 +1677,37 @@
       <h2>교사용 도구</h2>
       <div class="tool-row">
         <button type="button" class="tool-card" data-unit="teacher">
+          <span class="tool-icon-box" aria-hidden="true">📝</span>
           <span class="tool-title">학생 제출 답안 보기</span>
           <span class="tool-desc">외곽 거점 활동에서 학생들이 저장한 답안 파일을 모아서 확인해요.</span>
         </button>
         <button type="button" class="tool-card" data-unit="groups">
+          <span class="tool-icon-box" aria-hidden="true">🎲</span>
           <span class="tool-title">무작위 모둠 편성기</span>
           <span class="tool-desc">인원수와 이름을 입력하면 무작위로 모둠을 나눠드려요.</span>
         </button>
         <button type="button" class="tool-card" data-unit="violence">
+          <span class="tool-icon-box" aria-hidden="true">🃏</span>
           <span class="tool-title">폭력 사례 추첨기</span>
           <span class="tool-desc">갈퉁의 폭력 삼각형 — 카드를 섞어 직접·구조·문화적 폭력 사례를 무작위로 뽑아요.</span>
         </button>
         <button type="button" class="tool-card" data-unit="mig-tools" data-panel-default="draw">
+          <span class="tool-icon-box" aria-hidden="true">🧳</span>
           <span class="tool-title">이주 로드 도구</span>
           <span class="tool-desc">"이주 로드" 진행용 — 랜덤 인카운터(자본개발·정세변화 이벤트 뽑기)와 현황판을 한 화면에서 버튼으로 오가며 써요.</span>
         </button>
         <button type="button" class="tool-card" data-unit="hr-tools" data-panel-default="board">
+          <span class="tool-icon-box" aria-hidden="true">✊</span>
           <span class="tool-title">동정심 마켓 도구</span>
           <span class="tool-desc">"동정심 마켓" 진행용 — 팀별 증서 현황판과 기부 계산기를 한 화면에서 버튼으로 오가며 써요.</span>
         </button>
         <button type="button" class="tool-card" data-unit="price-tools" data-panel-default="draw">
+          <span class="tool-icon-box" aria-hidden="true">💰</span>
           <span class="tool-title">히든 프라이스 도구</span>
           <span class="tool-desc">"히든 프라이스: 자원 외교전" 진행용 — 자원 추첨과 라운드별 수출가 계산기를 한 화면에서 버튼으로 오가며 써요.</span>
         </button>
         <button type="button" class="tool-card" data-unit="carbon-tools" data-panel-default="board">
+          <span class="tool-icon-box" aria-hidden="true">🌱</span>
           <span class="tool-title">탄소의 딜레마 계산기</span>
           <span class="tool-desc">"탄소의 딜레마" 진행용 — 팀별 승점·탄소 사용량 현황판과 7라운드 경제력 계산기를 한 화면에서 버튼으로 오가며 써요.</span>
         </button>
@@ -3167,8 +3322,25 @@
       <p class="eyebrow">교사용 도구 · 동정심 마켓</p>
       <h1 class="title">동정심 마켓; 인권 보호 주식회사</h1>
       <p class="lede">팀별 증서를 기록하는 "현황판"과 라운드별 기부액을 계산하는 "기부 계산기"를 한 페이지에서 씁니다. 맨 아래 두 버튼으로 바로바로 전환하세요.</p>
+      <button type="button" class="hr-display-toggle-btn" id="hr-display-mode-btn">📺 이 기기를 발표 화면으로 전환 (패드용)</button>
     </div>
   </header>
+
+  <div class="hr-display-overlay" id="hr-display-overlay" hidden>
+    <button type="button" class="hr-display-exit-btn" id="hr-display-exit-btn">✕ 발표 모드 종료</button>
+    <div class="hr-display-stage">
+      <div id="hr-display-connect">
+        <p class="hr-display-eyebrow">동정심 마켓 · 발표 화면</p>
+        <h2>노트북(계산기) 화면에 뜬<br>연결 코드를 입력하세요</h2>
+        <div class="hr-display-code-input-row">
+          <input type="text" id="hr-display-code-input" placeholder="연결 코드" autocomplete="off" autocapitalize="off" spellcheck="false">
+          <button type="button" class="btn next" id="hr-display-connect-btn">연결하기</button>
+        </div>
+        <p class="hr-display-status" id="hr-display-status"></p>
+      </div>
+      <div id="hr-display-reveal" hidden></div>
+    </div>
+  </div>
 
   <div class="tool-panel" data-panel="board">
     <p class="tool-panel-title">🏅 동정심 마켓 현황판</p>
@@ -3201,42 +3373,13 @@
 
   <div class="tool-panel" data-panel="calc" hidden>
     <p class="tool-panel-title">🧮 동정심 마켓 기부 계산기</p>
-    <p class="tool-panel-sub">라운드마다 팀별로 4개 기구에 기부한 금액을 입력하세요. 기구마다 그 라운드 최고 기부팀에게 각각 정해진 장수(어디든 집 1장 · 든든한 한 끼 2장 · 무지개 방패단 3장 · 히든피플 4장)의 인권 보호 증서를 자동으로 주고, 총 기부액이 가장 적은 팀에게는 인류애 마이너스 증서를 줘요. 아래 "단위별 입력"에서 화폐 단위(100/50/10/5/1크레딧권) 개수로 직접 입력할 수도 있어요 — 동점일 때 자동으로 우선순위도 정해줘요. "결과 반영" 버튼을 누르면 증서가 현황판에 자동으로 더해져요.</p>
+    <p class="tool-panel-sub">라운드마다 팀별로 4개 기구에 100/50/10/5/1크레딧권을 몇 장씩 냈는지 입력하세요. 기구마다 그 라운드 최고 기부팀에게 각각 정해진 장수(어디든 집 1장 · 든든한 한 끼 2장 · 무지개 방패단 3장 · 히든피플 4장)의 인권 보호 증서를 자동으로 주고, 총 기부액이 가장 적은 팀에게는 인류애 마이너스 증서를 줘요 — 동점일 때는 더 큰 단위를 많이 쓴 팀이 자동으로 우선 인정돼요. "결과 반영" 버튼을 누르면 증서가 현황판에 자동으로 더해져요.</p>
 
     <div class="card">
       <span class="mission-label">현재 라운드 <span id="hr-calc-round" style="color:var(--ink-3); font-weight:400;">1 / 8</span></span>
-      <div class="hr-calc-scroll" style="margin-top:12px;">
-        <table class="hr-calc-table" id="hr-calc-table">
-          <thead>
-            <tr>
-              <th>팀</th>
-              <th>🏠 어디든 집 프로젝트</th>
-              <th>🍚 든든한 한 끼 재단</th>
-              <th>🏳️‍🌈 무지개 방패단</th>
-              <th>🕵️ 히든피플 재단</th>
-              <th>합계</th>
-            </tr>
-          </thead>
-          <tbody id="hr-calc-tbody"></tbody>
-          <tfoot>
-            <tr id="hr-calc-org-totals">
-              <td>기구별 합계</td>
-              <td data-org="0">0</td>
-              <td data-org="1">0</td>
-              <td data-org="2">0</td>
-              <td data-org="3">0</td>
-              <td></td>
-            </tr>
-          </tfoot>
-        </table>
-      </div>
+      <div class="hr-org-totals-strip" id="hr-org-totals-strip"></div>
+      <div class="hr-calc-teams" id="hr-calc-teams"></div>
     </div>
-
-    <details class="fold" style="margin-top:14px;">
-      <summary>기구별 단위(화폐 단위)로 직접 입력하기 (선택)</summary>
-      <p style="font-size:12.5px; color:var(--ink-3); margin:8px 0 0;">기구마다 각 팀이 100/50/10/5/1크레딧권을 몇 장씩 냈는지 입력하면, 위 표의 기부액이 자동으로 채워져요. 최고 기부팀이 여러 팀 동점이면 더 큰 단위를 많이 쓴 팀이 자동으로 우선 인정돼요.</p>
-      <div id="hr-denom-orgs"></div>
-    </details>
 
     <div class="card mt-14" id="hr-calc-result-card">
       <span class="mission-label">이번 라운드 계산 결과</span>
@@ -3245,9 +3388,21 @@
       </div>
     </div>
 
+    <div class="card mt-14" id="hr-broadcast-card">
+      <span class="mission-label">📡 발표 화면 연결 (선택)</span>
+      <p class="hr-broadcast-desc">다른 기기(패드 등)를 발표 전용 화면으로 띄워두면, 버튼 하나로 "이번 라운드 인권 취약 기구"(가장 적은 기부를 받은 기구)를 공개할 수 있어요. 규칙대로 팀별 기부액이나 순위는 패드 화면에 절대 뜨지 않아요. 두 기기 모두 인터넷에 연결돼 있으면 되고(같은 와이파이가 아니어도 괜찮아요), 패드에도 이 index.html 파일이 있어야 해요.</p>
+      <div class="hr-broadcast-row">
+        <button type="button" class="btn next" id="hr-broadcast-start">연결 코드 만들기</button>
+        <button type="button" class="btn restart" id="hr-broadcast-stop" hidden>연결 끊기</button>
+        <span class="hr-broadcast-status" id="hr-broadcast-status">아직 연결 안 됨</span>
+      </div>
+      <div class="hr-broadcast-code" id="hr-broadcast-code" hidden></div>
+    </div>
+
     <div style="display:flex; gap:10px; margin-top:16px; flex-wrap:wrap; align-items:center;">
       <button type="button" class="btn next" id="hr-calc-apply">✅ 결과를 현황판에 반영 + 다음 라운드</button>
       <button type="button" class="btn restart" id="hr-calc-clear">입력 지우기</button>
+      <button type="button" class="btn hr-reveal-btn" id="hr-broadcast-reveal" disabled>📣 패드에 발표하기</button>
     </div>
   </div>
 
@@ -5253,9 +5408,8 @@
     var roundChip = document.getElementById("hr-team-round-chip");
 
     var calcRoundEl = document.getElementById("hr-calc-round");
-    var calcTbody = document.getElementById("hr-calc-tbody");
-    var orgTotalCells = Array.prototype.slice.call(document.querySelectorAll("#hr-calc-org-totals td[data-org]"));
-    var denomOrgsEl = document.getElementById("hr-denom-orgs");
+    var calcTeamsEl = document.getElementById("hr-calc-teams");
+    var orgTotalsStripEl = document.getElementById("hr-org-totals-strip");
     var summaryEl = document.getElementById("hr-calc-summary");
     var applyBtn = document.getElementById("hr-calc-apply");
     var clearBtn = document.getElementById("hr-calc-clear");
@@ -5438,21 +5592,21 @@
       summaryEl.innerHTML = lines.join("");
     }
 
-    function renderDenomOrgs(){
-      var teams = state.teams;
-      denomOrgsEl.innerHTML = "";
-      for(var j = 0; j < 4; j++){
-        var block = document.createElement("div");
-        block.className = "hr-denom-org-block";
-        var gridHtml = teams.map(function(t, i){
-          var rowsHtml = DENOMS.map(function(d, k){
-            return '<label class="hr-denom-row">' + d + '권 × <input type="number" min="0" step="1" data-idx="' + i + '" data-org="' + j + '" data-denom="' + k + '" value="' + (denomInputs[i][j][k] || 0) + '"></label>';
-          }).join("");
-          return '<div class="hr-denom-team"><span class="hr-denom-name">' + hrEsc(t.name) + '</span>' + rowsHtml + '</div>';
-        }).join("");
-        block.innerHTML = '<p class="hr-denom-org-title">' + HR_ORG_ICONS[j] + ' ' + hrEsc(HR_ORGS[j]) + '</p><div class="hr-denom-grid">' + gridHtml + '</div>';
-        denomOrgsEl.appendChild(block);
-      }
+    function denomBreakdownText(d){
+      var parts = [];
+      DENOMS.forEach(function(den, k){
+        var c = Number(d[k]) || 0;
+        if(c > 0) parts.push(den + "권×" + c);
+      });
+      return parts.join(", ");
+    }
+
+    function renderOrgTotalsStrip(calc){
+      if(!orgTotalsStripEl) return;
+      orgTotalsStripEl.innerHTML = HR_ORGS.map(function(name, j){
+        var isLowest = calc.orgTotals.length && calc.lowestOrgIdxs.indexOf(j) !== -1;
+        return '<span class="hr-org-totals-chip' + (isLowest ? " lowest" : "") + '">' + HR_ORG_ICONS[j] + " " + hrEsc(name) + ": <b>" + (calc.orgTotals[j] || 0) + "</b>크레딧</span>";
+      }).join("");
     }
 
     function renderCalc(){
@@ -5463,60 +5617,72 @@
       while(denomInputs.length > teams.length) denomInputs.pop();
 
       if(!teams.length){
-        calcTbody.innerHTML = '<tr><td colspan="6" style="color:var(--ink-3); text-align:left;">현황판에서 팀을 먼저 추가하세요.</td></tr>';
-        denomOrgsEl.innerHTML = "";
-        orgTotalCells.forEach(function(c){ c.textContent = "0"; c.className = ""; });
+        calcTeamsEl.innerHTML = '<p style="color:var(--ink-3); font-size:13px;">현황판에서 팀을 먼저 추가하세요.</p>';
+        orgTotalsStripEl.innerHTML = "";
         renderCalcSummary({ orgTotals: [0, 0, 0, 0], rowTotals: [], orgResults: [], minTotal: 0, bottomIdxs: [], lowestOrgIdxs: [] });
         return;
       }
 
       var calc = computeCalc();
 
-      calcTbody.innerHTML = "";
+      calcTeamsEl.innerHTML = "";
       teams.forEach(function(t, i){
-        var tr = document.createElement("tr");
         var isBottom = calc.bottomIdxs.indexOf(i) !== -1;
-        tr.className = isBottom ? "hr-calc-row-bottom" : "";
-        var cellsHtml = "<td>" + hrEsc(t.name) + "</td>";
-        for(var j = 0; j < 4; j++){
+        var card = document.createElement("div");
+        card.className = "hr-team-calc-card" + (isBottom ? " hr-team-calc-card-bottom" : "");
+        card.dataset.team = i;
+
+        var orgsHtml = HR_ORGS.map(function(orgName, j){
           var isWinner = calc.orgResults[j].maxVal > 0 && calc.orgResults[j].winners.indexOf(i) !== -1;
-          cellsHtml += '<td class="' + (isWinner ? "hr-calc-cell-winner" : "") + '"><input type="number" min="0" step="1" data-idx="' + i + '" data-org="' + j + '" value="' + (calcInputs[i][j] || 0) + '"></td>';
-        }
-        cellsHtml += '<td class="hr-calc-total">' + calc.rowTotals[i] + '</td>';
-        tr.innerHTML = cellsHtml;
-        calcTbody.appendChild(tr);
+          var d = denomInputs[i][j];
+          var denomInputsHtml = DENOMS.map(function(den, k){
+            return '<label class="hr-denom-row"><input type="number" min="0" step="1" inputmode="numeric" data-idx="' + i + '" data-org="' + j + '" data-denom="' + k + '" value="' + (d[k] || 0) + '">' + den + '권</label>';
+          }).join("");
+          var amt = calcInputs[i][j] || 0;
+          var breakdown = denomBreakdownText(d);
+          return '<div class="hr-team-org-row' + (isWinner ? " hr-team-org-row-winner" : "") + '" data-org-row="' + j + '">' +
+            '<p class="hr-team-org-name">' + HR_ORG_ICONS[j] + " " + hrEsc(orgName) + '</p>' +
+            '<div class="hr-denom-inputs">' + denomInputsHtml + '</div>' +
+            '<p class="hr-team-org-total" data-org-total>총 ' + amt + '크레딧' + (breakdown ? ' <span class="hr-team-org-total-detail">(' + breakdown + ')</span>' : '') + '</p>' +
+          '</div>';
+        }).join("");
+
+        card.innerHTML =
+          '<div class="hr-team-calc-head">' +
+            '<span class="hr-team-calc-name">[' + hrEsc(t.name) + ']</span>' +
+            '<span class="hr-team-calc-sum" data-team-total>총 기부액 ' + calc.rowTotals[i] + '크레딧</span>' +
+          '</div>' +
+          '<div class="hr-team-org-list">' + orgsHtml + '</div>';
+        calcTeamsEl.appendChild(card);
       });
 
-      orgTotalCells.forEach(function(cell){
-        var j = Number(cell.dataset.org);
-        cell.textContent = calc.orgTotals[j];
-        cell.className = (calc.lowestOrgIdxs.indexOf(j) !== -1) ? "hr-calc-col-lowest" : "";
-      });
-
-      renderDenomOrgs();
+      renderOrgTotalsStrip(calc);
       renderCalcSummary(calc);
     }
 
     function refreshCalcLive(){
       var calc = computeCalc();
-      var rows = calcTbody.querySelectorAll("tr");
-      rows.forEach(function(tr, i){
-        var totalCell = tr.querySelector(".hr-calc-total");
-        if(totalCell) totalCell.textContent = calc.rowTotals[i];
-        tr.className = calc.bottomIdxs.indexOf(i) !== -1 ? "hr-calc-row-bottom" : "";
-        var tds = tr.querySelectorAll("td");
-        for(var j = 0; j < 4; j++){
-          var td = tds[j + 1];
-          if(!td) continue;
+      var cards = calcTeamsEl.querySelectorAll(".hr-team-calc-card[data-team]");
+      cards.forEach(function(card){
+        var i = Number(card.dataset.team);
+        var isBottom = calc.bottomIdxs.indexOf(i) !== -1;
+        card.classList.toggle("hr-team-calc-card-bottom", isBottom);
+        var sumEl = card.querySelector("[data-team-total]");
+        if(sumEl) sumEl.textContent = "총 기부액 " + calc.rowTotals[i] + "크레딧";
+        var rows = card.querySelectorAll(".hr-team-org-row[data-org-row]");
+        rows.forEach(function(row){
+          var j = Number(row.dataset.orgRow);
           var isWinner = calc.orgResults[j].maxVal > 0 && calc.orgResults[j].winners.indexOf(i) !== -1;
-          td.className = isWinner ? "hr-calc-cell-winner" : "";
-        }
+          row.classList.toggle("hr-team-org-row-winner", isWinner);
+          var totalEl = row.querySelector("[data-org-total]");
+          if(totalEl){
+            var amt = calcInputs[i][j] || 0;
+            var breakdown = denomBreakdownText(denomInputs[i][j]);
+            totalEl.innerHTML = "총 " + amt + "크레딧" + (breakdown ? ' <span class="hr-team-org-total-detail">(' + breakdown + ')</span>' : "");
+          }
+        });
       });
-      orgTotalCells.forEach(function(cell){
-        var j = Number(cell.dataset.org);
-        cell.textContent = calc.orgTotals[j];
-        cell.className = (calc.lowestOrgIdxs.indexOf(j) !== -1) ? "hr-calc-col-lowest" : "";
-      });
+      renderOrgTotalsStrip(calc);
       renderCalcSummary(calc);
     }
 
@@ -5558,25 +5724,15 @@
       });
     }
 
-    calcTbody.addEventListener("input", function(e){
-      var inp = e.target.closest("input[data-org]");
-      if(!inp) return;
-      var idx = Number(inp.dataset.idx), org = Number(inp.dataset.org);
-      calcInputs[idx][org] = Math.max(0, Number(inp.value) || 0);
-      refreshCalcLive();
-    });
-    denomOrgsEl.addEventListener("input", function(e){
+    calcTeamsEl.addEventListener("input", function(e){
       var inp = e.target.closest("input[data-denom]");
       if(!inp) return;
       var idx = Number(inp.dataset.idx), org = Number(inp.dataset.org), k = Number(inp.dataset.denom);
       denomInputs[idx][org][k] = Math.max(0, Number(inp.value) || 0);
-      // 단위 입력이 있으면 그 합계로 위 표의 기부액을 자동으로 채운다.
       var d = denomInputs[idx][org];
       var total = 0;
       for(var m = 0; m < 5; m++){ total += DENOMS[m] * (Number(d[m]) || 0); }
       calcInputs[idx][org] = total;
-      var mainInput = calcTbody.querySelector('input[data-idx="' + idx + '"][data-org="' + org + '"]');
-      if(mainInput) mainInput.value = total;
       refreshCalcLive();
     });
 
@@ -5607,6 +5763,12 @@
     applyBtn.addEventListener("click", function(){
       if(!state.teams.length) return;
       var calc = computeCalc();
+      // 발표 화면으로 보낼 "이번에 반영된 라운드" 결과를 라운드 증가 전에 스냅샷으로 남겨둔다.
+      lastRoundResult = {
+        round: state.round,
+        teamNames: state.teams.map(function(t){ return t.name; }),
+        calc: calc
+      };
       calc.orgResults.forEach(function(res){
         if(res.maxVal > 0){
           res.winners.forEach(function(i){ state.teams[i].certs += res.certValue; });
@@ -5619,12 +5781,250 @@
       denomInputs = freshDenomInputs();
       renderBoard();
       renderCalc();
+      updateRevealBtnState();
     });
     clearBtn.addEventListener("click", function(){
       calcInputs = state.teams.map(function(){ return [0, 0, 0, 0]; });
       denomInputs = freshDenomInputs();
       renderCalc();
     });
+
+    /* ============ 발표 화면 연결(2기기 연동, PeerJS) ============
+       같은 index.html을 연 다른 기기(패드 등)를 "발표 전용 화면"으로 전환해두면,
+       이 기기(노트북)에서 "발표하기" 버튼을 눌러 반영된 라운드 결과를 그 화면에 바로 띄울 수 있다.
+       서버 없이 PeerJS의 공개 중계(브로커)만 거쳐 두 브라우저가 직접 연결된다 —
+       같은 와이파이일 필요는 없고, 두 기기 모두 인터넷에 연결돼 있기만 하면 된다. */
+    var lastRoundResult = null;
+    var displayModeBtn = document.getElementById("hr-display-mode-btn");
+    var broadcastStartBtn = document.getElementById("hr-broadcast-start");
+    var broadcastStopBtn = document.getElementById("hr-broadcast-stop");
+    var broadcastStatusEl = document.getElementById("hr-broadcast-status");
+    var broadcastCodeEl = document.getElementById("hr-broadcast-code");
+    var revealBtn = document.getElementById("hr-broadcast-reveal");
+
+    var displayOverlay = document.getElementById("hr-display-overlay");
+    var displayExitBtn = document.getElementById("hr-display-exit-btn");
+    var displayConnectBox = document.getElementById("hr-display-connect");
+    var displayCodeInput = document.getElementById("hr-display-code-input");
+    var displayConnectBtn = document.getElementById("hr-display-connect-btn");
+    var displayStatusEl = document.getElementById("hr-display-status");
+    var displayRevealBox = document.getElementById("hr-display-reveal");
+
+    var HR_PEER_PREFIX = "hrmkt-";
+    var HR_CODE_CHARS = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"; // 헷갈리는 0/O, 1/I 제외
+    var hostPeer = null;
+    var hostConns = []; // 연결된 발표 화면들 (여러 대 동시 지원)
+    var displayPeer = null;
+    var displayConn = null;
+
+    function hasPeerJs(){ return typeof Peer !== "undefined"; }
+
+    function randHrCode(){
+      var s = "";
+      for(var i = 0; i < 4; i++) s += HR_CODE_CHARS[Math.floor(Math.random() * HR_CODE_CHARS.length)];
+      return s;
+    }
+
+    function setBroadcastStatus(text, cls){
+      broadcastStatusEl.textContent = text;
+      broadcastStatusEl.className = "hr-broadcast-status" + (cls ? " " + cls : "");
+    }
+
+    function updateRevealBtnState(){
+      var connected = hostConns.length > 0;
+      revealBtn.disabled = !(connected && lastRoundResult);
+      revealBtn.textContent = connected
+        ? ("📣 패드에 발표하기" + (lastRoundResult ? "" : " (반영된 라운드 없음)"))
+        : "📣 패드에 발표하기 (연결 필요)";
+    }
+
+    function startHosting(attemptsLeft){
+      if(!hasPeerJs()){
+        setBroadcastStatus("인터넷 연결이 필요해요 — 발표 화면 기능을 쓸 수 없어요.", "err");
+        return;
+      }
+      if(attemptsLeft == null) attemptsLeft = 5;
+      var code = HR_PEER_PREFIX + randHrCode();
+      setBroadcastStatus("연결 코드 만드는 중…", "waiting");
+      var p;
+      try{ p = new Peer(code); }catch(e){ setBroadcastStatus("연결 코드를 만들지 못했어요.", "err"); return; }
+      p.on("open", function(){
+        hostPeer = p;
+        broadcastStartBtn.hidden = true;
+        broadcastStopBtn.hidden = false;
+        broadcastCodeEl.hidden = false;
+        broadcastCodeEl.innerHTML =
+          '<span class="hr-broadcast-code-val">' + code.replace(HR_PEER_PREFIX, "") + '</span>' +
+          '<span class="hr-broadcast-code-hint">패드의 "발표 화면 전환" 화면에 이 코드를 입력하면 연결돼요.</span>';
+        setBroadcastStatus("패드 연결 대기 중…", "waiting");
+      });
+      p.on("connection", function(conn){
+        hostConns.push(conn);
+        conn.on("open", function(){
+          setBroadcastStatus("패드 연결됨 ✅ (" + hostConns.length + "대)", "connected");
+          updateRevealBtnState();
+        });
+        conn.on("close", function(){
+          hostConns = hostConns.filter(function(c){ return c !== conn; });
+          setBroadcastStatus(hostConns.length ? ("패드 연결됨 ✅ (" + hostConns.length + "대)") : "패드 연결 대기 중…", hostConns.length ? "connected" : "waiting");
+          updateRevealBtnState();
+        });
+      });
+      p.on("error", function(err){
+        if(err && err.type === "unavailable-id" && attemptsLeft > 0){
+          try{ p.destroy(); }catch(e){}
+          startHosting(attemptsLeft - 1);
+          return;
+        }
+        setBroadcastStatus("연결 오류가 발생했어요 — 네트워크를 확인하고 다시 시도해 주세요.", "err");
+      });
+      p.on("disconnected", function(){
+        setBroadcastStatus("연결이 끊어졌어요 — 다시 시도해 주세요.", "err");
+      });
+    }
+
+    function stopHosting(){
+      // 연결이 끊기는 걸 패드가 (네트워크 수준의 끊김 감지를 기다리지 않고) 바로 알 수 있도록
+      // 끊기 직전에 안내 메시지를 먼저 보낸다.
+      hostConns.forEach(function(conn){ try{ if(conn.open) conn.send({ type: "hr-host-closing" }); }catch(e){} });
+      if(hostPeer){ try{ hostPeer.destroy(); }catch(e){} }
+      hostPeer = null;
+      hostConns = [];
+      broadcastStartBtn.hidden = false;
+      broadcastStopBtn.hidden = true;
+      broadcastCodeEl.hidden = true;
+      broadcastCodeEl.innerHTML = "";
+      setBroadcastStatus("아직 연결 안 됨");
+      updateRevealBtnState();
+    }
+
+    broadcastStartBtn.addEventListener("click", function(){ startHosting(); });
+    broadcastStopBtn.addEventListener("click", stopHosting);
+
+    revealBtn.addEventListener("click", function(){
+      if(!hostConns.length || !lastRoundResult) return;
+      var r = lastRoundResult;
+      // 룰북 규정: 라운드마다 팀별로 얼마를 기부했는지는 공개되지 않는다 — 공개되는 건
+      // "이번 라운드 가장 적은 기부를 받은 인권 기구(인권 취약 기구)"뿐이다. 그래서 발표 화면에는
+      // 팀별 순위나 금액, 증서 수여 내역은 절대 보내지 않고 이 정보 하나만 보낸다.
+      var payload = {
+        type: "hr-reveal",
+        round: r.round,
+        lowestOrgs: r.calc.lowestOrgIdxs.map(function(j){
+          return { icon: HR_ORG_ICONS[j], name: HR_ORGS[j] };
+        })
+      };
+      hostConns.forEach(function(conn){ if(conn.open) conn.send(payload); });
+      setBroadcastStatus("📣 " + r.round + "라운드 결과를 보냈어요!", "connected");
+      setTimeout(function(){
+        setBroadcastStatus(hostConns.length ? ("패드 연결됨 ✅ (" + hostConns.length + "대)") : "패드 연결 대기 중…", hostConns.length ? "connected" : "waiting");
+      }, 2200);
+    });
+
+    /* ---- 발표 화면(패드) 쪽: 모드 전환 + 연결 + 수신 ---- */
+    function setDisplayStatus(text, cls){
+      displayStatusEl.textContent = text;
+      displayStatusEl.className = "hr-display-status" + (cls ? " " + cls : "");
+    }
+
+    function showDisplayWaiting(){
+      displayConnectBox.hidden = true;
+      displayRevealBox.hidden = false;
+      displayRevealBox.innerHTML = '<p class="hr-display-waiting"><span class="pulse-dot"></span>발표를 기다리는 중입니다…</p>';
+    }
+
+    function showDisplayConnectForm(){
+      displayConnectBox.hidden = false;
+      displayRevealBox.hidden = true;
+      displayRevealBox.innerHTML = "";
+    }
+
+    function renderRevealOnDisplay(payload){
+      // 룰북대로, 팀별 기부액이나 순위는 절대 보여주지 않고 "이번 라운드 인권 취약 기구"만 크게 보여준다.
+      var orgsHtml = (payload.lowestOrgs || []).map(function(o){
+        return '<p class="hr-reveal-vulnerable-org">' + o.icon + " " + hrEsc(o.name) + '</p>';
+      }).join("");
+      displayConnectBox.hidden = true;
+      displayRevealBox.hidden = false;
+      displayRevealBox.innerHTML =
+        '<p class="hr-reveal-round">ROUND ' + payload.round + '</p>' +
+        '<h2 class="hr-reveal-title">이번 라운드, 가장 적은 기부를 받은<br>인권 취약 기구는…</h2>' +
+        '<div class="hr-reveal-vulnerable-box">' + orgsHtml + '</div>';
+    }
+
+    function connectDisplayTo(code){
+      if(!hasPeerJs()){
+        setDisplayStatus("인터넷 연결이 필요해요. 네트워크를 확인해 주세요.", "err");
+        return;
+      }
+      var raw = (code || "").trim();
+      if(!raw) return;
+      // 접두어(hrmkt-)를 입력하든 안 하든, 대소문자나 공백이 섞여도 알아서 맞춰 연결한다.
+      var suffix = raw.replace(new RegExp(HR_PEER_PREFIX, "ig"), "").replace(/[^A-Za-z0-9]/g, "").toUpperCase();
+      if(!suffix) return;
+      var targetId = HR_PEER_PREFIX + suffix;
+      setDisplayStatus("연결 중…");
+      if(displayPeer){ try{ displayPeer.destroy(); }catch(e){} }
+      var p = new Peer();
+      displayPeer = p;
+      p.on("open", function(){
+        var conn = p.connect(targetId, { reliable: true });
+        displayConn = conn;
+        conn.on("open", function(){
+          setDisplayStatus("연결됐어요! ✅", "ok");
+          showDisplayWaiting();
+        });
+        conn.on("data", function(payload){
+          if(!payload) return;
+          if(payload.type === "hr-reveal") renderRevealOnDisplay(payload);
+          else if(payload.type === "hr-host-closing"){
+            setDisplayStatus("노트북 쪽에서 연결을 끊었어요 — 코드를 다시 입력해 연결해 주세요.", "err");
+            showDisplayConnectForm();
+          }
+        });
+        conn.on("close", function(){
+          setDisplayStatus("연결이 끊어졌어요 — 코드를 다시 입력해 연결해 주세요.", "err");
+          showDisplayConnectForm();
+        });
+        conn.on("error", function(){
+          setDisplayStatus("연결에 실패했어요 — 코드를 확인하고 다시 시도해 주세요.", "err");
+          showDisplayConnectForm();
+        });
+      });
+      p.on("error", function(err){
+        if(err && err.type === "peer-unavailable"){
+          setDisplayStatus("그 코드로 연결된 노트북을 찾지 못했어요 — 코드를 다시 확인해 주세요.", "err");
+        } else {
+          setDisplayStatus("연결 오류가 발생했어요 — 네트워크를 확인해 주세요.", "err");
+        }
+      });
+    }
+
+    displayModeBtn.addEventListener("click", function(){
+      displayOverlay.hidden = false;
+      // 발표 모드 중에는 뒤 페이지가 스크롤되지 않게 고정한다 — 그래야 position:fixed 오버레이가
+      // 뷰포트 전체를 항상 빈틈없이 덮는다 (안 그러면 길게 스크롤되는 기구/계산기 페이지의 아래쪽
+      // 내용이 스크롤로 드러나 보일 수 있다).
+      document.documentElement.classList.add("hr-display-lock");
+      document.body.classList.add("hr-display-lock");
+      showDisplayConnectForm();
+      setDisplayStatus("");
+      displayCodeInput.value = "";
+      setTimeout(function(){ displayCodeInput.focus(); }, 30);
+    });
+    displayExitBtn.addEventListener("click", function(){
+      if(displayConn){ try{ displayConn.close(); }catch(e){} displayConn = null; }
+      if(displayPeer){ try{ displayPeer.destroy(); }catch(e){} displayPeer = null; }
+      displayOverlay.hidden = true;
+      document.documentElement.classList.remove("hr-display-lock");
+      document.body.classList.remove("hr-display-lock");
+    });
+    displayConnectBtn.addEventListener("click", function(){ connectDisplayTo(displayCodeInput.value); });
+    displayCodeInput.addEventListener("keydown", function(e){
+      if(e.key === "Enter") connectDisplayTo(displayCodeInput.value);
+    });
+
+    updateRevealBtnState();
 
     renderBoard();
     renderCalc();
