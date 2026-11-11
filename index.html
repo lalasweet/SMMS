@@ -3,7 +3,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@700;800;900&family=Jua&family=Noto+Sans+KR:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@700;800;900&family=Jua&family=Noto+Sans+KR:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Nanum+Myeongjo:wght@700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/peerjs@1.5.5/dist/peerjs.min.js"></script>
 <style>
   :root{
@@ -143,7 +143,7 @@
     gap: 6px;
     margin-bottom: 18px;
   }
-  .tab-btn, .game-tab-btn{
+  .tab-btn, .game-tab-btn, .hp-stats-tab-btn{
     font-family: "Jua", "Noto Sans KR", sans-serif;
     font-size: 15.5px;
     font-weight: 600;
@@ -155,13 +155,13 @@
     cursor: pointer;
     transition: background .15s ease, color .15s ease, transform .1s ease;
   }
-  .tab-btn:hover, .game-tab-btn:hover{ color: var(--ink); background: var(--surface-2); }
-  .tab-btn[aria-selected="true"], .game-tab-btn[aria-selected="true"]{
+  .tab-btn:hover, .game-tab-btn:hover, .hp-stats-tab-btn:hover{ color: var(--ink); background: var(--surface-2); }
+  .tab-btn[aria-selected="true"], .game-tab-btn[aria-selected="true"], .hp-stats-tab-btn[aria-selected="true"]{
     background: var(--ink);
     color: var(--bg);
     border-color: var(--ink);
   }
-  .tab-btn:focus-visible, .game-tab-btn:focus-visible, button:focus-visible, summary:focus-visible, .legend-item:focus-visible{
+  .tab-btn:focus-visible, .game-tab-btn:focus-visible, .hp-stats-tab-btn:focus-visible, button:focus-visible, summary:focus-visible, .legend-item:focus-visible{
     outline: 2px solid var(--focus);
     outline-offset: 2px;
   }
@@ -1363,6 +1363,164 @@
     margin: 8px 0 0; font-size: clamp(11.5px, 1.3vw, 13px); font-weight: 700; color: var(--accent-2);
   }
 
+  /* ---------------- 더 카르텔: 발표 화면 자원 탭 + 가격 슬롯 연출 ---------------- */
+  .cartel-tab-row{ display: flex; gap: 7px; flex-wrap: wrap; justify-content: center; margin: 0 0 20px; }
+  .cartel-tab-btn{
+    font-family: "Gothic A1", "Jua", "Noto Sans KR", sans-serif; font-weight: 700; font-size: clamp(12.5px, 1.6vw, 14.5px);
+    padding: 8px 15px; border-radius: 999px; border: 1.5px solid var(--line-soft); background: var(--surface);
+    color: var(--ink-2); cursor: pointer; transition: background .15s, color .15s, border-color .15s;
+  }
+  .cartel-tab-btn:hover{ border-color: var(--ink-3); }
+  .cartel-tab-btn.active{ background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+
+  .cartel-price-label{ font-size: clamp(13px, 1.6vw, 15px); color: var(--ink-3); margin: 0 0 12px; }
+  .cartel-digit-row{ display: flex; gap: 8px; justify-content: center; }
+  .cartel-digit-cell{
+    width: clamp(44px, 9vw, 58px); height: clamp(60px, 11vw, 78px); border-radius: 12px;
+    background: var(--surface-2); border: 2px solid var(--line-soft);
+    display: flex; align-items: center; justify-content: center;
+    font-family: "JetBrains Mono", monospace; font-size: clamp(28px, 5vw, 40px); font-weight: 700; color: var(--ink-3);
+    transition: border-color .2s, color .2s, background .2s;
+  }
+  .cartel-digit-cell.settled{
+    border-color: var(--accent-2); color: var(--accent-2);
+    background: color-mix(in srgb, var(--accent-2) 12%, var(--surface));
+  }
+  .cartel-digit-cell.settled.locked{
+    border-style: dashed; border-color: var(--line-soft); color: var(--ink-3); background: var(--surface-2);
+  }
+  .cartel-unit-suffix{ font-size: clamp(13px, 1.6vw, 15px); color: var(--ink-3); margin: 8px 0 0; }
+
+  .cartel-seller-list{ display: flex; flex-direction: column; gap: 7px; margin: 18px auto 0; max-width: 420px; text-align: left; }
+  .cartel-seller-row{
+    display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+    padding: 9px 15px; border-radius: 10px; background: var(--surface-2); border: 1.5px solid var(--line-soft);
+  }
+  .cartel-seller-row.win{
+    background: color-mix(in srgb, var(--accent-2) 12%, var(--surface));
+    border-color: color-mix(in srgb, var(--accent-2) 35%, transparent);
+  }
+  .cartel-seller-name{ font-family: "Gothic A1", "Jua", "Noto Sans KR", sans-serif; font-weight: 700; color: var(--ink); }
+  .cartel-seller-income{ font-family: "JetBrains Mono", monospace; font-weight: 700; color: var(--ink-2); }
+  .cartel-seller-row.win .cartel-seller-income{ color: var(--accent-2); }
+  .cartel-locked-note{ font-size: clamp(14px, 1.8vw, 17px); color: var(--ink-3); margin: 18px 0 0; line-height: 1.5; font-weight: 700; }
+  .cartel-warning-box{
+    display: flex; align-items: center; gap: 14px; margin: 20px auto 0; max-width: 520px;
+    background: #ffde2e; border: 3px solid #1a1a1a; border-radius: 14px; padding: 16px 22px;
+    box-shadow: 0 4px 14px rgba(0,0,0,.18); text-align: left;
+  }
+  .cartel-warning-icon{ font-size: clamp(32px, 5vw, 44px); line-height: 1; flex-shrink: 0; color: #d12e2e; }
+  .cartel-warning-text{ margin: 0; font-size: clamp(16px, 2.4vw, 20px); font-weight: 800; color: #171717; line-height: 1.5; }
+
+  /* ---------------- 더 카르텔 룰북 — 기밀 브리핑 문서 스타일 (게임실용 임베드, #cartel-dossier 안에서만 적용) ---------------- */
+  #cartel-dossier{
+    --cd-bg: #120d09;
+    --cd-bg-vignette: #1d150d;
+    --cd-paper: #ece1c4;
+    --cd-ink: #2a2012;
+    --cd-ink-soft: #6b5a3c;
+    --cd-gold: #c9a24b;
+    --cd-gold-bright: #f0d48a;
+    --cd-rust: #a8432c;
+    --cd-line: rgba(201,162,75,.28);
+    font-family: "Noto Sans KR", sans-serif;
+    color: var(--cd-paper);
+    background:
+      radial-gradient(ellipse 900px 500px at 50% -10%, var(--cd-bg-vignette), transparent 60%),
+      var(--cd-bg);
+    border-radius: 14px;
+    padding: 34px 26px;
+    margin: 0 0 1.4rem;
+  }
+  #cartel-dossier *{ box-sizing: border-box; }
+  #cartel-dossier .cd-page{ max-width: 760px; margin: 0 auto; }
+
+  #cartel-dossier .cd-cover{ text-align: center; padding: 6px 0 28px; border-bottom: 1px solid var(--cd-line); margin-bottom: 28px; }
+  #cartel-dossier .cd-eyebrow{
+    font-family: "JetBrains Mono", monospace; font-size: 11.5px; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--cd-gold); display: inline-flex; align-items: center; gap: 10px; margin-bottom: 16px;
+  }
+  #cartel-dossier .cd-eyebrow::before, #cartel-dossier .cd-eyebrow::after{ content: ""; width: 24px; height: 1px; background: var(--cd-gold); opacity: .6; }
+  #cartel-dossier .cd-cover h3{
+    font-family: "Nanum Myeongjo", "Gothic A1", serif; font-weight: 800; font-size: clamp(26px, 5vw, 40px);
+    margin: 0 0 6px; line-height: 1.18; color: var(--cd-gold-bright);
+  }
+  #cartel-dossier .cd-en-sub{
+    font-family: "JetBrains Mono", monospace; font-size: clamp(10.5px, 1.6vw, 12px); letter-spacing: .3em;
+    color: var(--cd-ink-soft); margin: 0 0 18px;
+  }
+  #cartel-dossier .cd-chip-row{ display: flex; flex-wrap: wrap; gap: 7px; justify-content: center; margin-bottom: 20px; }
+  #cartel-dossier .cd-chip{
+    font-size: 12px; font-weight: 500; padding: 5px 12px; border-radius: 999px;
+    border: 1px solid var(--cd-line); color: #d8cba4; background: rgba(201,162,75,.06);
+  }
+  #cartel-dossier .cd-lede{ max-width: 540px; margin: 0 auto; font-size: 14.5px; line-height: 1.75; color: #d8cba4; }
+
+  #cartel-dossier .cd-ticker{ margin: 0 0 32px; border: 1px solid var(--cd-line); border-radius: 4px; overflow: hidden; background: linear-gradient(180deg, #19120a, #140e08); }
+  #cartel-dossier .cd-ticker-head{
+    display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 9px 14px;
+    border-bottom: 1px solid var(--cd-line); font-family: "JetBrains Mono", monospace; font-size: 10.5px;
+    letter-spacing: .14em; color: var(--cd-ink-soft);
+  }
+  #cartel-dossier .cd-ticker-head .cd-live{ color: var(--cd-rust); display: inline-flex; align-items: center; gap: 6px; }
+  #cartel-dossier .cd-ticker-head .cd-live::before{ content:""; width: 6px; height: 6px; border-radius: 50%; background: var(--cd-rust); animation: cd-blink 1.6s ease-in-out infinite; }
+  @keyframes cd-blink{ 0%,100%{ opacity: 1; } 50%{ opacity: .25; } }
+  #cartel-dossier .cd-ticker-grid{ display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
+  #cartel-dossier .cd-ticker-cell{ padding: 14px; border-right: 1px solid var(--cd-line); border-top: 1px solid var(--cd-line); display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+  #cartel-dossier .cd-ticker-cell:nth-child(-n+3){ border-top: none; }
+  #cartel-dossier .cd-ticker-cell .cd-res-icon{ font-size: 18px; }
+  #cartel-dossier .cd-ticker-cell .cd-res-name{ font-family: "Nanum Myeongjo", serif; font-weight: 700; font-size: 14.5px; color: var(--cd-paper); }
+  #cartel-dossier .cd-ticker-cell .cd-res-count{ font-family: "JetBrains Mono", monospace; font-variant-numeric: tabular-nums; font-size: 23px; font-weight: 700; color: var(--cd-gold-bright); }
+  #cartel-dossier .cd-ticker-cell .cd-res-count .cd-unit{ font-size: 11px; color: var(--cd-ink-soft); font-weight: 500; margin-left: 2px; }
+  #cartel-dossier .cd-res-tier{ align-self: flex-start; font-size: 10px; font-weight: 700; letter-spacing: .04em; padding: 2px 7px; border-radius: 3px; }
+  #cartel-dossier .cd-res-tier.strong{ background: rgba(168,67,44,.18); color: #e2876f; border: 1px solid rgba(168,67,44,.4); }
+  #cartel-dossier .cd-res-tier.mid{ background: rgba(201,162,75,.14); color: var(--cd-gold-bright); border: 1px solid var(--cd-line); }
+  #cartel-dossier .cd-res-tier.weak{ background: rgba(255,255,255,.05); color: var(--cd-ink-soft); border: 1px solid var(--cd-line); }
+
+  #cartel-dossier .cd-section{ margin: 0 0 34px; }
+  #cartel-dossier .cd-section-head{ display: flex; align-items: baseline; gap: 12px; margin-bottom: 14px; }
+  #cartel-dossier .cd-section-num{ font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--cd-gold); border: 1px solid var(--cd-line); border-radius: 3px; padding: 2px 7px; flex-shrink: 0; }
+  #cartel-dossier .cd-section-head h4{ font-family: "Nanum Myeongjo", serif; font-weight: 700; font-size: clamp(17px, 2.6vw, 21px); margin: 0; color: var(--cd-gold-bright); }
+
+  #cartel-dossier .cd-steps{ display: flex; flex-direction: column; gap: 12px; }
+  #cartel-dossier .cd-step{ background: var(--cd-paper); border-radius: 6px; padding: 16px 18px 16px 54px; position: relative; box-shadow: 0 14px 32px -20px rgba(0,0,0,.55); }
+  #cartel-dossier .cd-step-index{ position: absolute; left: 16px; top: 16px; font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 19px; color: var(--cd-gold); opacity: .55; }
+  #cartel-dossier .cd-step h5{ margin: 0 0 6px; font-family: "Nanum Myeongjo", serif; font-size: 15px; color: var(--cd-ink); font-weight: 700; }
+  #cartel-dossier .cd-step p{ margin: 0; font-size: 13.5px; line-height: 1.7; color: var(--cd-ink); }
+  #cartel-dossier .cd-step ul{ margin: 8px 0 0; padding-left: 18px; }
+  #cartel-dossier .cd-step li{ font-size: 12.8px; line-height: 1.65; color: var(--cd-ink-soft); margin-bottom: 4px; }
+  #cartel-dossier .cd-step li:last-child{ margin-bottom: 0; }
+
+  #cartel-dossier .cd-action-grid{ display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
+  #cartel-dossier .cd-action-card{ background: linear-gradient(180deg, #221708, #17100a); border: 1px solid var(--cd-line); border-radius: 6px; padding: 16px; min-width: 0; }
+  #cartel-dossier .cd-action-card .cd-phase-tag{ font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: .08em; color: var(--cd-ink-soft); border: 1px solid var(--cd-line); border-radius: 999px; padding: 2px 9px; display: inline-block; margin-bottom: 12px; }
+  #cartel-dossier .cd-action-card .cd-ac-icon{ font-size: 22px; display: block; margin-bottom: 7px; }
+  #cartel-dossier .cd-action-card h5{ font-family: "Nanum Myeongjo", serif; font-size: 16px; margin: 0 0 7px; color: var(--cd-gold-bright); }
+  #cartel-dossier .cd-action-card p{ font-size: 12.6px; line-height: 1.65; color: #d8cba4; margin: 0; }
+  #cartel-dossier .cd-action-note{ margin-top: 14px; font-size: 11.5px; color: var(--cd-ink-soft); text-align: center; line-height: 1.6; }
+
+  #cartel-dossier .cd-pullquote{ position: relative; background: var(--cd-paper); color: var(--cd-ink); border-radius: 6px; padding: 26px 28px; box-shadow: 0 14px 32px -20px rgba(0,0,0,.55); overflow: hidden; }
+  #cartel-dossier .cd-stamp{ position: absolute; top: 16px; right: 18px; font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 11px; letter-spacing: .14em; color: var(--cd-rust); border: 2px solid var(--cd-rust); border-radius: 4px; padding: 3px 9px; transform: rotate(7deg); opacity: .75; }
+  #cartel-dossier .cd-pq-label{ font-family: "JetBrains Mono", monospace; font-size: 10.5px; letter-spacing: .16em; color: var(--cd-rust); font-weight: 700; margin: 0 0 10px; text-transform: uppercase; }
+  #cartel-dossier .cd-pullquote p{ margin: 0; font-size: 15.5px; line-height: 1.85; max-width: 100%; word-break: keep-all; }
+  #cartel-dossier .cd-pullquote strong{ color: var(--cd-rust); }
+
+  #cartel-dossier .cd-win-box{ display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }
+  #cartel-dossier .cd-win-tile{ background: var(--cd-paper); border-radius: 6px; padding: 15px 17px; text-align: center; }
+  #cartel-dossier .cd-win-tile .cd-big{ font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 21px; color: var(--cd-rust); display: block; margin-bottom: 5px; font-variant-numeric: tabular-nums; }
+  #cartel-dossier .cd-win-tile .cd-cap{ font-size: 12px; color: var(--cd-ink-soft); line-height: 1.5; }
+
+  #cartel-dossier .cd-glossary{ display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; }
+  #cartel-dossier .cd-gl-card{ background: var(--cd-paper); border-radius: 6px; padding: 16px 18px; min-width: 0; }
+  #cartel-dossier .cd-gl-card dt{ font-family: "Nanum Myeongjo", serif; font-weight: 700; font-size: 15.5px; color: var(--cd-ink); display: flex; align-items: center; gap: 7px; margin-bottom: 7px; }
+  #cartel-dossier .cd-gl-card dd{ margin: 0; font-size: 12.3px; line-height: 1.65; color: var(--cd-ink-soft); }
+
+  #cartel-dossier .cd-footer{
+    margin-top: 10px; padding-top: 18px; border-top: 1px solid var(--cd-line);
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px;
+    font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: .06em; color: var(--cd-ink-soft);
+  }
+
   /* ---------------- 교사용 도구: 탄소의 딜레마 계산기 ---------------- */
   .cd-badge{
     display: inline-block;
@@ -1474,22 +1632,22 @@
   --gn-brown:#8a6a35;
   --gn-brown-line:#c3ac7c;
   --gn-red:#7c2c1c;
-  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+  font-family:"Jua","Noto Sans KR",sans-serif;
   color:var(--gn-ink);
   background:
     radial-gradient(ellipse at 18% 12%, rgba(255,250,228,.55), transparent 55%),
     radial-gradient(ellipse at 88% 82%, rgba(110,82,32,.22), transparent 60%),
     radial-gradient(ellipse at 8% 92%, rgba(110,82,32,.18), transparent 55%),
     linear-gradient(160deg, var(--gn-paper) 0%, var(--gn-paper-dark) 100%);
-  max-width:560px;
+  max-width:750px;
   margin:0 auto;
   border-radius:10px;
   border:1px solid var(--gn-brown-line);
   box-shadow:0 4px 18px rgba(50,35,10,.25), inset 0 0 60px rgba(120,90,40,.12);
 }
 #rl-app .wrap{padding:1.5rem 1.25rem 3rem}
-#rl-app h2{font-size: 21.5px;font-weight:700;margin-bottom:.7rem;font-family:Georgia,'Batang','Nanum Myeongjo',serif;letter-spacing:.02em}
-#rl-app h3{font-size: 14.5px;font-weight:700;margin:0 0 .8rem;display:inline-block;font-family:Georgia,'Batang','Nanum Myeongjo',serif;
+#rl-app h2{font-size: 21.5px;font-weight:700;margin-bottom:.7rem;font-family:"Gothic A1","Jua","Noto Sans KR",sans-serif;letter-spacing:.02em}
+#rl-app h3{font-size: 14.5px;font-weight:700;margin:0 0 .8rem;display:inline-block;font-family:"Gothic A1","Jua","Noto Sans KR",sans-serif;
   color:var(--gn-gold-light);background:linear-gradient(180deg,#3d2e1c,#1e150b);border:1px solid var(--gn-gold);
   border-radius:5px;padding:5px 14px;letter-spacing:.04em;
   box-shadow:0 2px 4px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.08);}
@@ -1506,7 +1664,7 @@
   font-size: 15.5px;margin-bottom:.5rem;outline:none;font-family:inherit;background:rgba(255,255,255,.55);color:var(--gn-ink);}
 #rl-app input[type=text]:focus{border-color:var(--gn-gold)}
 #rl-app .btn-primary{background:linear-gradient(180deg,#40311f,#221708);color:var(--gn-gold-light);border:1px solid var(--gn-gold);width:100%;padding:11px;
-  font-size: 17px;font-weight:700;margin-top:.6rem;border-radius:9px;cursor:pointer;font-family:Georgia,'Batang',serif;letter-spacing:.03em;
+  font-size: 17px;font-weight:700;margin-top:.6rem;border-radius:9px;cursor:pointer;font-family:"Gothic A1","Jua","Noto Sans KR",sans-serif;letter-spacing:.03em;
   box-shadow:0 2px 6px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.08);
   transition:opacity .2s, transform .1s;}
 #rl-app .btn-primary:hover{opacity:.9}
@@ -1549,7 +1707,7 @@
   --gn-brown:#8a6a35;
   --gn-brown-line:#c3ac7c;
   --gn-red:#7c2c1c;
-  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+  font-family:"Jua","Noto Sans KR",sans-serif;
   color:var(--gn-ink);
   background:
     radial-gradient(ellipse at 18% 12%, rgba(255,250,228,.55), transparent 55%),
@@ -1563,8 +1721,8 @@
   box-shadow:0 4px 18px rgba(50,35,10,.25), inset 0 0 60px rgba(120,90,40,.12);
 }
 #hp-app .wrap{padding:1.5rem 1.25rem 3rem}
-#hp-app h2{font-size: 21.5px;font-weight:700;margin-bottom:.7rem;font-family:Georgia,'Batang','Nanum Myeongjo',serif;letter-spacing:.02em}
-#hp-app h3{font-size: 14.5px;font-weight:700;margin:0 0 .8rem;display:inline-block;font-family:Georgia,'Batang','Nanum Myeongjo',serif;
+#hp-app h2{font-size: 21.5px;font-weight:700;margin-bottom:.7rem;font-family:"Gothic A1","Jua","Noto Sans KR",sans-serif;letter-spacing:.02em}
+#hp-app h3{font-size: 14.5px;font-weight:700;margin:0 0 .8rem;display:inline-block;font-family:"Gothic A1","Jua","Noto Sans KR",sans-serif;
   color:var(--gn-gold-light);background:linear-gradient(180deg,#3d2e1c,#1e150b);border:1px solid var(--gn-gold);
   border-radius:5px;padding:5px 14px;letter-spacing:.04em;
   box-shadow:0 2px 4px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.08);}
@@ -1577,7 +1735,7 @@
 #hp-app input[type=text]:focus, #hp-app select:focus{border-color:var(--gn-gold)}
 #hp-app input[type=text]:disabled, #hp-app select:disabled{background:rgba(220,202,160,.4);color:#8a7a58;cursor:not-allowed}
 #hp-app .btn-primary{background:linear-gradient(180deg,#40311f,#221708);color:var(--gn-gold-light);border:1px solid var(--gn-gold);width:100%;padding:11px;
-  font-size: 17px;font-weight:700;margin-top:.6rem;border-radius:9px;cursor:pointer;font-family:Georgia,'Batang',serif;letter-spacing:.03em;
+  font-size: 17px;font-weight:700;margin-top:.6rem;border-radius:9px;cursor:pointer;font-family:"Gothic A1","Jua","Noto Sans KR",sans-serif;letter-spacing:.03em;
   box-shadow:0 2px 6px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.08);
   transition:opacity .2s, transform .1s;}
 #hp-app .btn-primary:hover{opacity:.9}
@@ -1733,8 +1891,8 @@
         </button>
         <button type="button" class="tool-card" data-unit="price-tools" data-panel-default="draw">
           <span class="tool-icon-box" aria-hidden="true">💰</span>
-          <span class="tool-title">히든 프라이스 도구</span>
-          <span class="tool-desc">"히든 프라이스: 자원 외교전" 진행용 — 자원 추첨과 라운드별 수출가 계산기를 한 화면에서 버튼으로 오가며 써요.</span>
+          <span class="tool-title">더 카르텔 도구</span>
+          <span class="tool-desc">"더 카르텔: 히든 프라이스" 진행용 — 자원 추첨과 라운드별 수출가 계산기를 한 화면에서 버튼으로 오가며 써요.</span>
         </button>
         <button type="button" class="tool-card" data-unit="carbon-tools" data-panel-default="board">
           <span class="tool-icon-box" aria-hidden="true">🌱</span>
@@ -2171,7 +2329,7 @@
 
   <nav class="tabs" aria-label="게임 선택">
     <button class="game-tab-btn" data-game="carbon" aria-selected="true">01 · 탄소의 딜레마</button>
-    <button class="game-tab-btn" data-game="price" aria-selected="false">02 · 히든 프라이스: 자원 외교전</button>
+    <button class="game-tab-btn" data-game="price" aria-selected="false">02 · 더 카르텔: 히든 프라이스</button>
   </nav>
 
   <!-- ---- GAME 1: 탄소의 딜레마 ---- -->
@@ -2230,88 +2388,141 @@
 
   <!-- ---- GAME 2: 히든 프라이스 ---- -->
   <section class="game-panel" data-game-panel="price" hidden>
-    <div class="rulebook-wrap">
-      <div class="rulebook-head">
-        <span class="game-en">HIDDEN PRICE: RESOURCE DIPLOMACY WAR</span>
-        <h3>히든 프라이스: 자원 외교전</h3>
-        <div class="info-chips">
-          <span class="info-chip">개인전</span>
-          <span class="info-chip">24개 중 2종 무작위 등장</span>
-          <span class="info-chip">희망가 1천~5천 원</span>
-          <span class="info-chip">특수행동 3종 · 평생 1회</span>
+    <div id="cartel-dossier"><div class="cd-page">
+
+      <section class="cd-cover">
+        <p class="cd-eyebrow">교사용 시뮬레이션 매뉴얼</p>
+        <h3>더 카르텔: 히든 프라이스</h3>
+        <p class="cd-en-sub">THE CARTEL · HIDDEN PRICE</p>
+        <div class="cd-chip-row">
+          <span class="cd-chip">개인전 · 참가자 12명</span>
+          <span class="cd-chip">자원 2개씩 무작위 배정</span>
+          <span class="cd-chip">희망가 1천 ~ 5천 원</span>
+          <span class="cd-chip">특수행동 3종 · 게임중 1회</span>
+          <span class="cd-chip">총 4라운드</span>
+        </div>
+        <p class="cd-lede">여러분은 한정된 자원을 수출하는 카르텔의 일원입니다. 매 라운드 자원의 수출가를 결정하고, 비밀리에 수출가를 신고합니다. 자원은 항상 최저가로 수출되며, 최저가보다 높은 가격을 신고한 카르텔은 수입을 올릴 수 없습니다. 같은 자원 카르텔과의 협상을 통해 최대한 많은 수입을 올려보세요!</p>
+      </section>
+
+      <div class="cd-ticker">
+        <div class="cd-ticker-head">
+          <span>자원 배정 현황판 · GLOBAL RESOURCE LEDGER</span>
+          <span class="cd-live">24 UNITS ALLOCATED</span>
+        </div>
+        <div class="cd-ticker-grid">
+          <div class="cd-ticker-cell"><span class="cd-res-icon">🌱</span><span class="cd-res-name">포타쉬</span><span class="cd-res-count">3<span class="cd-unit">개</span></span><span class="cd-res-tier strong">결속력 강함</span></div>
+          <div class="cd-ticker-cell"><span class="cd-res-icon">⚗️</span><span class="cd-res-name">희토류</span><span class="cd-res-count">3<span class="cd-unit">개</span></span><span class="cd-res-tier strong">결속력 강함</span></div>
+          <div class="cd-ticker-cell"><span class="cd-res-icon">💎</span><span class="cd-res-name">다이아몬드</span><span class="cd-res-count">4<span class="cd-unit">개</span></span><span class="cd-res-tier mid">결속력 보통</span></div>
+          <div class="cd-ticker-cell"><span class="cd-res-icon">🔋</span><span class="cd-res-name">희유금속</span><span class="cd-res-count">4<span class="cd-unit">개</span></span><span class="cd-res-tier mid">결속력 보통</span></div>
+          <div class="cd-ticker-cell"><span class="cd-res-icon">🛢️</span><span class="cd-res-name">석유</span><span class="cd-res-count">5<span class="cd-unit">개</span></span><span class="cd-res-tier weak">결속력 약함</span></div>
+          <div class="cd-ticker-cell"><span class="cd-res-icon">🔥</span><span class="cd-res-name">천연가스</span><span class="cd-res-count">5<span class="cd-unit">개</span></span><span class="cd-res-tier weak">결속력 약함</span></div>
         </div>
       </div>
 
-      <div class="rb-card">
-        <h4>개요</h4>
-        <p>여러분은 한정된 자원을 수출하는 가상 국가의 수출 담당자입니다. 매 라운드 국가의 자원을 얼마에 수출할지 정하고 비밀리에 수출가를 신고합니다. 자원은 항상 최저가로 수출되며, 최저가보다 높은 가격을 신고한 국가는 수입을 올릴 수 없습니다. 같은 자원을 수출하는 국가와의 외교(또는 눈치싸움)를 통해 남들보다 많은 수입을 올려야 합니다.</p>
-      </div>
-
-      <div class="rb-card">
-        <h4>진행 방법</h4>
-        <ol class="rule-list">
-          <li><span class="rule-text">곡물·목재·석유·천연가스·희토류·희유금속 등 6종, 총 24개 자원 중 2가지가 무작위로 이번 게임의 수출 자원으로 정해집니다.</span>
-            <ul class="sub-rules">
-              <li>희소성에 따라 곡물과 목재는 5개씩, 석유와 천연가스는 4개씩, 희토류와 희유금속은 3개씩 존재합니다.</li>
-            </ul>
-          </li>
-          <li><span class="rule-text">매 라운드 모든 플레이어는 자신이 수출하는 자원의 희망가를 천 원 단위로(최소 1천 원, 최대 5천 원) 제시합니다.</span>
-            <ul class="sub-rules">
-              <li>모든 플레이어의 희망가가 정해지면 자원의 수출가와 수입이 공개됩니다. (누적 수입은 공개되지 않습니다)</li>
+      <section class="cd-section">
+        <div class="cd-section-head"><span class="cd-section-num">01</span><h4>진행 방법</h4></div>
+        <div class="cd-steps">
+          <div class="cd-step">
+            <span class="cd-step-index">1</span>
+            <h5>자원 배정</h5>
+            <p>포타쉬·다이아몬드·석유·천연가스·희토류·희유금속 6종, 총 24개 자원을 참가자 12명(국가)에게 2개씩 무작위로 배정합니다.</p>
+            <ul><li>같은 자원을 배정받은 참가자끼리 매 라운드 가격 경쟁을 벌이게 되며, 한 사람이 서로 다른 두 자원을 동시에 수출하는 경우가 대부분입니다.</li></ul>
+          </div>
+          <div class="cd-step">
+            <span class="cd-step-index">2</span>
+            <h5>희망가 제시</h5>
+            <p>매 라운드 모든 플레이어는 자신이 수출하는 자원의 희망가를 천 원 단위로(최소 1천 원, 최대 5천 원) 제시합니다.</p>
+            <ul>
               <li>각 자원의 수출가는, 그 자원을 수출하는 플레이어들이 제시한 희망가 중 최저가로 정해집니다.</li>
               <li>최저가를 제시한 플레이어는 (최저가) × (해당 자원을 수출하는 플레이어 수)만큼의 수입을 얻습니다.</li>
               <li>최저가 제시자가 여러 명이면, 그 플레이어들이 총 수입을 똑같이 나눠 갖습니다. (1원 단위까지 계산, 나머지는 버림)</li>
             </ul>
-          </li>
-          <li><span class="rule-text">플레이어는 게임 진행 중 단 한 번, 아래 세 가지 특수 행동 중 하나를 선택해 실행할 수 있습니다. (자세한 내용은 아래 카드 참고)</span></li>
-          <li><span class="rule-text">게임이 종료되면 플레이어들의 누적 수입이 공개됩니다. 가장 높은 수입을 올린 플레이어가 우승하며 소정의 상품을 받습니다.</span>
-            <ul class="sub-rules">
-              <li>20,000원 이상의 수입을 올린 플레이어는 승패와 무관하게 소정의 상품을 받습니다.</li>
-            </ul>
-          </li>
-        </ol>
-      </div>
+          </div>
+          <div class="cd-step">
+            <span class="cd-step-index">3</span>
+            <h5>수출가 및 수입 공개</h5>
+            <p>매 라운드마다 수출가가 결정되면 자원별로 최저 수출가 및 수출가에 따른 플레이어별 수입이 공개됩니다.</p>
+          </div>
+          <div class="cd-step">
+            <span class="cd-step-index">4</span>
+            <h5>특수 행동 실행</h5>
+            <p>플레이어는 게임 진행 중 단 한 번, 세 가지 특수 행동 중 하나를 선택해 실행할 수 있습니다. 자세한 내용은 아래 02 섹션을 참고하세요.</p>
+          </div>
+          <div class="cd-step">
+            <span class="cd-step-index">5</span>
+            <h5>게임 종료 · 결산</h5>
+            <p>4라운드가 모두 끝나면 플레이어들의 누적 수입이 공개됩니다. 가장 높은 수입을 올린 플레이어가 우승하며 소정의 상품을 받습니다.</p>
+            <ul><li>20,000원 이상의 수입을 올린 플레이어는 승패와 무관하게 소정의 상품을 받습니다.</li></ul>
+          </div>
+        </div>
+      </section>
 
-      <div class="rb-card">
-        <h4>특수 행동 · 게임당 단 한 번</h4>
-        <div class="action-grid">
-          <div class="action-card">
-            <span class="tag">가격 제시 단계에 사용</span>
+      <section class="cd-section">
+        <div class="cd-section-head"><span class="cd-section-num">02</span><h4>특수 행동 — 게임당 단 한 번</h4></div>
+        <div class="cd-action-grid">
+          <div class="cd-action-card">
+            <span class="cd-phase-tag">가격 제시 단계에 사용</span>
+            <span class="cd-ac-icon">🔒</span>
             <h5>비밀</h5>
             <p>이번 라운드에 한해, 내가 수출하는 자원 중 하나의 판매가와 수입을 비공개로 만듭니다.</p>
           </div>
-          <div class="action-card">
-            <span class="tag">라운드 종료 시점에 사용</span>
+          <div class="cd-action-card">
+            <span class="cd-phase-tag">가격 제시 단계에 사용</span>
+            <span class="cd-ac-icon">🕵️</span>
             <h5>확인</h5>
-            <p>나의 누적 총 수입을 확인합니다.</p>
+            <p>다른 플레이어 한 명을 지정해, 이번 라운드 그 플레이어가 제시한 희망가를 몰래 알아냅니다.</p>
           </div>
-          <div class="action-card">
-            <span class="tag">라운드 시작 시점에 사용</span>
+          <div class="cd-action-card">
+            <span class="cd-phase-tag">라운드 시작 시점에 사용</span>
+            <span class="cd-ac-icon">⛏️</span>
             <h5>전환</h5>
             <p>환경적 리스크를 감수하고 새로운 자원을 채굴합니다. 내가 파는 자원 한 가지를 원하는 자원으로 교체합니다.</p>
           </div>
         </div>
-      </div>
+        <p class="cd-action-note">세 행동 모두 게임 전체에서 단 1회만 쓸 수 있으며, 셋 중 하나를 쓰면 나머지 두 행동도 더 이상 사용할 수 없습니다.</p>
+      </section>
 
-      <div class="callout">
-        <span class="callout-label">핵심 포인트</span>
-        가장 낮은 가격을 부른 사람이 이기는 구조는 수출국들이 서로 가격을 깎는 <strong>'바닥으로의 경쟁'</strong>을 만들어냅니다. 경쟁국과 은근히 보조를 맞출지, 배신하고 더 낮은 가격을 부를지 — 실제 자원 외교에서 국가들이 마주하는 딜레마와 닮아 있습니다.
-      </div>
+      <section class="cd-section">
+        <blockquote class="cd-pullquote">
+          <span class="cd-stamp">핵심 · KEY</span>
+          <p class="cd-pq-label">핵심 포인트</p>
+          <p>가장 낮은 가격을 부른 사람이 이기는 구조는 수출국들이 서로 가격을 깎는 <strong>'바닥으로의 경쟁'</strong>을 만들어냅니다. 경쟁국과 은근히 보조를 맞출지, 배신하고 더 낮은 가격을 부를지 — 실제 자원 외교에서 국가들이 마주하는 딜레마와 닮아 있습니다.</p>
+        </blockquote>
+      </section>
 
-      <div class="rb-card">
-        <h4>용어 설명</h4>
-        <dl>
-          <div class="glossary-item">
-            <dt>희토류</dt>
-            <dd>영구자석, 촉매, 유리·렌즈, 형광체, 레이저 등 다양한 분야에 쓰이는 첨단 제조산업의 핵심 소재. 글로벌 희토류 공급의 70~80%가 영구자석 제조에 쓰이며, 전기차·풍력·전자·방산 산업과 밀접하게 연계됩니다. (란타넘, 세륨, 프라세오디뮴, 네오디뮴, 프로메튬 등)</dd>
+      <section class="cd-section">
+        <div class="cd-section-head"><span class="cd-section-num">03</span><h4>승리 조건</h4></div>
+        <div class="cd-win-box">
+          <div class="cd-win-tile"><span class="cd-big">1위</span><span class="cd-cap">4라운드 누적 수입 최고액 플레이어가 우승</span></div>
+          <div class="cd-win-tile"><span class="cd-big">20,000원+</span><span class="cd-cap">누적 수입이 이 금액 이상이면 승패와 무관하게 상품 획득</span></div>
+          <div class="cd-win-tile"><span class="cd-big">비공개</span><span class="cd-cap">라운드 중에는 누적 수입이 공개되지 않아 끝까지 순위를 알 수 없음</span></div>
+        </div>
+      </section>
+
+      <section class="cd-section">
+        <div class="cd-section-head"><span class="cd-section-num">04</span><h4>자원 용어 사전</h4></div>
+        <dl class="cd-glossary">
+          <div class="cd-gl-card">
+            <dt>🌱 포타쉬</dt>
+            <dd>칼륨을 주성분으로 하는 비료 광물로, 농업 생산성에 필수적입니다. 벨라루스·러시아·캐나다 소수 국가가 전 세계 수출량 대부분을 차지하는 대표적인 과점 자원입니다. 2013년 실제로 러시아의 우랄칼리가 벨라루스와의 공동판매 카르텔에서 탈퇴하자, 국제 포타쉬 가격이 단 몇 달 만에 20~25% 폭락한 사례가 있습니다.</dd>
           </div>
-          <div class="glossary-item">
-            <dt>희유금속</dt>
-            <dd>리튬, 니켈, 인듐, 몰리브덴, 세슘 등이 포함됩니다. 총사용량은 많지 않지만 첨단산업 IT, 자동차, 철강 등 주요 산업의 핵심 소재로 쓰여 '산업의 비타민'이라고도 불립니다.</dd>
+          <div class="cd-gl-card">
+            <dt>⚗️ 희토류</dt>
+            <dd>영구자석, 촉매, 유리·렌즈, 형광체, 레이저 등 다양한 분야에 쓰이는 첨단 제조산업의 핵심 소재. 글로벌 희토류 수요의 약 30~40%가 영구자석 제조에 쓰이며, 전기차·풍력·전자·방산 산업과 밀접하게 연계됩니다. (란타넘, 세륨, 프라세오디뮴, 네오디뮴, 디스프로슘 등)</dd>
+          </div>
+          <div class="cd-gl-card">
+            <dt>🔋 희유금속</dt>
+            <dd>리튬, 코발트, 인듐, 몰리브덴, 텅스텐 등이 포함됩니다. 총사용량은 많지 않지만 첨단산업 IT, 자동차, 철강 등 주요 산업의 핵심 소재로 쓰여 '산업의 비타민'이라고도 불립니다.</dd>
           </div>
         </dl>
+      </section>
+
+      <div class="cd-footer">
+        <span>더 카르텔: 히든 프라이스 · 공식 룰북</span>
+        <span>세계문제와 미래사회 · 교사용 시뮬레이션 자료</span>
       </div>
-    </div>
+
+    </div></div>
   </section>
   </section>
 
@@ -3081,19 +3292,36 @@
     </div>
     <div class="masthead-text">
       <p class="eyebrow">교사용 도구 · 환경과 에너지</p>
-      <h1 class="title">히든 프라이스: 자원 외교전 도구</h1>
+      <h1 class="title">더 카르텔: 히든 프라이스 도구</h1>
       <p class="lede">참가자 12명에게 자원을 무작위로 배정하는 "자원 추첨"과, 라운드마다 수출가·수입을 계산하는 "가격 계산기"를 한 페이지에서 씁니다. 맨 아래 두 버튼으로 바로바로 전환하세요.</p>
+      <button type="button" class="hr-display-toggle-btn" id="hp-display-mode-btn" onclick="hpDisplayModeOn()">📺 이 기기를 발표 화면으로 전환 (패드용)</button>
     </div>
   </header>
 
+  <div class="hr-display-overlay" id="hp-display-overlay" hidden>
+    <button type="button" class="hr-display-exit-btn" id="hp-display-exit-btn" onclick="hpDisplayModeOff()">✕ 발표 모드 종료</button>
+    <div class="hr-display-stage">
+      <div id="hp-display-connect">
+        <p class="hr-display-eyebrow">더 카르텔 · 발표 화면</p>
+        <h2>노트북(계산기) 화면에 뜬<br>연결 코드를 입력하세요</h2>
+        <div class="hr-display-code-input-row">
+          <input type="text" id="hp-display-code-input" placeholder="연결 코드" autocomplete="off" autocapitalize="off" spellcheck="false" onkeydown="if(event.key==='Enter') hpConnectDisplayTo(this.value)">
+          <button type="button" class="btn next" id="hp-display-connect-btn" onclick="hpConnectDisplayTo(document.getElementById('hp-display-code-input').value)">연결하기</button>
+        </div>
+        <p class="hr-display-status" id="hp-display-status"></p>
+      </div>
+      <div id="hp-display-reveal" hidden></div>
+    </div>
+  </div>
+
   <div class="tool-panel" data-panel="draw">
     <p class="tool-panel-title">🎲 자원 추첨</p>
-    <p class="tool-panel-sub">참가자 12명에게 6종 자원(곡물·목재·석유·천연가스·희토류·희유금속) 중 2개씩 무작위로 배정해요. 추첨 결과는 아래 "가격 계산기" 패널에 직접 옮겨 입력하세요.</p>
+    <p class="tool-panel-sub">참가자 12명에게 6종 자원(포타쉬·다이아몬드·석유·천연가스·희토류·희유금속) 중 2개씩 무작위로 배정해요. 추첨 결과는 아래 "가격 계산기" 패널에 직접 옮겨 입력하세요.</p>
 <div id="rl-app">
 <div class="wrap">
 
 <div id="rl-s-setup">
-  <div class="title-row"><span class="emoji">🎲</span><h2 style="margin:0">자원 추첨 시뮬레이터</h2></div>
+  <div class="title-row"><span class="emoji">🎲</span><h2 style="margin:0">더 카르텔 - 자원 추첨</h2></div>
   <div class="card">
     <h3>참가자 12명 이름 입력</h3>
     <div id="rl-player-inputs"></div>
@@ -3143,31 +3371,22 @@
   <button class="btn-secondary" onclick="rlResetAll()">🔄 다시 추첨하기</button>
 </div>
 
-<footer>자원 추첨 시뮬레이터</footer>
+<footer>더 카르텔 - 자원 추첨 시뮬레이터</footer>
 </div>
 </div>
   </div>
 
   <div class="tool-panel" data-panel="price" hidden>
-    <p class="tool-panel-title">🧮 히든 프라이스 계산기</p>
+    <p class="tool-panel-title">🧮 더 카르텔 계산기</p>
     <p class="tool-panel-sub">라운드마다 참가자별 보유 자원과 희망가를 입력하면 자원별 최저가·수입을 자동으로 계산해요. 4라운드까지 누적 수입도 함께 기록돼요.</p>
 <div id="hp-app">
 <div class="wrap">
 
-<div class="title-row"><span class="emoji">💱</span><h2 style="margin:0">히든 프라이스 - 수출가 계산기</h2></div>
+<div class="title-row"><span class="emoji">💱</span><h2 style="margin:0">더 카르텔 - 수출가 계산기</h2></div>
 <div class="round-header">
   <div class="info-box" style="margin:0;flex:1">총 4라운드 진행 · 라운드별 수입이 누적됩니다</div>
 </div>
 <div class="round-pills" id="hp-round-pills" style="margin-bottom:.9rem"></div>
-
-<div class="card">
-  <div class="info-box">
-    각 플레이어가 보유한 자원 2개와 그에 대한 수출가(1~5천 원)를 입력하세요.<br>
-    같은 자원을 파는 플레이어들 중 <b>최저가 제시자</b>가 (최저가 × 해당 자원을 실제로 수출하는 플레이어 수)만큼의 수입을 가져갑니다.<br>
-    동률일 경우 수입을 똑같이 나눠 갖습니다 (1원 단위 버림). 누군가 <b>전환</b> 능력을 사용했다면 라운드 시작 전 해당 플레이어의 자원 칸을 직접 바꿔주세요 — 자원 칸은 언제든 수정할 수 있습니다.<br>
-    누군가 <b>비밀</b> 능력을 사용해 특정 자원을 비공개로 만들고 싶다면, 그 자원을 보유한 플레이어의 '비밀' 체크박스를 켜주세요. 계산은 정상적으로 반영되지만, 결과 표에서는 해당 자원이 가려지고 '진행자 확인' 버튼으로만 펼쳐볼 수 있습니다.
-  </div>
-</div>
 
 <div class="card">
   <h3 id="hp-player-list-title">플레이어 12명 — 보유 자원 및 수출가 입력</h3>
@@ -3188,34 +3407,65 @@
   <div id="hp-player-income"></div>
 </div>
 
-<div class="card" id="hp-cumulative-card" style="display:none">
-  <h3>누적 수입 현황 (라운드 <span id="hp-cum-round-num"></span>까지)</h3>
-  <div id="hp-cumulative-list"></div>
-</div>
-
-<div class="card" id="hp-history-card" style="display:none">
-  <h3>라운드별 수입 내역</h3>
-  <div id="hp-history-table-wrap" style="overflow-x:auto"></div>
-</div>
-
 <button class="btn-primary" id="hp-next-round-btn" onclick="hpGoNextRound()" style="display:none">다음 라운드로 →</button>
 <button class="btn-secondary" id="hp-finish-btn" onclick="hpShowFinalSummary()" style="display:none">게임 종료 — 최종 결과 보기 →</button>
 
 <div class="card" id="hp-game-final-card" style="display:none">
   <h3>🏁 최종 결과 (4라운드 누적)</h3>
   <div id="hp-game-final-list"></div>
+  <button type="button" class="btn-primary hr-reveal-btn" id="hp-final-broadcast-reveal" onclick="hpSendFinalReveal()" disabled style="margin-top:.8rem">📣 패드에 최종 결과 발표하기</button>
+</div>
+
+<div class="card" id="hp-broadcast-card">
+  <h3>📡 발표 화면 연결 (선택)</h3>
+  <p class="hr-broadcast-desc">다른 기기(패드 등)를 발표 전용 화면으로 띄워두면, 버튼 하나로 이번 라운드 자원별 수출가와 플레이어별 수입을 탭으로 넘겨가며 공개할 수 있어요. 두 기기 모두 인터넷에 연결돼 있으면 되고(같은 와이파이가 아니어도 괜찮아요), 패드에도 이 index.html 파일이 있어야 해요.</p>
+  <div class="hr-broadcast-row">
+    <button type="button" class="btn-secondary" id="hp-broadcast-start" onclick="hpStartHosting()" style="width:auto;margin-top:0;">연결 코드 만들기</button>
+    <button type="button" class="btn-secondary" id="hp-broadcast-stop" onclick="hpStopHosting()" style="width:auto;margin-top:0;" hidden>연결 끊기</button>
+    <span class="hr-broadcast-status" id="hp-broadcast-status">아직 연결 안 됨</span>
+  </div>
+  <div class="hr-broadcast-code" id="hp-broadcast-code" hidden></div>
+  <button type="button" class="btn-primary hr-reveal-btn" id="hp-broadcast-reveal" onclick="hpSendReveal()" disabled>📣 패드에 이번 라운드 발표하기</button>
 </div>
 
 <button class="btn-danger-outline" onclick="hpResetAll()">🔄 전체 초기화 (새 게임 시작)</button>
 
-<footer>히든 프라이스: 자원 외교전 · 수출가 계산기</footer>
+<footer>더 카르텔: 히든 프라이스 · 수출가 계산기</footer>
 </div>
 </div>
   </div>
 
-  <div class="tool-switcher" role="tablist" aria-label="히든 프라이스 도구 전환">
+  <div class="tool-panel" data-panel="income" hidden>
+    <p class="tool-panel-title">📊 더 카르텔 수입 내역</p>
+    <p class="tool-panel-sub">가격 계산기에서 계산한 라운드 결과가 여기에 누적 수입 현황과 라운드별 수입 내역으로 정리돼요.</p>
+<div id="hp-app">
+<div class="wrap">
+
+<p class="info-box" id="hp-stats-empty">아직 계산된 라운드가 없어요. 🧮 가격 계산기 탭에서 라운드 결과를 계산하면 여기에 누적 수입과 라운드별 내역이 표시돼요.</p>
+
+<div class="card" id="hp-stats-card" style="display:none">
+  <div class="tabs" id="hp-stats-tabs">
+    <button type="button" class="hp-stats-tab-btn" data-stats-tab="cumulative" aria-selected="true" onclick="hpSwitchStatsTab('cumulative')">📊 누적 수입 현황</button>
+    <button type="button" class="hp-stats-tab-btn" data-stats-tab="history" aria-selected="false" onclick="hpSwitchStatsTab('history')">🗒️ 라운드별 수입 내역</button>
+  </div>
+  <div id="hp-stats-panel-cumulative">
+    <h3>누적 수입 현황 (라운드 <span id="hp-cum-round-num"></span>까지)</h3>
+    <div id="hp-cumulative-list"></div>
+  </div>
+  <div id="hp-stats-panel-history" hidden>
+    <h3>라운드별 수입 내역</h3>
+    <div id="hp-history-table-wrap" style="overflow-x:auto"></div>
+  </div>
+</div>
+
+</div>
+</div>
+  </div>
+
+  <div class="tool-switcher" role="tablist" aria-label="더 카르텔 도구 전환">
     <button type="button" class="tool-switch-btn" data-panel="draw" aria-selected="true">🎲 자원 추첨</button>
     <button type="button" class="tool-switch-btn" data-panel="price" aria-selected="false">🧮 가격 계산기</button>
+    <button type="button" class="tool-switch-btn" data-panel="income" aria-selected="false">📊 수입 내역</button>
   </div>
   </section>
 
@@ -6755,12 +7005,12 @@
 
 
 const RL_RES_DEF = [
-  {name:'곡물',icon:'🌾',count:5,rare:false},
-  {name:'목재',icon:'🪵',count:5,rare:false},
-  {name:'석유',icon:'🛢️',count:4,rare:false},
-  {name:'천연가스',icon:'🔥',count:4,rare:false},
+  {name:'포타쉬',icon:'🌱',count:3,rare:true},
+  {name:'다이아몬드',icon:'💎',count:4,rare:false},
+  {name:'석유',icon:'🛢️',count:5,rare:false},
+  {name:'천연가스',icon:'🔥',count:5,rare:false},
   {name:'희토류',icon:'⚗️',count:3,rare:true},
-  {name:'희유금속',icon:'💎',count:3,rare:true},
+  {name:'희유금속',icon:'🔋',count:4,rare:false},
 ];
 const RL_TOTAL_PLAYERS = 12;
 const RL_DEFAULT_NAMES = ['미국','EU','중국','러시아','사우디아라비아','인도','브라질','나이지리아','호주','인도네시아','칠레','방글라데시'];
@@ -6793,9 +7043,10 @@ function rlRenderPoolDisplay(){
 function rlInitPlayerInputs(){
   const c = document.getElementById('rl-player-inputs');
   c.innerHTML='';
+  c.style.cssText='display:grid;grid-template-columns:1fr 1fr;gap:5px 10px';
   for(let i=0;i<RL_TOTAL_PLAYERS;i++){
     const d=document.createElement('div');
-    d.style.cssText='display:flex;align-items:center;gap:8px;margin-bottom:5px';
+    d.style.cssText='display:flex;align-items:center;gap:8px';
     d.innerHTML=`<span style="font-size:12px;color:#999;min-width:24px">${i+1}.</span><input type="text" placeholder="${RL_DEFAULT_NAMES[i]}" id="rl-pname-${i}" style="margin:0">`;
     c.appendChild(d);
   }
@@ -6846,9 +7097,11 @@ function rlRenderDrawScreen(){
 
   const dl = document.getElementById('rl-draw-list');
   dl.innerHTML='';
+  dl.style.cssText='display:grid;grid-template-columns:1fr 1fr;gap:0 14px';
   rlPlayers.forEach((p,i)=>{
     const row=document.createElement('div');
     row.className='draw-row';
+    row.style.cssText='flex-wrap:wrap;';
     const isCurrent = rlDrawStep<rlDrawQueue.length && rlDrawQueue[rlDrawStep]===i;
     row.innerHTML = `<div class="draw-left">
       <div class="nation-avatar">${p.name.slice(0,2)}</div>
@@ -6935,12 +7188,12 @@ rlInitPlayerInputs();
 
 
 const HP_RES_DEF = [
-  {name:'곡물',count:5,rare:false},
-  {name:'목재',count:5,rare:false},
-  {name:'석유',count:4,rare:false},
-  {name:'천연가스',count:4,rare:false},
+  {name:'포타쉬',count:3,rare:true},
+  {name:'다이아몬드',count:4,rare:false},
+  {name:'석유',count:5,rare:false},
+  {name:'천연가스',count:5,rare:false},
   {name:'희토류',count:3,rare:true},
-  {name:'희유금속',count:3,rare:true},
+  {name:'희유금속',count:4,rare:false},
 ];
 const HP_TOTAL_PLAYERS = 12;
 const HP_DEFAULT_NAMES = ['미국','EU','중국','러시아','사우디아라비아','인도','브라질','나이지리아','호주','인도네시아','칠레','방글라데시'];
@@ -6953,6 +7206,23 @@ let hpCumulativeIncome = Array(HP_TOTAL_PLAYERS).fill(0);
 let hpSavedNames = [...HP_DEFAULT_NAMES];
 let hpSavedResources = null;
 let hpRoundHistory = [];
+let hpSecretUsed = Array(HP_TOTAL_PLAYERS).fill(false);
+let hpCheckUsed = Array(HP_TOTAL_PLAYERS).fill(false);
+let hpSwitchUsed = Array(HP_TOTAL_PLAYERS).fill(false);
+
+/* ---------------- 더 카르텔: 발표 화면(2기기 연동, PeerJS) ----------------
+   동정심 마켓의 발표 화면과 같은 방식 — 서버 없이 PeerJS 공개 중계만 거쳐 두 브라우저가
+   직접 연결된다. 접두어만 다르게(cartel-) 써서 동정심 마켓(hrmkt-) 연결 코드와 겹치지 않는다. */
+const HP_PEER_PREFIX = "cartel-";
+const HP_RES_ICON = {'포타쉬':'🌱','다이아몬드':'💎','석유':'🛢️','천연가스':'🔥','희토류':'⚗️','희유금속':'🔋'};
+let hpLastRoundSnapshot = null;
+let hpHostPeer = null;
+let hpHostConns = [];
+let hpDisplayPeer = null;
+let hpDisplayConn = null;
+let hpRevealPayload = null;
+let hpRevealActiveRes = null;
+let hpRevealAnimTimer = null;
 
 function hpFmtWon(n){
   return n.toLocaleString('ko-KR') + '원';
@@ -7009,7 +7279,7 @@ function hpBuildPlayerList(){
           ${[1,2,3,4,5].map(v=>`<option value="${v}">${v}천 원</option>`).join('')}
         </select>
         <div class="secret-check-wrap">
-          <input type="checkbox" id="hp-secret-${i}-0">
+          <input type="checkbox" id="hp-secret-${i}-0" onchange="hpSecretToggle(${i},0)">
           <span>비밀</span>
         </div>
       </div>
@@ -7021,8 +7291,19 @@ function hpBuildPlayerList(){
           ${[1,2,3,4,5].map(v=>`<option value="${v}">${v}천 원</option>`).join('')}
         </select>
         <div class="secret-check-wrap">
-          <input type="checkbox" id="hp-secret-${i}-1">
+          <input type="checkbox" id="hp-secret-${i}-1" onchange="hpSecretToggle(${i},1)">
           <span>비밀</span>
+        </div>
+      </div>
+      <div class="res-row" style="justify-content:flex-start; gap:14px;">
+        <span style="font-size:11px;color:#999;white-space:nowrap">게임중 1회 능력</span>
+        <div class="secret-check-wrap">
+          <input type="checkbox" id="hp-check-${i}" onchange="hpMarkAbilityUsed(${i},'check',this)">
+          <span>확인</span>
+        </div>
+        <div class="secret-check-wrap">
+          <input type="checkbox" id="hp-switch-${i}" onchange="hpMarkAbilityUsed(${i},'switch',this)">
+          <span>전환</span>
         </div>
       </div>
     `;
@@ -7042,6 +7323,7 @@ function hpBuildPlayerList(){
   } else {
     hpAutoFillDefaultResources();
   }
+  for(let i=0;i<HP_TOTAL_PLAYERS;i++){ hpSyncAbilityLocks(i); }
   hpCheckDuplicate();
   hpRenderRoundPills();
 }
@@ -7058,6 +7340,48 @@ function hpAutoFillDefaultResources(){
 function hpUpdateAvatar(i){
   const v = document.getElementById(`hp-pname-${i}`).value.trim() || HP_DEFAULT_NAMES[i];
   document.getElementById(`hp-avatar-${i}`).textContent = v.slice(0,2);
+}
+
+function hpSyncAbilityLocks(i){
+  /* 특수행동 3종(비밀/확인/전환)은 플레이어 1명당 평생 '단 하나만' 사용 가능하다.
+     셋 중 하나를 쓰면(체크/확정하면) 나머지 두 종류의 체크박스는 즉시, 그리고 이후
+     라운드가 바뀌어도 계속 비활성화된다 — 전체 초기화 전까지는 풀리지 않는다.
+     '비밀'은 계산하기를 누르기 전까지는 체크/해제가 자유로운 '사용 의도' 상태이고,
+     '확인'/'전환'은 체크하는 즉시 확정(hpCheckUsed/hpSwitchUsed=true)되므로, 이 함수는
+     네 체크박스가 바뀔 때마다 호출해 최신 상태를 모든 칸에 일관되게 반영한다. */
+  const sec0 = document.getElementById(`hp-secret-${i}-0`);
+  const sec1 = document.getElementById(`hp-secret-${i}-1`);
+  const chk  = document.getElementById(`hp-check-${i}`);
+  const swi  = document.getElementById(`hp-switch-${i}`);
+  if(!sec0 || !sec1 || !chk || !swi) return;
+
+  const secretActive = hpSecretUsed[i] || sec0.checked || sec1.checked;
+  const checkActive  = hpCheckUsed[i]  || chk.checked;
+  const switchActive = hpSwitchUsed[i] || swi.checked;
+
+  const secretLocked = hpSecretUsed[i] || checkActive || switchActive;
+  sec0.disabled = secretLocked || sec1.checked;
+  sec1.disabled = secretLocked || sec0.checked;
+
+  chk.disabled = hpCheckUsed[i] || chk.checked || secretActive || switchActive;
+  swi.disabled = hpSwitchUsed[i] || swi.checked || secretActive || checkActive;
+}
+
+function hpSecretToggle(i, slot){
+  /* '비밀'은 한 사람당 평생 1회, 그것도 한 라운드에 자원 하나에만 쓸 수 있다.
+     체크 상태가 바뀔 때마다 비밀 두 칸 + 확인/전환까지 한번에 다시 동기화한다. */
+  hpSyncAbilityLocks(i);
+}
+
+function hpMarkAbilityUsed(i, type, el){
+  /* 확인/전환은 전용 UI 계산 로직이 없는, 순수 '평생 1회 사용 기록' 체크박스.
+     한 번 체크하면 그 즉시 영구적으로 잠긴다(다시 풀 수 없음 — 게임 전체 초기화 전까지).
+     체크하는 순간 나머지 두 특수행동(비밀/확인/전환 중 이걸 뺀 둘)도 함께 잠근다. */
+  if(!el.checked) return;
+  if(type==='check') hpCheckUsed[i] = true;
+  if(type==='switch') hpSwitchUsed[i] = true;
+  el.disabled = true;
+  hpSyncAbilityLocks(i);
 }
 
 function hpCheckDuplicate(){
@@ -7111,8 +7435,8 @@ function hpCalcResult(){
     const r1 = document.getElementById(`hp-res-${i}-1`).value;
     const p0 = parseInt(document.getElementById(`hp-price-${i}-0`).value);
     const p1 = parseInt(document.getElementById(`hp-price-${i}-1`).value);
-    if(document.getElementById(`hp-secret-${i}-0`)?.checked) secretResources.add(r0);
-    if(document.getElementById(`hp-secret-${i}-1`)?.checked) secretResources.add(r1);
+    if(document.getElementById(`hp-secret-${i}-0`)?.checked){ secretResources.add(r0); hpSecretUsed[i] = true; }
+    if(document.getElementById(`hp-secret-${i}-1`)?.checked){ secretResources.add(r1); hpSecretUsed[i] = true; }
     players.push({
       idx:i, name,
       resources:[{name:r0, price:p0},{name:r1, price:p1}],
@@ -7148,10 +7472,12 @@ function hpCalcResult(){
     const totalIncome = mn * entries.length * HP_UNIT;
     const share = Math.floor(totalIncome/winners.length);
     winners.forEach(w=>{ players[w.pi].roundIncome += share; });
-    resultByRes[def.name] = {price:mn, totalIncome, sellerCount:entries.length, totalCount:def.count, winners:winners.map(w=>w.pi), share};
+    const sellers = entries.map(e=>({pi:e.pi, price:e.price, isWinner:e.price===mn, income:e.price===mn?share:0}));
+    resultByRes[def.name] = {price:mn, totalIncome, sellerCount:entries.length, totalCount:def.count, winners:winners.map(w=>w.pi), share, sellers};
   });
 
   players.forEach(p=>{ hpCumulativeIncome[p.idx] += p.roundIncome; });
+  for(let i=0;i<HP_TOTAL_PLAYERS;i++){ hpSyncAbilityLocks(i); }
 
   hpRoundHistory.push({
     round: hpCurrentRound,
@@ -7159,6 +7485,24 @@ function hpCalcResult(){
     secretResources: Array.from(secretResources),
     roundIncomes: players.map(p=>p.roundIncome)
   });
+
+  /* 발표 화면(패드)에 보낼 이번 라운드 스냅샷 — 자원별 수출가·수출자 수·판매자별 수입을 담는다.
+     '비밀' 처리된 자원은 secret:true만 보내고 가격/수입 숫자는 그대로 포함하되(계산 자체는 정상 반영돼야 하므로),
+     발표 화면 쪽에서 secret이면 숫자를 보여주지 않고 진행자 안내 문구만 띄운다. */
+  hpLastRoundSnapshot = {
+    round: hpCurrentRound,
+    resources: HP_RES_DEF.map(def=>{
+      const d = resultByRes[def.name];
+      return {
+        name: def.name,
+        price: d.price,
+        sellerCount: d.sellerCount,
+        secret: secretResources.has(def.name),
+        sellers: d.sellers.map(s=>({name: players[s.pi].name, income: s.income, isWinner: s.isWinner}))
+      };
+    })
+  };
+  if(typeof hpUpdateRevealBtnState === 'function') hpUpdateRevealBtnState();
 
   hpRenderResult(resultByRes, players, secretResources);
   hpRenderCumulative(players);
@@ -7271,8 +7615,22 @@ function hpRenderResult(resultByRes, players, secretResources){
   document.getElementById('hp-result-card').scrollIntoView({behavior:'smooth', block:'start'});
 }
 
+function hpSwitchStatsTab(tab){
+  document.querySelectorAll('#hp-stats-tabs .hp-stats-tab-btn').forEach(function(b){
+    b.setAttribute('aria-selected', String(b.dataset.statsTab===tab));
+  });
+  document.getElementById('hp-stats-panel-cumulative').hidden = (tab!=='cumulative');
+  document.getElementById('hp-stats-panel-history').hidden = (tab!=='history');
+}
+
+function hpShowStatsCard(){
+  const empty = document.getElementById('hp-stats-empty');
+  if(empty) empty.style.display='none';
+  document.getElementById('hp-stats-card').style.display='block';
+}
+
 function hpRenderCumulative(players){
-  document.getElementById('hp-cumulative-card').style.display='block';
+  hpShowStatsCard();
   document.getElementById('hp-cum-round-num').textContent = hpCurrentRound;
 
   const sorted = players.map(p=>({
@@ -7298,7 +7656,7 @@ function hpRenderCumulative(players){
 }
 
 function hpRenderHistory(players){
-  document.getElementById('hp-history-card').style.display='block';
+  hpShowStatsCard();
   const wrap = document.getElementById('hp-history-table-wrap');
 
   const order = players.map(p=>p.idx).slice().sort((a,b)=>hpCumulativeIncome[b]-hpCumulativeIncome[a]);
@@ -7339,10 +7697,14 @@ function hpGoNextRound(){
   for(let i=0;i<HP_TOTAL_PLAYERS;i++){
     document.getElementById(`hp-price-${i}-0`).disabled = false;
     document.getElementById(`hp-price-${i}-1`).disabled = false;
-    document.getElementById(`hp-secret-${i}-0`).disabled = false;
-    document.getElementById(`hp-secret-${i}-1`).disabled = false;
-    document.getElementById(`hp-secret-${i}-0`).checked = false;
-    document.getElementById(`hp-secret-${i}-1`).checked = false;
+    /* '비밀'은 평생 1회라서, 이미 썼다면(hpSecretUsed) 다음 라운드부터 계속 잠겨 있어야 한다.
+       아직 안 썼다면 매 라운드 다시 선택할 수 있도록 풀어준다 — 단, 확인/전환을 이미 썼다면
+       그쪽도 마찬가지로 계속 잠겨 있어야 하므로 hpSyncAbilityLocks가 최종 판단한다. */
+    const sec0 = document.getElementById(`hp-secret-${i}-0`);
+    const sec1 = document.getElementById(`hp-secret-${i}-1`);
+    sec0.checked = false;
+    sec1.checked = false;
+    hpSyncAbilityLocks(i);
   }
   hpRenderRoundPills();
   window.scrollTo({top:0, behavior:'smooth'});
@@ -7390,11 +7752,17 @@ function hpResetAll(){
   hpSavedNames = [...HP_DEFAULT_NAMES];
   hpSavedResources = null;
   hpRoundHistory = [];
+  hpSecretUsed = Array(HP_TOTAL_PLAYERS).fill(false);
+  hpCheckUsed = Array(HP_TOTAL_PLAYERS).fill(false);
+  hpSwitchUsed = Array(HP_TOTAL_PLAYERS).fill(false);
+  hpLastRoundSnapshot = null;
+  if(typeof hpUpdateRevealBtnState === 'function') hpUpdateRevealBtnState();
 
   document.getElementById('hp-result-card').style.display='none';
   document.getElementById('hp-final-card').style.display='none';
-  document.getElementById('hp-cumulative-card').style.display='none';
-  document.getElementById('hp-history-card').style.display='none';
+  document.getElementById('hp-stats-card').style.display='none';
+  document.getElementById('hp-stats-empty').style.display='block';
+  hpSwitchStatsTab('cumulative');
   document.getElementById('hp-game-final-card').style.display='none';
   document.getElementById('hp-next-round-btn').style.display='none';
   document.getElementById('hp-finish-btn').style.display='none';
@@ -7403,6 +7771,337 @@ function hpResetAll(){
 
   hpBuildPlayerList();
   window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function hpEsc(s){
+  return String(s==null?'':s).replace(/[&<>"']/g, function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+  });
+}
+
+function hpHasPeerJs(){ return typeof Peer !== 'undefined'; }
+
+function hpRandCode(){
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; // 헷갈리는 0/O, 1/I 제외
+  let s = '';
+  for(let i=0;i<4;i++) s += chars[Math.floor(Math.random()*chars.length)];
+  return s;
+}
+
+function hpSetBroadcastStatus(text, cls){
+  const el = document.getElementById('hp-broadcast-status');
+  el.textContent = text;
+  el.className = 'hr-broadcast-status' + (cls ? ' '+cls : '');
+}
+
+function hpUpdateRevealBtnState(){
+  const connected = hpHostConns.length > 0;
+  const btn = document.getElementById('hp-broadcast-reveal');
+  if(btn){
+    btn.disabled = !(connected && hpLastRoundSnapshot);
+    btn.textContent = connected
+      ? ('📣 패드에 이번 라운드 발표하기' + (hpLastRoundSnapshot ? '' : ' (계산된 라운드 없음)'))
+      : '📣 패드에 이번 라운드 발표하기 (연결 필요)';
+  }
+  const finalBtn = document.getElementById('hp-final-broadcast-reveal');
+  if(finalBtn){
+    finalBtn.disabled = !connected;
+    finalBtn.textContent = connected
+      ? '📣 패드에 최종 결과 발표하기'
+      : '📣 패드에 최종 결과 발표하기 (연결 필요)';
+  }
+}
+
+function hpStartHosting(attemptsLeft){
+  if(!hpHasPeerJs()){ hpSetBroadcastStatus('인터넷 연결이 필요해요 — 발표 화면 기능을 쓸 수 없어요.', 'err'); return; }
+  if(attemptsLeft == null) attemptsLeft = 5;
+  const code = HP_PEER_PREFIX + hpRandCode();
+  hpSetBroadcastStatus('연결 코드 만드는 중…', 'waiting');
+  let p;
+  try{ p = new Peer(code); }catch(e){ hpSetBroadcastStatus('연결 코드를 만들지 못했어요.', 'err'); return; }
+  p.on('open', function(){
+    hpHostPeer = p;
+    document.getElementById('hp-broadcast-start').hidden = true;
+    document.getElementById('hp-broadcast-stop').hidden = false;
+    const codeEl = document.getElementById('hp-broadcast-code');
+    codeEl.hidden = false;
+    codeEl.innerHTML = '<span class="hr-broadcast-code-val">'+code.replace(HP_PEER_PREFIX,'')+'</span>'+
+      '<span class="hr-broadcast-code-hint">패드의 "발표 화면 전환" 화면에 이 코드를 입력하면 연결돼요.</span>';
+    hpSetBroadcastStatus('패드 연결 대기 중…', 'waiting');
+  });
+  p.on('connection', function(conn){
+    hpHostConns.push(conn);
+    conn.on('open', function(){
+      hpSetBroadcastStatus('패드 연결됨 ✅ ('+hpHostConns.length+'대)', 'connected');
+      hpUpdateRevealBtnState();
+    });
+    conn.on('close', function(){
+      hpHostConns = hpHostConns.filter(function(c){ return c!==conn; });
+      hpSetBroadcastStatus(hpHostConns.length ? ('패드 연결됨 ✅ ('+hpHostConns.length+'대)') : '패드 연결 대기 중…', hpHostConns.length ? 'connected' : 'waiting');
+      hpUpdateRevealBtnState();
+    });
+  });
+  p.on('error', function(err){
+    if(err && err.type === 'unavailable-id' && attemptsLeft > 0){
+      try{ p.destroy(); }catch(e){}
+      hpStartHosting(attemptsLeft-1);
+      return;
+    }
+    hpSetBroadcastStatus('연결 오류가 발생했어요 — 네트워크를 확인하고 다시 시도해 주세요.', 'err');
+  });
+  p.on('disconnected', function(){ hpSetBroadcastStatus('연결이 끊어졌어요 — 다시 시도해 주세요.', 'err'); });
+}
+
+function hpStopHosting(){
+  hpHostConns.forEach(function(conn){ try{ if(conn.open) conn.send({type:'cartel-host-closing'}); }catch(e){} });
+  if(hpHostPeer){ try{ hpHostPeer.destroy(); }catch(e){} }
+  hpHostPeer = null;
+  hpHostConns = [];
+  document.getElementById('hp-broadcast-start').hidden = false;
+  document.getElementById('hp-broadcast-stop').hidden = true;
+  const codeEl = document.getElementById('hp-broadcast-code');
+  codeEl.hidden = true;
+  codeEl.innerHTML = '';
+  hpSetBroadcastStatus('아직 연결 안 됨');
+  hpUpdateRevealBtnState();
+}
+
+function hpSendReveal(){
+  if(!hpHostConns.length || !hpLastRoundSnapshot) return;
+  const payload = Object.assign({type:'cartel-reveal'}, hpLastRoundSnapshot);
+  hpHostConns.forEach(function(conn){ if(conn.open) conn.send(payload); });
+  hpSetBroadcastStatus('📣 '+hpLastRoundSnapshot.round+'라운드 결과를 보냈어요!', 'connected');
+  setTimeout(function(){
+    hpSetBroadcastStatus(hpHostConns.length ? ('패드 연결됨 ✅ ('+hpHostConns.length+'대)') : '패드 연결 대기 중…', hpHostConns.length ? 'connected' : 'waiting');
+  }, 2200);
+}
+
+function hpSendFinalReveal(){
+  if(!hpHostConns.length) return;
+  const players = hpSavedNames.map(function(name, idx){ return {name:name, total: hpCumulativeIncome[idx]}; });
+  const payload = {type:'cartel-final-reveal', players: players};
+  hpHostConns.forEach(function(conn){ if(conn.open) conn.send(payload); });
+  hpSetBroadcastStatus('📣 최종 결과를 보냈어요!', 'connected');
+  setTimeout(function(){
+    hpSetBroadcastStatus(hpHostConns.length ? ('패드 연결됨 ✅ ('+hpHostConns.length+'대)') : '패드 연결 대기 중…', hpHostConns.length ? 'connected' : 'waiting');
+  }, 2200);
+}
+
+/* ---- 발표 화면(패드) 쪽: 모드 전환 + 연결 + 수신 ---- */
+function hpSetDisplayStatus(text, cls){
+  const el = document.getElementById('hp-display-status');
+  el.textContent = text;
+  el.className = 'hr-display-status' + (cls ? ' '+cls : '');
+}
+
+function hpShowDisplayWaiting(){
+  document.getElementById('hp-display-connect').hidden = true;
+  const rv = document.getElementById('hp-display-reveal');
+  rv.hidden = false;
+  rv.innerHTML = '<p class="hr-display-waiting"><span class="pulse-dot"></span>발표를 기다리는 중입니다…</p>';
+}
+
+function hpShowDisplayConnectForm(){
+  document.getElementById('hp-display-connect').hidden = false;
+  const rv = document.getElementById('hp-display-reveal');
+  rv.hidden = true;
+  rv.innerHTML = '';
+}
+
+function hpRenderRevealOnDisplay(payload){
+  hpRevealPayload = payload;
+  document.getElementById('hp-display-connect').hidden = true;
+  const rv = document.getElementById('hp-display-reveal');
+  rv.hidden = false;
+  rv.innerHTML =
+    '<p class="hr-reveal-round">ROUND '+payload.round+'</p>'+
+    '<div class="cartel-tab-row" id="cartel-tab-row">'+
+    payload.resources.map(function(r){
+      return '<button type="button" class="cartel-tab-btn" data-res="'+hpEsc(r.name)+'" onclick="hpSelectRevealTab(\''+hpEsc(r.name)+'\')">'+
+        (HP_RES_ICON[r.name]||'') + ' ' + hpEsc(r.name) + '</button>';
+    }).join('') +
+    '</div>'+
+    '<div id="cartel-reveal-stage"></div>';
+  hpSelectRevealTab(payload.resources[0].name);
+}
+
+function hpSelectRevealTab(name){
+  if(hpRevealAnimTimer){ clearInterval(hpRevealAnimTimer); hpRevealAnimTimer = null; }
+  hpRevealActiveRes = name;
+  document.querySelectorAll('#cartel-tab-row .cartel-tab-btn').forEach(function(btn){
+    btn.classList.toggle('active', btn.dataset.res === name);
+  });
+  const res = (hpRevealPayload.resources||[]).find(function(r){ return r.name===name; });
+  const stage = document.getElementById('cartel-reveal-stage');
+  if(!res || !stage) return;
+
+  const isSecret = !!res.secret;
+  const won = res.price * HP_UNIT;
+  const digits = String(won).padStart(4,'0').split('');
+  stage.innerHTML =
+    '<p class="cartel-price-label">'+hpEsc(name)+' 이번 라운드 수출가</p>'+
+    '<div class="cartel-digit-row" id="cartel-digit-row">'+
+      digits.map(function(d,i){ return '<div class="cartel-digit-cell" data-i="'+i+'">0</div>'; }).join('')+
+    '</div>'+
+    (isSecret
+      ? '<div class="cartel-warning-box" id="cartel-locked-note" style="visibility:hidden"><span class="cartel-warning-icon">❗</span><p class="cartel-warning-text">누군가 정보를 통제했습니다.<br>해당 라운드의 판매가와 수익은 공개되지 않습니다.</p></div>'
+      : '<p class="cartel-unit-suffix">원 (수출자 '+res.sellerCount+'명)</p>'+
+        '<div class="cartel-seller-list" id="cartel-seller-list" style="visibility:hidden"></div>');
+
+  const cells = Array.from(stage.querySelectorAll('.cartel-digit-cell'));
+  hpRevealAnimTimer = setInterval(function(){
+    let any = false;
+    cells.forEach(function(c){ if(!c.classList.contains('settled')){ c.textContent = String(Math.floor(Math.random()*10)); any = true; } });
+    if(any) hpPlayTick();
+  }, 60);
+  /* 1원 단위(맨 오른쪽)부터 먼저 멈추고, 가장 의미 있는 천 단위(맨 왼쪽)가 마지막에 멈춘다 */
+  const order = cells.map(function(_, i){ return i; }).reverse();
+  order.forEach(function(posIdx, k){
+    const isLastStep = (k === order.length - 1);
+    setTimeout(function(){
+      if(isSecret && isLastStep){
+        /* 극적 연출: 천 단위가 밝혀지는 순간, 네 자리 모두 한꺼번에 ????로 전환 */
+        cells.forEach(function(c){ c.textContent = '?'; c.classList.add('settled','locked'); });
+      } else {
+        cells[posIdx].textContent = digits[posIdx];
+        cells[posIdx].classList.add('settled');
+      }
+      hpPlayLockChime(k);
+      if(isLastStep){
+        if(hpRevealAnimTimer){ clearInterval(hpRevealAnimTimer); hpRevealAnimTimer = null; }
+        if(isSecret){
+          const note = document.getElementById('cartel-locked-note');
+          if(note) note.style.visibility = 'visible';
+        } else {
+          hpRevealSellerList(res);
+        }
+      }
+    }, 1200 + k*260);
+  });
+}
+
+/* ---- 숫자 연출용 효과음 (Web Audio API로 그 자리에서 합성 — 별도 음원 파일 없음) ----
+   숫자가 빠르게 바뀌는 동안은 "차르르륵" 느낌의 짧은 틱 소리를, 자리마다 숫자가 멈출 때는
+   "또로로롱~" 하고 점점 올라가는 짧은 차임음을 낸다. */
+let hpAudioCtx = null;
+function hpGetAudioCtx(){
+  if(!hpAudioCtx) hpAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  if(hpAudioCtx.state === 'suspended') hpAudioCtx.resume();
+  return hpAudioCtx;
+}
+function hpPlayTick(){
+  try{
+    const ctx = hpGetAudioCtx();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'square';
+    osc.frequency.value = 820 + Math.random()*340;
+    gain.gain.setValueAtTime(0.05, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.035);
+    osc.connect(gain); gain.connect(ctx.destination);
+    osc.start(); osc.stop(ctx.currentTime + 0.04);
+  }catch(e){ /* 오디오 미지원 환경은 조용히 무시 */ }
+}
+function hpPlayLockChime(step){
+  try{
+    const ctx = hpGetAudioCtx();
+    const freqs = [523.25, 659.25, 783.99, 1046.5]; // 도-미-솔-높은도, 점점 올라가는 "또로로롱" 느낌
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.value = freqs[step % freqs.length];
+    gain.gain.setValueAtTime(0.0001, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.22, ctx.currentTime + 0.02);
+    gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.4);
+    osc.connect(gain); gain.connect(ctx.destination);
+    osc.start(); osc.stop(ctx.currentTime + 0.42);
+  }catch(e){ /* 오디오 미지원 환경은 조용히 무시 */ }
+}
+
+function hpRevealSellerList(res){
+  const list = document.getElementById('cartel-seller-list');
+  if(!list) return;
+  const sorted = (res.sellers||[]).slice().sort(function(a,b){ return b.income-a.income; });
+  list.innerHTML = sorted.map(function(s){
+    return '<div class="cartel-seller-row'+(s.isWinner?' win':'')+'">'+
+      '<span class="cartel-seller-name">'+hpEsc(s.name)+'</span>'+
+      '<span class="cartel-seller-income">'+hpFmtWon(s.income)+'</span>'+
+    '</div>';
+  }).join('') || '<p class="cartel-locked-note">이번 라운드 이 자원을 수출한 플레이어가 없습니다.</p>';
+  list.style.visibility = 'visible';
+}
+
+function hpRenderFinalOnDisplay(payload){
+  hpRevealPayload = null;
+  if(hpRevealAnimTimer){ clearInterval(hpRevealAnimTimer); hpRevealAnimTimer = null; }
+  document.getElementById('hp-display-connect').hidden = true;
+  const rv = document.getElementById('hp-display-reveal');
+  rv.hidden = false;
+  const sorted = (payload.players||[]).slice().sort(function(a,b){ return b.total-a.total; });
+  const maxTotal = sorted.length ? sorted[0].total : 0;
+  const medals = ['🥇','🥈','🥉'];
+  rv.innerHTML =
+    '<p class="hr-reveal-round">🏁 최종 결과</p>'+
+    '<div class="cartel-seller-list" style="max-width:520px;margin:14px auto 0;visibility:visible">'+
+    sorted.map(function(p, rank){
+      const isWin = (p.total === maxTotal);
+      return '<div class="cartel-seller-row'+(isWin?' win':'')+'">'+
+        '<span class="cartel-seller-name">'+(medals[rank]||(rank+1)+'.')+' '+hpEsc(p.name)+'</span>'+
+        '<span class="cartel-seller-income">'+hpFmtWon(p.total)+'</span>'+
+      '</div>';
+    }).join('')+
+    '</div>';
+}
+
+function hpConnectDisplayTo(code){
+  if(!hpHasPeerJs()){ hpSetDisplayStatus('인터넷 연결이 필요해요. 네트워크를 확인해 주세요.', 'err'); return; }
+  const raw = (code||'').trim();
+  if(!raw) return;
+  const suffix = raw.replace(new RegExp(HP_PEER_PREFIX, 'ig'), '').replace(/[^A-Za-z0-9]/g, '').toUpperCase();
+  if(!suffix) return;
+  const targetId = HP_PEER_PREFIX + suffix;
+  hpSetDisplayStatus('연결 중…');
+  if(hpDisplayPeer){ try{ hpDisplayPeer.destroy(); }catch(e){} }
+  const p = new Peer();
+  hpDisplayPeer = p;
+  p.on('open', function(){
+    const conn = p.connect(targetId, {reliable:true});
+    hpDisplayConn = conn;
+    conn.on('open', function(){ hpSetDisplayStatus('연결됐어요! ✅', 'ok'); hpShowDisplayWaiting(); });
+    conn.on('data', function(payload){
+      if(!payload) return;
+      if(payload.type === 'cartel-reveal') hpRenderRevealOnDisplay(payload);
+      else if(payload.type === 'cartel-final-reveal') hpRenderFinalOnDisplay(payload);
+      else if(payload.type === 'cartel-host-closing'){
+        hpSetDisplayStatus('노트북 쪽에서 연결을 끊었어요 — 코드를 다시 입력해 연결해 주세요.', 'err');
+        hpShowDisplayConnectForm();
+      }
+    });
+    conn.on('close', function(){ hpSetDisplayStatus('연결이 끊어졌어요 — 코드를 다시 입력해 연결해 주세요.', 'err'); hpShowDisplayConnectForm(); });
+    conn.on('error', function(){ hpSetDisplayStatus('연결에 실패했어요 — 코드를 확인하고 다시 시도해 주세요.', 'err'); hpShowDisplayConnectForm(); });
+  });
+  p.on('error', function(err){
+    if(err && err.type === 'peer-unavailable') hpSetDisplayStatus('그 코드로 연결된 노트북을 찾지 못했어요 — 코드를 다시 확인해 주세요.', 'err');
+    else hpSetDisplayStatus('연결 오류가 발생했어요 — 네트워크를 확인해 주세요.', 'err');
+  });
+}
+
+function hpDisplayModeOn(){
+  document.getElementById('hp-display-overlay').hidden = false;
+  document.documentElement.classList.add('hr-display-lock');
+  document.body.classList.add('hr-display-lock');
+  hpShowDisplayConnectForm();
+  hpSetDisplayStatus('');
+  document.getElementById('hp-display-code-input').value = '';
+  setTimeout(function(){ document.getElementById('hp-display-code-input').focus(); }, 30);
+}
+
+function hpDisplayModeOff(){
+  if(hpDisplayConn){ try{ hpDisplayConn.close(); }catch(e){} hpDisplayConn = null; }
+  if(hpDisplayPeer){ try{ hpDisplayPeer.destroy(); }catch(e){} hpDisplayPeer = null; }
+  document.getElementById('hp-display-overlay').hidden = true;
+  document.documentElement.classList.remove('hr-display-lock');
+  document.body.classList.remove('hr-display-lock');
 }
 
 hpBuildPlayerList();
